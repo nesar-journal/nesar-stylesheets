@@ -21,7 +21,7 @@ Note that this shell script requires the [TEI stylesheets](https://github.com/TE
 If there are text-critical notes:
 - [ ] Put apparatus entries in a `<listApp>` element.
 
-## Going from TEI to HTML/LaTeX
+## Step 3: Going from TEI to HTML/LaTeX
 
 ```
 python3 tei_to_html.py FILENAME.xml
