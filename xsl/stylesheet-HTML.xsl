@@ -90,11 +90,7 @@
   <xsl:template match="tei:filiation" />
   <xsl:template match="tei:foreign">
     <xsl:element name="span">
-      <xsl:if test="@xml:lang">
-	<xsl:call-template name="langScript">
-	  <xsl:with-param name="langScript" select="@xml:lang"/>
-	</xsl:call-template>
-      </xsl:if>
+      <xsl:attribute name="class">foreign</xsl:attribute>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -279,11 +275,6 @@
   <xsl:template match="tei:q" />
   <xsl:template match="tei:quote">
     <xsl:element name="blockquote">
-      <xsl:if test="@xml:lang">
-	<xsl:call-template name="langScript">
-	  <xsl:with-param name="langScript" select="@xml:lang"/>
-	</xsl:call-template>
-      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -340,11 +331,6 @@
   <xsl:template match="tei:textLang" />
   <xsl:template match="tei:title[not(ancestor-or-self::tei:titleStmt)]">
     <xsl:element name="i">
-      <xsl:if test="@xml:lang">
-	<xsl:call-template name="langScript">
-	  <xsl:with-param name="langScript" select="@xml:lang"/>
-	</xsl:call-template>
-      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -354,6 +340,29 @@
   <xsl:template match="tei:witDetail" />
   <xsl:template match="tei:witness" />
 
+  <!-- WRAP ALL TEXT ELEMENTS WITH LANGUAGE AND SCRIPT ATTRIBUTES !-->
+  <xsl:template match="text()">
+    <xsl:choose>
+      <xsl:when test="ancestor-or-self::*/@xml:lang[not(name()='eng')]">
+	<xsl:variable name="langScript">
+	  <xsl:value-of select="ancestor-or-self::*/@xml:lang[not(name()='eng')]"/>
+	</xsl:variable>
+	<xsl:element name="span">
+	  <xsl:attribute name="class">scriptWrapper</xsl:attribute>
+	  <xsl:call-template name="langScript">
+	    <xsl:with-param name="langScript" select="$langScript"/>
+	  </xsl:call-template>
+	  <xsl:attribute name="data-original">
+	    <xsl:value-of select="."/>
+	  </xsl:attribute>
+	  <xsl:value-of select="."/>
+	</xsl:element>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:value-of select="."/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
 
   <!-- NAMED TEMPLATES !-->
   <xsl:template name="langScript">
