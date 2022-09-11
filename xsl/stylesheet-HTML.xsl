@@ -71,7 +71,7 @@
   <xsl:template match="tei:correction" />
   <xsl:template match="tei:date" />
   <xsl:template match="tei:del" />
-  <xsl:template match="tei:div[ancestor::tei:body]">
+  <xsl:template match="tei:div[ancestor::tei:text]">
     <xsl:element name="div">
       <xsl:attribute name="class">text-section</xsl:attribute>
       <xsl:if test="tei:head">
@@ -103,7 +103,32 @@
   <xsl:template match="tei:handNote" />
   <xsl:template match="tei:head"/>
   <xsl:template match="tei:head" mode="bypass">
+    <xsl:if test="tei:anchor">
+      <xsl:element name="a">
+	<xsl:attribute name="id">
+	  <xsl:value-of select="tei:anchor/@xml:id"/>
+	</xsl:attribute>
+      </xsl:element>
+    </xsl:if>
+    <xsl:if test="@n">
+      <xsl:value-of select="@n"/>
+      <xsl:text> </xsl:text>
+    </xsl:if>
     <xsl:apply-templates/>
+  </xsl:template>
+  <xsl:template match="tei:head[@type='toc']" mode="toc">
+    <xsl:element name="li">
+      <xsl:element name="a">
+	<xsl:attribute name="href">
+	  <xsl:value-of select="concat('#',./tei:anchor/@xml:id)"/>
+	</xsl:attribute>
+	<xsl:if test="@n">
+	  <xsl:value-of select="@n"/>
+	  <xsl:text> </xsl:text>
+	</xsl:if>
+	<xsl:apply-templates/>
+      </xsl:element>
+    </xsl:element>
   </xsl:template>
   <xsl:template match="tei:hi" />
   <xsl:template match="tei:history" />
@@ -154,7 +179,7 @@
     <xsl:element name="div">
       <xsl:attribute name="class">bibliography</xsl:attribute>
       <xsl:if test="tei:head">
-	<xsl:element name="h2">
+	<xsl:element name="h3">
 	  <xsl:apply-templates select="tei:head" mode="bypass"/>
 	</xsl:element>
       </xsl:if>
@@ -167,7 +192,7 @@
     <xsl:element name="li">
       <xsl:attribute name="class">text-group</xsl:attribute>
       <xsl:if test="tei:head">
-	<xsl:element name="h3">
+	<xsl:element name="h4">
 	  <xsl:apply-templates select="tei:head" mode="bypass"/>
 	</xsl:element>
       </xsl:if>
@@ -324,6 +349,14 @@
   <xsl:template match="tei:term"/>
   <xsl:template match="tei:text">
     <xsl:element name="body">
+      <xsl:if test=".//tei:head[@type='toc']">
+	<xsl:element name="div">
+	  <xsl:attribute name="class">nesar-toc</xsl:attribute>
+	  <xsl:element name="ul">
+	    <xsl:apply-templates select=".//tei:head[@type='toc']" mode="toc"/>
+	  </xsl:element>
+	</xsl:element>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -343,20 +376,27 @@
   <!-- WRAP ALL TEXT ELEMENTS WITH LANGUAGE AND SCRIPT ATTRIBUTES !-->
   <xsl:template match="text()">
     <xsl:choose>
-      <xsl:when test="ancestor-or-self::*/@xml:lang[not(name()='eng')]">
-	<xsl:variable name="langScript">
-	  <xsl:value-of select="ancestor-or-self::*/@xml:lang[not(name()='eng')]"/>
+      <xsl:when test="ancestor-or-self::*[@xml:lang][1]">
+	<xsl:variable name="recentLang">
+	  <xsl:value-of select="ancestor-or-self::*[@xml:lang][1]/@xml:lang"/>
 	</xsl:variable>
-	<xsl:element name="span">
-	  <xsl:attribute name="class">scriptWrapper</xsl:attribute>
-	  <xsl:call-template name="langScript">
-	    <xsl:with-param name="langScript" select="$langScript"/>
-	  </xsl:call-template>
-	  <xsl:attribute name="data-original">
+	<xsl:choose>
+	  <xsl:when test="$recentLang = 'eng'">
 	    <xsl:value-of select="."/>
-	  </xsl:attribute>
-	  <xsl:value-of select="."/>
-	</xsl:element>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:element name="span">
+	      <xsl:attribute name="class">scriptWrapper</xsl:attribute>
+	      <xsl:call-template name="langScript">
+		<xsl:with-param name="langScript" select="$recentLang"/>
+	      </xsl:call-template>
+	      <xsl:attribute name="data-original">
+		<xsl:value-of select="."/>
+	      </xsl:attribute>
+	      <xsl:value-of select="."/>
+	    </xsl:element>
+	  </xsl:otherwise>
+	</xsl:choose>
       </xsl:when>
       <xsl:otherwise>
 	<xsl:value-of select="."/>
@@ -376,30 +416,38 @@
   <xsl:template name="rdg">
     <xsl:param name="rdg"/>
     <xsl:element name="span">
-      <!-- witnesses !-->
-      <xsl:if test="$rdg/@wit">
-	<xsl:for-each select="tokenize($rdg/@wit,' ')">
-	  <xsl:element name="span">
-	    <xsl:attribute name="class">wit</xsl:attribute>
-	    <xsl:value-of select="translate(.,'#','')"/>
-	  </xsl:element>
-	</xsl:for-each>
-      </xsl:if>
-      <!-- sources !-->
-      <xsl:if test="$rdg/@source">
-	<xsl:for-each select="tokenize($rdg/@source,' ')">
-	  <xsl:element name="span">
-	    <xsl:attribute name="class">source</xsl:attribute>
-	    <xsl:value-of select="translate(.,'#','')"/>
-	  </xsl:element>
-	</xsl:for-each>
-      </xsl:if>
       <xsl:element name="span">
-	<xsl:if test="@xml:lang">
-	  <xsl:call-template name="langScript">
-	    <xsl:with-param name="langScript" select="@xml:lang"/>
-	  </xsl:call-template>
+	<xsl:attribute name="class">app-label</xsl:attribute>
+	<!-- witnesses !-->
+	<xsl:if test="$rdg/@wit">
+	  <xsl:for-each select="tokenize($rdg/@wit,' ')">
+	    <xsl:element name="h6">
+	      <xsl:attribute name="class">wit</xsl:attribute>
+	      <xsl:value-of select="translate(.,'#','')"/>
+	    </xsl:element>
+	  </xsl:for-each>
 	</xsl:if>
+	<!-- sources !-->
+	<xsl:if test="$rdg/@source">
+	  <xsl:for-each select="tokenize($rdg/@source,' ')">
+	    <xsl:element name="h6">
+	      <xsl:attribute name="class">source</xsl:attribute>
+	      <xsl:value-of select="translate(.,'#','')"/>
+	    </xsl:element>
+	  </xsl:for-each>
+	</xsl:if>
+	<!-- resp !-->
+	<xsl:if test="$rdg/@resp">
+	  <xsl:for-each select="tokenize($rdg/@resp,' ')">
+	    <xsl:element name="h6">
+	      <xsl:attribute name="class">resp</xsl:attribute>
+	      <xsl:value-of select="translate(.,'#','')"/>
+	    </xsl:element>
+	  </xsl:for-each>
+	</xsl:if>
+      </xsl:element>
+      <xsl:element name="span">
+	<xsl:attribute name="class">rdgtext</xsl:attribute>
 	<xsl:apply-templates/>
       </xsl:element>
     </xsl:element>
