@@ -2,9 +2,11 @@
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		xmlns:tei="http://www.tei-c.org/ns/1.0"
 		xmlns:fn="http://www.w3.org/2005/xpath-functions">
-  <xsl:output method="xhtml" indent="yes" omit-xml-declaration="yes"/>
+  <xsl:output method="html" 
+	      indent="yes" 
+	      suppress-indentation="tei:hi tei:ref tei:p tei:em"
+	      omit-xml-declaration="yes"/>
   <xsl:strip-space elements="*"/>
-  <xsl:preserve-space elements="tei:s tei:p tei:title tei:foreign tei:hi"/>
 
   <!-- Given a TEI document, this stylesheet transforms it 
        into an XHTML fragment. !-->
@@ -14,7 +16,9 @@
   </xsl:template> 
 
   <xsl:template match="tei:ab" />
-  <xsl:template match="tei:abbr" />
+  <xsl:template match="tei:abbr">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:add" />
   <xsl:template match="tei:anchor" />
   <xsl:template match="tei:app">
@@ -66,16 +70,46 @@
   <xsl:template match="tei:citedRange">
     <xsl:apply-templates/>
   </xsl:template>
+  <xsl:template match="tei:cell">
+    <xsl:element name="td">
+      <xsl:if test="@cols">
+	<xsl:attribute name="colspan">
+	  <xsl:value-of select="@cols"/>
+	</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:collection" />
   <xsl:template match="tei:colophon" />
   <xsl:template match="tei:correction" />
   <xsl:template match="tei:date" />
   <xsl:template match="tei:del" />
-  <xsl:template match="tei:div[ancestor::tei:text]">
+  <xsl:template match="tei:div[parent::tei:body]">
     <xsl:element name="div">
       <xsl:attribute name="class">text-section</xsl:attribute>
       <xsl:if test="tei:head">
 	<xsl:element name="h2">
+	  <xsl:apply-templates select="tei:head" mode="bypass"/>
+	</xsl:element>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:div[parent::tei:body]/tei:div">
+    <xsl:element name="div">
+      <xsl:if test="tei:head">
+	<xsl:element name="h3">
+	  <xsl:apply-templates select="tei:head" mode="bypass"/>
+	</xsl:element>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:div[parent::tei:body]/tei:div/tei:div">
+    <xsl:element name="div">
+      <xsl:if test="tei:head">
+	<xsl:element name="h4">
 	  <xsl:apply-templates select="tei:head" mode="bypass"/>
 	</xsl:element>
       </xsl:if>
@@ -96,7 +130,16 @@
   </xsl:template>
   <xsl:template match="tei:forename" />
   <xsl:template match="tei:front" />
-  <xsl:template match="tei:g" />
+  <xsl:template match="tei:g">
+    <xsl:choose>
+      <xsl:when test="@ref">
+	<xsl:value-of select="/tei:TEI/tei:teiHeader/tei:encodingDesc/tei:charDecl/tei:glyph[@xml:id=@ref]/tei:mapping"/>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
   <xsl:template match="tei:gap"/>
   <xsl:template match="tei:gloss" />
   <xsl:template match="tei:handDesc" />
@@ -130,12 +173,25 @@
       </xsl:element>
     </xsl:element>
   </xsl:template>
-  <xsl:template match="tei:hi" />
+  <xsl:template match="tei:hi[@rend='bold']">
+    <xsl:element name="b">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:hi">
+    <xsl:element name="em">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:history" />
   <xsl:template match="tei:idno" />
   <xsl:template match="tei:institution" />
   <xsl:template match="tei:interpretation" />
-  <xsl:template match="tei:item" />
+  <xsl:template match="tei:item">
+    <xsl:element name="li">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:join" />
   <xsl:template match="tei:keywords" />
   <xsl:template match="tei:l">
@@ -167,7 +223,23 @@
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:license" />
-  <xsl:template match="tei:list" />
+  <xsl:template match="tei:list[@type='examples']">
+    <xsl:variable name="n">
+      <xsl:value-of select="count(preceding::tei:list[@type='examples']/tei:item)"/>
+    </xsl:variable>
+    <xsl:element name="ol">
+      <xsl:attribute name="class">examples</xsl:attribute>
+      <xsl:attribute name="start">
+	<xsl:value-of select="$n + 1"/>
+      </xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:list[not(@type='examples')]">
+    <xsl:element name="ul">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:listApp">
     <xsl:element name="ul">
       <xsl:attribute name="class">apparatus</xsl:attribute>
@@ -297,7 +369,12 @@
   <xsl:template match="tei:publicationStmt" />
   <xsl:template match="tei:pubPlace" />
   <xsl:template match="tei:punctuation" />
-  <xsl:template match="tei:q" />
+  <xsl:template match="tei:q[@type='phonemic']">
+    <xsl:element name="span">
+      <xsl:attribute name="class">phonemic</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:quote">
     <xsl:element name="blockquote">
       <xsl:apply-templates/>
@@ -321,6 +398,11 @@
   <xsl:template match="tei:respStmt" />
   <xsl:template match="tei:revisionDesc" />
   <xsl:template match="tei:roleName" />
+  <xsl:template match="tei:row">
+    <xsl:element name="tr">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:said" />
   <xsl:template match="tei:samplingDesc" />
   <xsl:template match="tei:schemaRef" />
@@ -340,6 +422,23 @@
   <xsl:template match="tei:supportDesc" />
   <xsl:template match="tei:surname" />
   <xsl:template match="tei:surplus" />
+  <xsl:template match="tei:table">
+    <xsl:element name="table">
+      <xsl:choose>
+	<xsl:when test="./tei:row[@role='label']">
+	  <xsl:element name="thead">
+	    <xsl:apply-templates select="./tei:row[@role='label']"/>
+	  </xsl:element>
+	  <xsl:element name="tbody">
+	    <xsl:apply-templates select="./tei:row[not(@role='label')]"/>
+	  </xsl:element>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:apply-templates/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:TEI">
     <xsl:element name="html">
       <xsl:apply-templates/>
