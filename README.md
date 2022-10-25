@@ -48,6 +48,7 @@ The PDF conversion runs `xelatex`, which is required. The required LaTeX package
 
 ```
 |   FILENAME.xml
+|   tei_to_latex.py
 |
 |__ latex
 |   |   latex.tex
@@ -74,7 +75,6 @@ The PDF conversion runs `xelatex`, which is required. The required LaTeX package
 |
 |__ xsl
 |   |  stylesheet-LaTeX.xsl
-|
 ```
 
 Details on BibTeX to follow soon.
