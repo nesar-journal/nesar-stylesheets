@@ -14,21 +14,37 @@
   <xsl:template match="/">
     <xsl:apply-templates/>
   </xsl:template> 
-
+  <!-- AB !-->
   <xsl:template match="tei:ab" />
+  <!-- ABBR !-->
   <xsl:template match="tei:abbr">
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="tei:add" />
+  <!-- ADD !-->
   <xsl:template match="tei:anchor" />
+  <!-- APP !-->
   <xsl:template match="tei:app">
     <xsl:element name="li">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
+  <!-- AUTHOR !-->
   <xsl:template match="tei:author" />
+  <!-- AUTHORITY !-->
   <xsl:template match="tei:authority" />
-  <xsl:template match="tei:availability" />
+  <!-- AVAILABILITY !-->
+  <xsl:template match="tei:availability">
+    <xsl:element name="div">
+      <xsl:element name="div">
+	<xsl:element name="img">
+	  <xsl:attribute name="src">/assets/images/open_access_F6820B.png</xsl:attribute>
+	  <xsl:attribute name="height">32px</xsl:attribute>
+	</xsl:element>
+      </xsl:element>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <!-- BACK !-->
   <xsl:template match="tei:back">
     <xsl:apply-templates/>
@@ -61,10 +77,19 @@
 	</xsl:for-each>
       </xsl:element>
     </xsl:element>
+    <xsl:apply-templates select="../../tei:teiHeader" mode="bypass"/>
   </xsl:template>
   <xsl:template match="tei:caesura"/>
   <xsl:template match="tei:certainty" />
-  <xsl:template match="tei:change" />
+  <xsl:template match="tei:change">
+    <xsl:element name="li">
+      <xsl:value-of select="./tei:date"/>
+      <xsl:text> (</xsl:text>
+      <xsl:value-of select="./tei:name"/>
+      <xsl:text>): </xsl:text>
+      <xsl:apply-templates select="./tei:desc"/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:choice" />
   <xsl:template match="tei:cit" />
   <xsl:template match="tei:citedRange">
@@ -83,8 +108,13 @@
   <xsl:template match="tei:collection" />
   <xsl:template match="tei:colophon" />
   <xsl:template match="tei:correction" />
-  <xsl:template match="tei:date" />
+  <xsl:template match="tei:date">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:del" />
+  <xsl:template match="tei:desc">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:div[parent::tei:body]">
     <xsl:element name="div">
       <xsl:attribute name="class">text-section</xsl:attribute>
@@ -118,9 +148,12 @@
   </xsl:template>
   <xsl:template match="tei:editor" />
   <xsl:template match="tei:editorialDecl" />
+  <xsl:template match="tei:editionStmt"/>
   <xsl:template match="tei:encodingDesc" />
   <xsl:template match="tei:expan" />
-  <xsl:template match="tei:fileDesc" />
+  <xsl:template match="tei:fileDesc">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:filiation" />
   <xsl:template match="tei:foreign">
     <xsl:element name="span">
@@ -184,7 +217,19 @@
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:history" />
-  <xsl:template match="tei:idno" />
+  <xsl:template match="tei:idno[@type='DOI']">
+    <xsl:element name="p">
+      <xsl:element name="b">
+	<xsl:text>DOI: </xsl:text>
+      </xsl:element>
+      <xsl:element name="a">
+	<xsl:attribute name="href">
+	  <xsl:value-of select="concat('https://doi.org/',.)"/>
+	</xsl:attribute>
+	<xsl:value-of select="."/>
+      </xsl:element>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:institution" />
   <xsl:template match="tei:interpretation" />
   <xsl:template match="tei:item">
@@ -222,7 +267,37 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-  <xsl:template match="tei:license" />
+  <xsl:template match="tei:licence">
+    <xsl:element name="div">
+      <xsl:attribute name="class">nesar-license</xsl:attribute>
+      <xsl:choose>
+	<xsl:when test="@target = 'https://creativecommons.org/licenses/by/4.0/'">
+	  <xsl:element name="div">
+	    <xsl:element name="a">
+	      <xsl:attribute name="href">https://creativecommons.org/licenses/by/4.0/</xsl:attribute>
+	      <xsl:element name="img">
+		<xsl:attribute name="src">/assets/images/cc_icon_F6820B_x2.png</xsl:attribute>
+		<xsl:attribute name="height">32px</xsl:attribute>
+	      </xsl:element>
+	    </xsl:element>
+	    <xsl:element name="a">
+	      <xsl:attribute name="href">https://creativecommons.org/licenses/by/4.0/</xsl:attribute>
+	      <xsl:element name="img">
+		<xsl:attribute name="src">/assets/images/attribution_icon_F6820B_x2.png</xsl:attribute>
+		<xsl:attribute name="height">32px</xsl:attribute>
+	      </xsl:element>
+	    </xsl:element>
+	  </xsl:element>
+	  <xsl:element name="div">
+	    <xsl:apply-templates/>
+	  </xsl:element>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:apply-templates/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:list[@type='examples']">
     <xsl:variable name="n">
       <xsl:value-of select="count(preceding::tei:list[@type='examples']/tei:item)"/>
@@ -273,6 +348,11 @@
       </xsl:element>
     </xsl:element>
   </xsl:template>
+  <xsl:template match="tei:listChange">
+    <xsl:element name="ul">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:listPrefixDef" />
   <xsl:template match="tei:listWit" />
   <xsl:template match="tei:locus" />
@@ -284,7 +364,9 @@
   <xsl:template match="tei:msItem" />
   <xsl:template match="tei:msName" />
   <xsl:template match="tei:msPart" />
-  <xsl:template match="tei:name" />
+  <xsl:template match="tei:name">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:normalization" />
   <xsl:template match="tei:note[@place='foot']">
     <xsl:element name="sup">
@@ -320,7 +402,7 @@
   <xsl:template match="tei:objectDesc" />
   <xsl:template match="tei:origDate" />
   <xsl:template match="tei:origPlace" />
-  <xsl:template match="tei:p[not(ancestor::tei:note)]">
+  <xsl:template match="tei:p[not(ancestor::tei:note)][not(ancestor::tei:teiHeader)]">
     <xsl:element name="div">
       <xsl:attribute name="class">textandnotes</xsl:attribute>
       <xsl:if test=".//tei:note[@place='foot']">
@@ -358,6 +440,11 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
+  <xsl:template match="tei:p[ancestor::tei:teiHeader]">
+    <xsl:element name="p">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:pb"/>
   <xsl:template match="tei:persName" />
   <xsl:template match="tei:physDesc" />
@@ -366,7 +453,16 @@
   <xsl:template match="tei:profileDesc" />
   <xsl:template match="tei:projectDesc" />
   <xsl:template match="tei:ptr" />
-  <xsl:template match="tei:publicationStmt" />
+  <xsl:template match="tei:publicationStmt">
+    <xsl:element name="div">
+      <xsl:attribute name="class">nesar-publication-stmt</xsl:attribute>
+      <xsl:element name="h3">
+	<xsl:text>Publication details</xsl:text>
+      </xsl:element>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:publisher"/>
   <xsl:template match="tei:pubPlace" />
   <xsl:template match="tei:punctuation" />
   <xsl:template match="tei:q[@type='phonemic']">
@@ -396,7 +492,15 @@
   <xsl:template match="tei:repository" />
   <xsl:template match="tei:resp" />
   <xsl:template match="tei:respStmt" />
-  <xsl:template match="tei:revisionDesc" />
+  <xsl:template match="tei:revisionDesc">
+    <xsl:element name="div">
+      <xsl:attribute name="class">nesar-revision-desc</xsl:attribute>
+      <xsl:element name="h3">
+	<xsl:text>Revision history</xsl:text>
+      </xsl:element>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:roleName" />
   <xsl:template match="tei:row">
     <xsl:element name="tr">
@@ -441,23 +545,29 @@
   </xsl:template>
   <xsl:template match="tei:TEI">
     <xsl:element name="html">
+      <xsl:element name="body">
+	<xsl:apply-templates/>
+      </xsl:element>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:teiHeader"/>
+  <xsl:template match="tei:teiHeader" mode="bypass">
+    <xsl:element name="div">
+      <xsl:attribute name="class">nesar-header</xsl:attribute>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-  <xsl:template match="tei:teiHeader" />
   <xsl:template match="tei:term"/>
   <xsl:template match="tei:text">
-    <xsl:element name="body">
-      <xsl:if test=".//tei:head[@type='toc']">
-	<xsl:element name="div">
-	  <xsl:attribute name="class">nesar-toc</xsl:attribute>
-	  <xsl:element name="ul">
-	    <xsl:apply-templates select=".//tei:head[@type='toc']" mode="toc"/>
-	  </xsl:element>
+    <xsl:if test=".//tei:head[@type='toc']">
+      <xsl:element name="div">
+	<xsl:attribute name="class">nesar-toc</xsl:attribute>
+	<xsl:element name="ul">
+	  <xsl:apply-templates select=".//tei:head[@type='toc']" mode="toc"/>
 	</xsl:element>
-      </xsl:if>
-      <xsl:apply-templates/>
-    </xsl:element>
+      </xsl:element>
+    </xsl:if>
+    <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="tei:textClass" />
   <xsl:template match="tei:textLang" />

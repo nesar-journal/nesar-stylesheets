@@ -69,6 +69,25 @@ if __name__ == "__main__":
     cleanup(inputfile)
     with open(inputfile.stem + "-postprocessed.xml",'w') as o:
         o.write(tei)
+    with open(inputfile.stem + ".yaml","w") as y:
+        y.write("""---
+authors: 
+  - author:
+      firstname: FIRSTNAME (STRING)
+      lastname: LASTNAME (STRING)
+      institution: INSTITUTION (STRING)
+      email: EMAIL (STRING)
+title: TITLE (STRING)
+shorttitle: TITLE (STRING)
+issue: ISSUE (INTEGER)
+article: ARTICLE (INTEGER)
+year: YEAR (STRING)
+date: DATE (STRING)
+doi: DOI (STRING)
+license: LICENSE (STRING)
+slug: SLUG (STRING)
+citation: CITATION (STRING)
+""")
 
 #    tei = etree.fromstring(tei,parser=parser)
 #    string = etree.tostring(tei, pretty_print=True, encoding='unicode')

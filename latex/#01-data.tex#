@@ -1,0 +1,191 @@
+
+  
+  \thispagestyle{firstpage}
+    
+      \section{What is NESAR?}\label{dn1m0iwxqafc}
+
+	
+	
+
+NESAR stands for \emph{New Explorations in South Asia Research}, and is also a Kannada word for “sun” (\emph{\emph{}}). We are an open-access online scholarly journal that publishes humanistic research in South Asian studies. 
+
+      
+      \section{What is the journal’s area of coverage?}\label{jjge1v6cc0s}
+
+	
+	
+
+The \textbf{areal} parameters of NESAR are the South Asian world, which includes the core region of South Asia (modern Afghanistan, Bangladesh, India, the Maldives, Myanmar, Pakistan, Sri Lanka, and the Tibetan AR) as well as the regions that have had special links to South Asia, including but not limited to Central Asia and Southeast Asia. Several overlapping large-scale cultural formations spread throughout this broad area over the course of history, including what scholars call “the Sanskrit cosmopolis” and “the Persian cosmopolis,” as well as the worlds constituted by the Indian Ocean and the Bay of Bengal. We especially welcome research on \textbf{South India}.
+
+	
+
+There are no fixed \textbf{disciplinary} boundaries for NESAR apart from a broad commitment to humanistic research. We therefore welcome contributions from the humanities and interpretive social sciences. The fields in which we are principally interested are: literary history; art and architectural history; intellectual history; the history of religion; social and political theory; philosophy; and folklore.
+
+	
+
+There are no fixed \textbf{temporal} parameters, either. We are most interested in research into precolonial South Asia, but contributions on more recent periods are welcome, provided that they engage meaningfully with precolonial discourses or traditions.
+
+	
+
+As these wide parameters indicate, NESAR is especially interested in contributions that cross the boundaries that typically circumscribe research on South Asia — those of region and religion, genre and archive, and above all \textbf{language} — and ask us to consider social, cultural, and historical phenomena in new and exciting ways. 
+
+      
+      \section{Why do we need a new journal?}\label{mksein2dedb}
+
+	
+	
+
+At the time of writing (October 2022), South Asian Studies remains far behind other fields in its adoption of equitable and effective models of publication. Modern technology has, in principle, made every aspect of scholarly publication far easier and more accessible, from review, to editing, to typesetting, to dissemination. Some fields have moved \emph{en masse} to rapid open-access publication. South Asian Studies has not. On the one hand, the vast majority of journals still operate according to “the old model,” in which articles are published in an issue that is made available to subscribers for a fee. Many of these journals are published by non-profit scholarly organizations, and remain, for good reason, some of the flagship journals in the field. On the other hand, “the new model” of publishing articles online for free has been catching on, but largely as two kinds of “carve-outs” from “the old model.” One kind of carve-out involves removing limitations to access after a certain period of time: hence journals will still charge subscription fees, but older content will be free, usually after two years. Alternatively, publishers might allow authors to “self-archive” a pre-print version of their publication, while retaining the exclusive right to distribute the finalized publication, usually behind a paywall. The other carve-out involves having authors pay \hyperref[whjsbp15r2e9]{article processing charges} to make published content available to readers free.
+
+	
+
+Journals that catered specifically to South Asian Studies once abounded in the age of print, but nearly all of them have been discontinued. Now, there are a mere handful, many of which are operated for profit by one of the major scientific publishers (Reed-Elsevier, Taylor \& Francis, Wiley-Blackwell, Springer and Sage, which together \hyperref[https://www.sciencealert.com/these-five-companies-control-more-than-half-of-academic-publishing]{control 50\% of academic publishing}, and which have some of the \hyperref[https://www.theguardian.com/science/2017/jun/27/profitable-business-scientific-publishing-bad-for-science]{largest profit margins} of any industry on earth). For small fields like South Asian Studies, which make up a small part of a larger publisher’s portfolio, the level of relevant technical expertise can be quite low, resulting in lower quality publications. To take one small example: South Asian languages are often treated with utter disregard by major publishers. Text in these languages is often not copyedited at all; there are usually embarrassing issues with hyphenation and diacritics, if the text is transliterated; South Asian scripts are sometimes not supported at all, or so badly typeset that authors must go through several series of proofs. 
+
+	
+
+The time is now right for a new publication that is run with the intellectual and practical needs of South Asian Studies in mind. We believe strongly that a new journal should adopt enlightened policies \textbf{right from the beginning}, and make all of its decisions \textbf{for intellectual reasons alone}, rather than for reasons of profit maximization or technical expediency. Hence we have decided to publish NESAR \textbf{independently}, and to adopt the following policies:
+
+	
+\begin{itemize}
+
+	  \item \textbf{Access}. NESAR will be \hyperref[h2ni9pkdxmw8]{open access}.
+	  \item \textbf{Rights}. Authors will always retain full copyright over their works.
+	  \item \textbf{Licenses}. All content will be published under Creative Commons licenses that allow it to be shared freely and require credit to be assigned to the creator of the content. This means that authors can republish it if they so choose.
+	  \item \textbf{Fees}. NESAR will never impose \hyperref[whjsbp15r2e9]{article processing charges} or any other type of fee for readers or authors.\item \textbf{Editorial standards}. If the NESAR editorial board deems a submission to be promising, it will be subjected to \hyperref[a4tnixdc6uio]{peer review}.
+	  \item \textbf{Design standards}. Unlike most journals, we hold ourselves to high standards of design and typesetting. This includes both online publications, which make use of modern web technologies, and downloadable PDFs, which are produced with XeLaTeX.
+	\item \textbf{Transparency}. We take our ethical obligations to authors very seriously, and we strive for complete transparency in the editorial process, as well as regarding the roles that all of us in NESAR play.
+\end{itemize}
+
+	
+
+NESAR fully supports the principles articulated in \hyperref[https://foasas.org/]{the 2020 Manifesto for Fair Open Access Publishing in South Asian Studies}.
+
+      
+      \section{How is this possible?}\label{idjrqnlzrk1}
+
+	
+	
+
+You might be wondering: How is it possible? How can you run a high-quality scholarly journal without charging either readers or authors? Doesn’t all of this require a lot of work?
+
+	
+
+Well, yes, it requires a lot of work, most of the work involved in academic publishing is done \textbf{for free} anyway, by editors and reviewers. In addition, we at NESAR do all of the typesetting ourselves, or rather, we have developed scripts to produce both HTML and PDF proofs of contributions. Moreover, much of the work of producing a journal is done by faculty members at universities, who can draw upon institutional resources for support. In many respects — and this is not to minimize the contributions of publishers — academic journals have always been a “do it yourself” (DIY) operation, all the more so in smaller fields. We at NESAR have simply taken this DIY ethic and taken it to its logical conclusion: we do almost everything ourselves, with the support of friends and colleagues in the institutions where we work.\footnote{%
+
+
+In fact I once asked a colleague who runs an open-access journal what it costs. I was astounded by his response: “Nothing.” 
+}
+
+
+	
+
+The organizational work of a journal is greatly facilitated by content management systems (CMS) that allow authors, editors, reviewers, typesetters, and copyeditors to share their work. NESAR uses \hyperref[https://pkp.sfu.ca/ojs/]{Open Journal Systems}, an open-source CMS developed by Simon Fraser University, for this purpose. Most major publishers use their own in-house CMS. We are grateful to the \hyperref[https://www.lib.uchicago.edu/]{University of Chicago Libraries} for running OJS for us, as well as for other kinds of support in the running of this journal.
+
+	
+
+The most important service that major publishers offer themselves is high-quality copyediting, and this does indeed cost money. NESAR covers those costs, as well as the initial costs of development, through faculty research funds, and will apply for funding from agencies in the future to offset the costs of copyediting and maintenance.
+
+      
+      \section{What is open access?}\label{h2ni9pkdxmw8}
+
+	
+	
+
+\hyperref[https://en.wikipedia.org/wiki/Open_access]{Open access}refers to the distribution of research online, free of charge. There are a variety of open access models, most of which, however, pass the costs on to authors in the form of “article processing charges.” Many of these models represent compromises on the basic principle of open access. NESAR instead follows the so-called \hyperref[https://en.wikipedia.org/wiki/Diamond_open_access]{Diamond open access model}, which imposes no fees on either readers or authors.
+
+      
+      \section{Does NESAR impose article processing charges?}\label{whjsbp15r2e9}
+
+	
+	
+
+No. NESAR will always be completely free for readers and authors alike.
+
+      
+      \section{What model of peer review do you use?}\label{a4tnixdc6uio}
+
+	
+	
+
+There are many \hyperref[https://en.wikipedia.org/wiki/Scholarly_peer_review]{models of peer review}, and journals in the humanities typically use a double-blind format, where the review does not know the identity of the author and \emph{vice versa}. In small fields, double-blind review is rarely double-blind, but we nevertheless remain committed to it in principle. Editors can review manuscripts (a) if an anonymous version has been prepared by another editor, or (b) if no other suitable reviewer can be found. Only in case (b) is the review attributed. Reviewers may waive their anonymity if they so choose.
+
+      
+      \section{Is it published in print or only online?}\label{jmxtdjoxje14}
+
+	
+	
+
+NESAR is an online-only journal. Print journals remain very prestigious, but that is partly because only very prestigious journals can afford to print and ship paper all over the world. Online-only journals still have a reputation for being lesser in quality, partly from the days when online journals consisted of PDFs of Microsoft Word documents. But the vast majority of journal articles are read on screens these days. Besides, an online-only format offers a number of advantages, such as:
+
+	
+\begin{itemize}
+
+	  \item \textbf{No limits}. Print journals need to fill a certain number of pages, which leads to restrictions on the length of articles. They also need to cover printing costs, which leads to restrictions (often quite severe) on the number of images that can be included. Online publications do not have these restrictions (although editors may still insist on shorter articles for other reasons).
+	  \item \textbf{Multimedia content}. Sound, images, and video can be included in online publications without any problem.\item \textbf{Immediate publication}. When an article is copyedited and typeset, it goes online. It does not have to wait for the other articles in the issue to be finished. 
+	  \item \textbf{Discoverability}. NESAR is designed for internet users to easily find content using search engines like Google. 
+	  \item \textbf{Accessibility}. NESAR’s content is designed to be accessible to screen readers.
+	  \item \textbf{Links}. You can put in links, including to bibliographic sources that are online (e.g., \href[https://archive.org/]{archive.org}).\item \textbf{Transliteration}. Content in South Asian languages can be displayed either in the original script or in Roman transliteration with the touch of a button (located to the top-right of your screen). For example:
+	
+\end{itemize}
+
+      
+      \section{Are you sure it’s a real journal?}\label{ds8ilarly60e}
+
+	
+	
+
+Yes! We have an ISSN number (2834-3875), and all of the articles will receive \href{https://www.doi.org/
+{DOI}s. We are working to get the journal listed in the Directory of Open Access Journals (\href{https://doaj.org/}{DOAJ}) and Fair Open Access in South Asian Studies (\href{https://foasas.org/}{FOASAS}). We will also work with libraries to index the journal’s content. The \hyperref[lq0qsyc9zvaw]{editorial board} consists of experts in their respective fields, and NESAR is guided by an \hyperref[lq0qsyc9zvaw]{advisory board} of senior scholars. None of us make any money off of NESAR.
+
+      
+      \section{What will NESAR publish?}\label{noqmodsg6hy3}
+
+	
+	
+
+NESAR’s focus will be on \textbf{research articles}, generally 5,000 to 10,000 words (short or longer submissions may also be accepted at the discretion of the editors). Submissions will be subjected to \hyperref[a4tnixdc6uio]{peer review} and, if accepted, undergo further editing. They should represent original, well-researched, and well-argued contributions to South Asian Studies. In addition, NESAR will also publish \textbf{research briefs}, i.e., shorter and more focused contributions, as well as \textbf{translations} into English of important scholarly articles in South Asian languages (see \hyperref[ubuln5nj0mzf]{below}). We will also publish \textbf{book reviews}. \textbf{Editions} of texts may be published in NESAR as well. 
+
+	
+
+See our \href{https://nesarjournal.org/submit}{submission page} for more information.
+
+      
+      \section{What are themed issues?}\label{zlb5bpvfbnu}
+
+	
+	
+
+Generally the contributions over a year are collected into a single \textbf{issue} for archiving and bibliographic purposes. At the end of the calendar year, the contributions will be assembled into a single PDF, with contributions grouped by type (research articles, research briefs, translations, editions, book reviews). 
+
+	
+
+In addition to these issues, however, NESAR will be soliciting \textbf{themed issues}. These will typically consist of several articles addressing a particular theme, topic, or question, and they will be grouped together as an issue. (Each contribution will still be published when it is finished.) Themed issues will be edited by guest editors, who are invited to stay on the editorial board of NESAR if they so choose. If you are interested in editing a themed issue, please see the guidelines \href{https://nesarjournal.org/submitfor-prospective-special-issue-editors}{here} and get in touch with us at \href{mailto:nesar@nesarjournal.org}{nesar@nesarjournal.org}.
+
+      
+      \section{What is the NESAR Translation program?}\label{ubuln5nj0mzf}
+
+	
+	
+
+An enormous amount of knowledge about South Asian intellectual, literary, and cultural history has been published in the regional languages of South Asia. While most of us who work on South Asia are comfortable in some of these languages, nobody knows all of them, and hence we consider it a priority to make some of the most important scholarship in South Asian regional languages accessible to scholars who might not read those languages. 
+
+	
+
+We received some funding for an initiative to translate important works of scholarship in South Indian languages (Kannada, Malayalam, Marathi, Tamil, and Telugu) into English and publish the translations in NESAR. For more about this program, or if you have suggestions for works to translate or are interested in translating a work yourself, see \href{https://nesarjournal.org/translations}{here}.
+
+      
+      \section{Who is responsible for NESAR?}\label{lq0qsyc9zvaw}
+
+	
+	
+
+NESAR is run by an editorial board. The editorial board includes one chief editor. Editors of themed issues are invited to remain on the editorial board for as long as they like. The current membership of the editorial board can be found \href{https://nesarjournal.org/aboutpeople}{here}. In addition, NESAR has an advisory board which consists of five senior scholars, also found \href{https://nesarjournal.org/aboutpeople}{here}.
+
+	
+
+NESAR began as an illustration of the Sanskrit proverb: “a man whose horse died met a man whose cart had burned.” Andrew Ollett began planning an open-access journal in South Asian Studies in late 2019. Shubha Shanthamurthy and Naresh Keerthi independently planned to launch a journal focused on South India, and assembled NESAR’s founding advisory board. The three of us joined forces in 2020 and began planning NESAR’s future. 
+
+      
+    
+    
+  
