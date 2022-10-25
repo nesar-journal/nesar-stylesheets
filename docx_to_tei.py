@@ -4,13 +4,12 @@ from itertools import chain
 
 namespaces = {'tei': 'http://www.tei-c.org/ns/1.0'}
 parser = etree.XMLParser(recover=True,encoding='utf-8')
+bin_path = "bash ~/Applications/Stylesheets/bin/docxtotei"
 
 def docx_to_tei(f):
-    docxtotei = "bash ~/Applications/Stylesheets/bin/docxtotei " + str(f)
+    docxtotei = bin_path + " " + str(f)
     try:
         proc = subprocess.Popen(docxtotei,shell=True).wait()
-#        print("Waiting for XML file to generate...")
-#        time.sleep(5)
         with open(f.stem + ".xml","r") as o:
             text = o.read()
             return text
@@ -55,20 +54,7 @@ def detect_bibliography(tei):
     tei = re.sub(bibl_in_bibliography,r'<bibl xml:id="\1\3\4\8\9">\1\2. \3\4\7\9.',tei)
     return tei
 
-def cleanup(inputfile):
-    os.remove(inputfile.stem + ".xml")
-    os.remove("intermed.xml")
-    os.remove(inputfile.stem + "-postprocessed.xml")
-
-if __name__ == "__main__":
-    inputfile = pathlib.Path(sys.argv[1]).absolute()
-    tei = docx_to_tei(inputfile)
-    tei = xsl_postprocess(tei,inputfile)
-    tei = detect_bibliography(tei)
-    print(tei)
-    cleanup(inputfile)
-    with open(inputfile.stem + "-postprocessed.xml",'w') as o:
-        o.write(tei)
+def generate_yaml(inputfile):
     with open(inputfile.stem + ".yaml","w") as y:
         y.write("""---
 authors: 
@@ -89,5 +75,17 @@ slug: SLUG (STRING)
 citation: CITATION (STRING)
 """)
 
-#    tei = etree.fromstring(tei,parser=parser)
-#    string = etree.tostring(tei, pretty_print=True, encoding='unicode')
+def cleanup(inputfile):
+    os.remove(inputfile.stem + ".xml")
+    os.remove("intermed.xml")
+    os.remove(inputfile.stem + "-postprocessed.xml")
+
+if __name__ == "__main__":
+    inputfile = pathlib.Path(sys.argv[1]).absolute()
+    tei = docx_to_tei(inputfile)
+    tei = xsl_postprocess(tei,inputfile)
+    tei = detect_bibliography(tei)
+    with open(inputfile.stem + "-postprocessed.xml",'w') as o:
+        o.write(tei)
+    generate_yaml(inputfile)
+    cleanup(inputfile)
