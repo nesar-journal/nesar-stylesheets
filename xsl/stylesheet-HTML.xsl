@@ -1,7 +1,8 @@
 <xsl:stylesheet version="3.0" 
 		xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
 		xmlns:tei="http://www.tei-c.org/ns/1.0"
-		xmlns:fn="http://www.w3.org/2005/xpath-functions">
+		xmlns:fn="http://www.w3.org/2005/xpath-functions"
+		xmlns:ext="http://exslt.org/common">
   <xsl:output method="html" 
 	      indent="yes" 
 	      suppress-indentation="tei:hi tei:ref tei:p tei:em"
@@ -62,7 +63,159 @@
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:biblFull" />
-  <xsl:template match="tei:biblStruct" />
+  <!-- BIBLSTRUCT !-->
+  <!-- The preferred element for bibliography items. !-->
+  <xsl:template match="tei:biblStruct">
+    <xsl:element name="li">
+      <xsl:if test="@xml:id">
+	<xsl:attribute name="id">
+	  <xsl:value-of select="@xml:id"/>
+	</xsl:attribute>
+      </xsl:if>
+      <xsl:choose>
+	<!-- If it has an ANALYTIC element,
+	     it is either a journal article or
+	     an article in a collection or book. !-->
+	<xsl:when test="./tei:analytic">
+	  <!-- If there is analytic/author or analytic/editor,
+	       we assume that it is a journal article or an
+	       article in a collection. Otherwise we assume
+	       that it is the "inbook" type of bibtex. !-->
+	  <xsl:choose>
+	    <!-- case for inbook type !-->
+	    <xsl:when test="not(./tei:analytic/tei:author or ./tei:analytic/tei:editor)">
+	      <xsl:call-template name="in-book">
+		<xsl:with-param name="authors" select="./tei:monogr/tei:author"/>
+		<xsl:with-param name="title" select="./tei:analytic/tei:title[@type='main']"/>
+		<xsl:with-param name="booktitle" select="./tei:monogr/tei:title[@level='m']"/>
+		<xsl:with-param name="publisher" select="./tei:monogr/tei:imprint/tei:publisher"/>
+		<xsl:with-param name="pubplace" select="./tei:monogr/tei:imprint/tei:pubPlace"/>
+		<xsl:with-param name="pages" select="./tei:monogr/tei:biblScope[@unit='page']"/>
+		<xsl:with-param name="year" select="./tei:monogr/tei:imprint/tei:date"/>
+	      </xsl:call-template>
+	    </xsl:when>
+	    <!-- case for journal !-->
+	    <xsl:when test="./tei:monogr/tei:title[@level='j']">
+	      <xsl:variable name="authorstring">
+		<xsl:choose>
+		  <xsl:when test="./tei:analytic/tei:author">
+		    <xsl:call-template name="authors">
+		      <xsl:with-param name="authors" select="./tei:analytic/tei:author"/>
+		    </xsl:call-template>
+		  </xsl:when>
+		  <xsl:when test="./tei:analytic/tei:editor">
+		    <xsl:call-template name="editors">
+		      <xsl:with-param name="editors" select="./tei:analytic/tei:editor"/>
+		    </xsl:call-template>
+		  </xsl:when>
+		</xsl:choose>
+	      </xsl:variable>
+	      <xsl:value-of select="$authorstring"/>
+	      <xsl:if test="substring($authorstring,string-length($authorstring),1) != '.'">
+		<xsl:text>.</xsl:text>
+	      </xsl:if>
+	      <xsl:text> </xsl:text>
+	      <xsl:call-template name="journal-article">
+		<xsl:with-param name="title" select="./tei:analytic/tei:title[@type='main']"/>
+		<xsl:with-param name="journal" select="./tei:monogr/tei:title[@level='j']"/>
+		<xsl:with-param name="volume" select="./tei:monogr/tei:biblScope[@unit='volume']"/>
+		<xsl:with-param name="issue" select="./tei:monogr/tei:biblScope[@unit='issue']"/>
+		<xsl:with-param name="pages" select="./tei:monogr/tei:biblScope[@unit='page']"/>
+		<xsl:with-param name="year" select="./tei:monogr/tei:imprint/tei:date"/>
+	      </xsl:call-template>
+	    </xsl:when>
+	    <!-- case for incollection !-->
+	    <xsl:otherwise>
+	      <xsl:call-template name="in-collection">
+		<xsl:with-param name="authors" select="./tei:analytic/tei:author"/>
+		<xsl:with-param name="title" select="./tei:analytic/tei:title[@type='main']"/>
+		<xsl:with-param name="booktitle" select="./tei:monogr/tei:title[@level='m']"/>
+		<xsl:with-param name="editors" select="./tei:monogr/tei:editor"/>
+		<xsl:with-param name="publisher" select="./tei:monogr/tei:imprint/tei:publisher"/>
+		<xsl:with-param name="pubplace" select="./tei:monogr/tei:imprint/tei:pubPlace"/>
+		<xsl:with-param name="pages" select="./tei:monogr/tei:biblScope[@unit='page']"/>
+		<xsl:with-param name="year" select="./tei:monogr/tei:imprint/tei:date"/>
+	      </xsl:call-template>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:when>
+	<!-- case for monographs, reports, etc. !-->
+	<xsl:otherwise>
+	  <!-- items that have authors (e.g., books) !-->
+	  <xsl:choose>
+	    <xsl:when test="./tei:monogr/tei:author or ./tei:monogr/tei:editor">
+	      <xsl:variable name="authorstring">
+		<xsl:choose>
+		  <xsl:when test="./tei:monogr/tei:author">
+		    <xsl:call-template name="authors">
+		      <xsl:with-param name="authors" select="./tei:monogr/tei:author"/>
+		    </xsl:call-template>
+		  </xsl:when>
+		  <xsl:when test="./tei:analytic/tei:editor">
+		    <xsl:call-template name="editors">
+		      <xsl:with-param name="editors" select="./tei:monogr/tei:editor"/>
+		    </xsl:call-template>
+		  </xsl:when>
+		  <xsl:otherwise/>
+		</xsl:choose>
+	      </xsl:variable>
+	      <xsl:value-of select="$authorstring"/>
+	      <xsl:if test="substring($authorstring,string-length($authorstring),1) != '.'">
+		<xsl:text>.</xsl:text>
+	      </xsl:if>
+	      <xsl:text> </xsl:text>
+	      <xsl:call-template name="monograph">
+		<xsl:with-param name="title" select="./tei:monogr/tei:title[@type='main']"/>
+		<xsl:with-param name="publisher" select="./tei:monogr/tei:imprint/tei:publisher"/>
+		<xsl:with-param name="pubplace" select="./tei:monogr/tei:imprint/tei:pubPlace"/>
+		<xsl:with-param name="year" select="./tei:monogr/tei:imprint/tei:date"/>
+		<xsl:with-param name="authoreditor">
+		  <xsl:choose>
+		    <xsl:when test=".//tei:author or .//tei:editor">
+		      <xsl:text>true</xsl:text>
+		    </xsl:when>
+		    <xsl:otherwise>
+		      <xsl:text>false</xsl:text>
+		    </xsl:otherwise>
+		  </xsl:choose>
+		</xsl:with-param>
+	      </xsl:call-template>
+	    </xsl:when>
+	    <!-- items that have no authors (e.g., reports) !-->
+	    <xsl:otherwise>
+	      <xsl:call-template name="monograph">
+		<xsl:with-param name="title" select="./tei:monogr/tei:title[@type='main']"/>
+		<xsl:with-param name="publisher" select="./tei:monogr/tei:imprint/tei:publisher"/>
+		<xsl:with-param name="pubplace" select="./tei:monogr/tei:imprint/tei:pubPlace"/>
+		<xsl:with-param name="year" select="./tei:monogr/tei:imprint/tei:date"/>
+		<xsl:with-param name="authoreditor" select="false"/>
+	      </xsl:call-template>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:otherwise>
+      </xsl:choose>
+      <!-- If the bibligraphy entry has REF elements
+	   associated with it, i.e., external links,
+	   print them in a list. !-->
+      <xsl:if test="./tei:ref">
+	<xsl:element name="ul">
+	  <xsl:for-each select="./tei:ref">
+	    <xsl:element name="li">
+	      <xsl:element name="a">
+		<xsl:attribute name="href">
+		  <xsl:value-of select="."/>
+		</xsl:attribute>
+		<xsl:attribute name="target">
+		  <xsl:text>_blank</xsl:text>
+		</xsl:attribute>
+		<xsl:value-of select="."/>
+	      </xsl:element>
+	    </xsl:element>
+	  </xsl:for-each>
+	</xsl:element>
+      </xsl:if>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:body">
     <xsl:apply-templates/>
     <!-- Note division !-->
@@ -161,8 +314,15 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-  <xsl:template match="tei:forename" />
-  <xsl:template match="tei:front" />
+  <xsl:template match="tei:forename">
+    <xsl:apply-templates/>
+  </xsl:template>
+  <xsl:template match="tei:front">
+    <xsl:element name="div">
+      <xsl:attribute name="class">frontmatter</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:g">
     <xsl:choose>
       <xsl:when test="@ref">
@@ -245,7 +405,16 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-  <xsl:template match="tei:label" />
+  <xsl:template match="tei:label">
+    <xsl:element name="span">
+      <xsl:if test="@type">
+	<xsl:attribute name="class">
+	  <xsl:value-of select="@type"/>
+	</xsl:attribute>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:lacunaEnd"/>
   <xsl:template match="tei:lacunaStart"/>
   <xsl:template match="tei:language" />
@@ -310,9 +479,24 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-  <xsl:template match="tei:list[not(@type='examples')]">
-    <xsl:element name="ul">
-      <xsl:apply-templates/>
+  <xsl:template match="tei:list[not(@type='examples')][parent::tei:div]">
+    <xsl:element name="div">
+      <xsl:attribute name="class">textandnotes</xsl:attribute>
+      <xsl:element name="ul">
+	<xsl:attribute name="class">text-list</xsl:attribute>
+	<xsl:apply-templates/>
+      </xsl:element>
+      <xsl:element name="div">
+	<xsl:attribute name="class">sidenote-column</xsl:attribute>
+	<xsl:if test=".//tei:note[@place='foot']">
+	  <xsl:element name="ul">
+	    <xsl:attribute name="class">sidenotes</xsl:attribute>
+	    <xsl:for-each select=".//tei:note[@place='foot']">
+	      <xsl:apply-templates select="." mode="sidenotes"/>
+	    </xsl:for-each>
+	  </xsl:element>
+	</xsl:if>
+      </xsl:element>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:listApp">
@@ -402,19 +586,25 @@
   <xsl:template match="tei:objectDesc" />
   <xsl:template match="tei:origDate" />
   <xsl:template match="tei:origPlace" />
-  <xsl:template match="tei:p[not(ancestor::tei:note)][not(ancestor::tei:teiHeader)]">
+  <xsl:template match="tei:p[not(ancestor::tei:note)][not(ancestor::tei:teiHeader)][not(ancestor::tei:quote)]">
     <xsl:element name="div">
       <xsl:attribute name="class">textandnotes</xsl:attribute>
-      <xsl:if test=".//tei:note[@place='foot']">
-	<xsl:element name="ul">
-	  <xsl:attribute name="class">sidenotes</xsl:attribute>
-	  <xsl:for-each select=".//tei:note[@place='foot']">
-	    <xsl:apply-templates select="." mode="sidenotes"/>
-	  </xsl:for-each>
+      <xsl:element name="div">
+	<xsl:attribute name="class">text-paragraph</xsl:attribute>
+	<xsl:element name="p">
+	  <xsl:apply-templates/>
 	</xsl:element>
-      </xsl:if>
-      <xsl:element name="p">
-	<xsl:apply-templates/>
+      </xsl:element>
+      <xsl:element name="div">
+	<xsl:attribute name="class">sidenote-column</xsl:attribute>
+	<xsl:if test=".//tei:note[@place='foot']">
+	  <xsl:element name="ul">
+	    <xsl:attribute name="class">sidenotes</xsl:attribute>
+	    <xsl:for-each select=".//tei:note[@place='foot']">
+	      <xsl:apply-templates select="." mode="sidenotes"/>
+	    </xsl:for-each>
+	  </xsl:element>
+	</xsl:if>
       </xsl:element>
     </xsl:element>
   </xsl:template>
@@ -446,7 +636,9 @@
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:pb"/>
-  <xsl:template match="tei:persName" />
+  <xsl:template match="tei:persName">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:physDesc" />
   <xsl:template match="tei:placeName" />
   <xsl:template match="tei:prefixDef" />
@@ -462,8 +654,12 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
-  <xsl:template match="tei:publisher"/>
-  <xsl:template match="tei:pubPlace" />
+  <xsl:template match="tei:publisher">
+    <xsl:apply-templates/>
+  </xsl:template>
+  <xsl:template match="tei:pubPlace">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:punctuation" />
   <xsl:template match="tei:q[@type='phonemic']">
     <xsl:element name="span">
@@ -472,8 +668,30 @@
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:quote">
-    <xsl:element name="blockquote">
-      <xsl:apply-templates/>
+    <xsl:element name="div">
+      <xsl:attribute name="class">textandnotes</xsl:attribute>
+      <xsl:element name="div">
+	<xsl:attribute name="class">text-blockquote</xsl:attribute>
+	<xsl:element name="blockquote">
+	  <xsl:if test="@type">
+	    <xsl:attribute name="class">
+	      <xsl:value-of select="@type"/>
+	    </xsl:attribute>
+	  </xsl:if>
+	  <xsl:apply-templates/>
+	</xsl:element>
+      </xsl:element>
+      <xsl:element name="div">
+	<xsl:attribute name="class">sidenote-column</xsl:attribute>
+	<xsl:if test=".//tei:note[@place='foot']">
+	  <xsl:element name="ul">
+	    <xsl:attribute name="class">sidenotes</xsl:attribute>
+	    <xsl:for-each select=".//tei:note[@place='foot']">
+	      <xsl:apply-templates select="." mode="sidenotes"/>
+	    </xsl:for-each>
+	  </xsl:element>
+	</xsl:if>
+      </xsl:element>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:rdg">
@@ -524,7 +742,9 @@
   <xsl:template match="tei:summary" />
   <xsl:template match="tei:supplied" />
   <xsl:template match="tei:supportDesc" />
-  <xsl:template match="tei:surname" />
+  <xsl:template match="tei:surname">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:surplus" />
   <xsl:template match="tei:table">
     <xsl:element name="table">
@@ -571,13 +791,18 @@
   </xsl:template>
   <xsl:template match="tei:textClass" />
   <xsl:template match="tei:textLang" />
-  <xsl:template match="tei:title[not(ancestor-or-self::tei:titleStmt)]">
+  <xsl:template match="tei:title[not(ancestor-or-self::tei:titleStmt)][not(ancestor-or-self::tei:biblStruct)]">
     <xsl:element name="i">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:titleStmt" />
-  <xsl:template match="tei:unclear" />
+  <xsl:template match="tei:unclear">
+    <xsl:element name="span">
+      <xsl:attribute name="class">unclear</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:variantEncoding" />
   <xsl:template match="tei:witDetail" />
   <xsl:template match="tei:witness" />
@@ -602,6 +827,11 @@
 	      <xsl:attribute name="data-original">
 		<xsl:value-of select="."/>
 	      </xsl:attribute>
+	      <xsl:if test="ancestor-or-self::*[@rend='closetranscription'][1]">
+		<xsl:attribute name="data-transcription-type">
+		  <xsl:text>close</xsl:text>
+		</xsl:attribute>
+	      </xsl:if>
 	      <xsl:value-of select="."/>
 	    </xsl:element>
 	  </xsl:otherwise>
@@ -660,6 +890,323 @@
 	<xsl:apply-templates/>
       </xsl:element>
     </xsl:element>
+  </xsl:template>
+
+
+  <!-- NAMED TEMPLATES !-->
+  <xsl:template name="authors">
+    <xsl:param name="authors"/>
+    <xsl:for-each select="$authors">
+      <xsl:choose>
+	<xsl:when test="position() = 1"><!-- if the name is first !-->
+	  <xsl:choose>
+	    <xsl:when test="./tei:persName/tei:surname">
+	      <xsl:apply-templates select="./tei:persName/tei:surname"/>
+	      <xsl:text>, </xsl:text>
+	      <xsl:apply-templates select="./tei:persName/tei:forename"/>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:apply-templates select="./tei:persName"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:when>
+	<xsl:otherwise><!-- if the name isn't first !-->
+	  <xsl:choose>
+	    <xsl:when test="following-sibling::tei:author">
+	      <xsl:text>, </xsl:text>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:text> and </xsl:text>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="./tei:persName/tei:surname">
+	      <xsl:apply-templates select="./tei:persName/tei:forename"/>
+	      <xsl:text> </xsl:text>
+	      <xsl:apply-templates select="./tei:persName/tei:surname"/>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:apply-templates select="./tei:persName"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+  </xsl:template>
+  <xsl:template name="lastnamefirst">
+    <xsl:param name="names"/>
+    <xsl:for-each select="$names">
+      <xsl:choose>
+	<xsl:when test="not(position() = 1)"><!-- if the name isn't first !-->
+	  <xsl:choose>
+	    <xsl:when test="following-sibling">
+	      <xsl:text>, </xsl:text>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:text> and </xsl:text>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="./tei:persName/tei:surname">
+	      <xsl:apply-templates select="./tei:persName/tei:forename"/>
+	      <xsl:text> </xsl:text>
+	      <xsl:apply-templates select="./tei:persName/tei:surname"/>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:apply-templates select="./tei:persName"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:choose>
+	    <xsl:when test="./tei:persName/tei:surname">
+	      <xsl:apply-templates select="./tei:persName/tei:surname"/>
+	      <xsl:text>, </xsl:text>
+	      <xsl:apply-templates select="./tei:persName/tei:forename"/>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:apply-templates select="./tei:persName"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+  </xsl:template>
+  <xsl:template name="firstnamefirst">
+    <xsl:param name="names"/>
+    <xsl:for-each select="$names">
+      <xsl:if test="not(position() = 1)"><!-- if the name isn't first !-->
+	<xsl:choose>
+	  <xsl:when test="following-sibling">
+	    <xsl:text>, </xsl:text>
+	  </xsl:when>
+	  <xsl:otherwise>
+	    <xsl:text> and </xsl:text>
+	  </xsl:otherwise>
+	</xsl:choose>
+      </xsl:if>
+      <xsl:choose>
+	<xsl:when test="./tei:persName/tei:surname">
+	  <xsl:apply-templates select="./tei:persName/tei:forename"/>
+	  <xsl:text> </xsl:text>
+	  <xsl:apply-templates select="./tei:persName/tei:surname"/>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:apply-templates select="./tei:persName"/>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+  </xsl:template>
+  <xsl:template name="editors">
+    <xsl:param name="editors"/>
+    <xsl:for-each select="$editors">
+      <xsl:choose>
+	<xsl:when test="position() = 1"><!-- if the name is first !-->
+	  <xsl:choose>
+	    <xsl:when test="./tei:persName/tei:surname">
+	      <xsl:apply-templates select="./tei:persName/tei:surname"/>
+	      <xsl:text>, </xsl:text>
+	      <xsl:apply-templates select="./tei:persName/tei:forename"/>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:apply-templates select="./tei:persName"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:when>
+	<xsl:otherwise><!-- if the name isn't first !-->
+	  <xsl:choose>
+	    <xsl:when test="following-sibling::tei:editor">
+	      <xsl:text>, </xsl:text>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:text> and </xsl:text>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	  <xsl:choose>
+	    <xsl:when test="./tei:persName/tei:surname">
+	      <xsl:apply-templates select="./tei:persName/tei:forename"/>
+	      <xsl:text> </xsl:text>
+	      <xsl:apply-templates select="./tei:persName/tei:surname"/>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:apply-templates select="./tei:persName"/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:otherwise>
+      </xsl:choose>
+    </xsl:for-each>
+    <xsl:choose>
+      <xsl:when test="count(ext:node-set($editors)) > 1">
+	<xsl:text> (eds.)</xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:text> (ed.)</xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
+  <xsl:template name="year">
+    <xsl:param name="year"/>
+    <xsl:value-of select="$year"/>
+  </xsl:template>
+  <xsl:template name="in-book">
+    <xsl:param name="authors"/>
+    <xsl:param name="title"/>
+    <xsl:param name="booktitle"/>
+    <xsl:param name="pages"/>
+    <xsl:param name="publisher"/>
+    <xsl:param name="pubplace"/>
+    <xsl:param name="year"/>
+    <xsl:variable name="authorstring">
+      <xsl:call-template name="authors">
+	<xsl:with-param name="authors" select="$authors"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:value-of select="$authorstring"/>
+    <xsl:if test="substring($authorstring,string-length($authorstring),1) != '.'">
+      <xsl:text>.</xsl:text>
+    </xsl:if>
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="$year"/>
+    <xsl:text>. “</xsl:text>
+    <xsl:apply-templates select="$title"/>
+    <xsl:if test="not(contains('?!',substring($title,string-length($title),1)))">
+      <xsl:text>.</xsl:text>
+    </xsl:if>
+    <xsl:text>” </xsl:text>
+    <xsl:text>In </xsl:text>
+    <xsl:element name="em">
+      <xsl:apply-templates select="$booktitle"/>
+    </xsl:element>
+    <xsl:if test="$pages">
+      <xsl:text>: </xsl:text>
+      <xsl:value-of select="$pages"/>
+    </xsl:if>
+    <xsl:text>. </xsl:text>
+    <xsl:apply-templates select="$pubplace"/>
+    <xsl:text>: </xsl:text>
+    <xsl:apply-templates select="$publisher"/>
+    <xsl:text>.</xsl:text>
+  </xsl:template>
+  <xsl:template name="in-collection">
+    <xsl:param name="authors"/>
+    <xsl:param name="editors"/>
+    <xsl:param name="title"/>
+    <xsl:param name="booktitle"/>
+    <xsl:param name="pages"/>
+    <xsl:param name="publisher"/>
+    <xsl:param name="pubplace"/>
+    <xsl:param name="year"/>
+    <xsl:variable name="authorstring">
+      <xsl:call-template name="lastnamefirst">
+	<xsl:with-param name="names" select="$authors"/>
+      </xsl:call-template>
+    </xsl:variable>
+    <xsl:value-of select="$authorstring"/>
+    <xsl:if test="substring($authorstring,string-length($authorstring),1) != '.'">
+      <xsl:text>.</xsl:text>
+    </xsl:if>
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="$year"/>
+    <xsl:text>. “</xsl:text>
+    <xsl:apply-templates select="$title"/>
+    <xsl:if test="not(contains('?!',substring($title,string-length($title),1)))">
+      <xsl:text>.</xsl:text>
+    </xsl:if>
+    <xsl:text>” </xsl:text>
+    <xsl:text>In </xsl:text>
+    <xsl:if test="$editors">
+      <xsl:call-template name="firstnamefirst">
+	<xsl:with-param name="names" select="$editors"/>
+      </xsl:call-template>
+      <xsl:text> (ed</xsl:text>
+      <xsl:if test="count($editors) > 1">
+	<xsl:text>s</xsl:text>
+      </xsl:if>
+      <xsl:text>.), </xsl:text>
+    </xsl:if>
+    <xsl:element name="em">
+      <xsl:apply-templates select="$booktitle"/>
+    </xsl:element>
+    <xsl:if test="$pages">
+      <xsl:text>: </xsl:text>
+      <xsl:value-of select="$pages"/>
+    </xsl:if>
+    <xsl:text>. </xsl:text>
+    <xsl:apply-templates select="$pubplace"/>
+    <xsl:text>: </xsl:text>
+    <xsl:apply-templates select="$publisher"/>
+    <xsl:text>.</xsl:text>
+  </xsl:template>
+  <xsl:template name="journal-article">
+    <xsl:param name="title"/>
+    <xsl:param name="journal"/>
+    <xsl:param name="volume"/>
+    <xsl:param name="issue"/>
+    <xsl:param name="pages"/>
+    <xsl:param name="year"/>
+    <xsl:apply-templates select="$year"/>
+    <xsl:text>. “</xsl:text>
+    <xsl:apply-templates select="$title"/>
+    <xsl:if test="not(contains('?!',substring($title,string-length($title),1)))">
+      <xsl:text>.</xsl:text>
+    </xsl:if>
+    <xsl:text>” </xsl:text>
+    <xsl:element name="em">
+      <xsl:apply-templates select="$journal"/>
+    </xsl:element>
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="$volume"/>
+    <xsl:choose>
+      <xsl:when test="not($issue)"/>
+      <xsl:otherwise>
+	<xsl:text>.</xsl:text>
+	<xsl:value-of select="$issue"/>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:text>: </xsl:text>
+    <xsl:apply-templates select="$pages"/>
+    <xsl:text>.</xsl:text>
+  </xsl:template>
+  <xsl:template name="monograph">
+    <xsl:param name="title"/>
+    <xsl:param name="publisher"/>
+    <xsl:param name="pubplace"/>
+    <xsl:param name="year"/>
+    <xsl:param name="authoreditor"/>
+    <xsl:choose>
+      <xsl:when test="$authoreditor = 'true'">
+	<xsl:apply-templates select="$year"/>
+	<xsl:text>. </xsl:text>
+	<xsl:element name="em">
+	  <xsl:apply-templates select="$title"/>
+	</xsl:element>
+	<xsl:if test="not(contains('?!',substring($title,string-length($title),1)))">
+	  <xsl:text>.</xsl:text>
+	</xsl:if>
+	<xsl:text> </xsl:text>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:element name="em">
+	  <xsl:apply-templates select="$title"/>
+	</xsl:element>
+	<xsl:text>. </xsl:text>
+	<xsl:apply-templates select="$year"/>
+	<xsl:text>. </xsl:text>
+      </xsl:otherwise>
+    </xsl:choose>
+    <xsl:apply-templates select="$pubplace"/>
+    <xsl:text>: </xsl:text>
+    <xsl:apply-templates select="$publisher"/>
+    <xsl:text>.</xsl:text>
+  </xsl:template>
+  <xsl:template name="series">
+    <xsl:param name="title"/>
+    <xsl:param name="volume"/>
+    <xsl:text> </xsl:text>
+    <xsl:apply-templates select="$title"/>
+    <xsl:text> no. </xsl:text>
+    <xsl:apply-templates select="$volume"/>
+    <xsl:text>.</xsl:text>
   </xsl:template>
   
 </xsl:stylesheet>

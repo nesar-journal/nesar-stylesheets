@@ -88,4 +88,4 @@ if __name__ == "__main__":
     with open(inputfile.stem + "-postprocessed.xml",'w') as o:
         o.write(tei)
     generate_yaml(inputfile)
-    cleanup(inputfile)
+#    cleanup(inputfile)
