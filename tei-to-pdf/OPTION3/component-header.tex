@@ -15,7 +15,7 @@
 \setotherlanguage{kannada}
 \setotherlanguage{malayalam}
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Numbers={Proportional},SmallCapsFont={Adobe Caslon Pro},SmallCapsFeatures={Letters=SmallCaps,Numbers=Lining}]{IndUni-T}
+\setmainfont[Numbers={Proportional,Lining},SmallCapsFont={Adobe Caslon Pro},SmallCapsFeatures={Letters=SmallCaps,Numbers=OldStyle}]{Adobe Caslon Pro}
 \newfontfamily\tamilfont[Script=Tamil]{AksharUnicodeRegular}
 \newfontfamily\sanskritfont[Script=Devanagari]{Jaini}
 \newfontfamily\greekfont[Script=Greek]{GFS Porson}
@@ -66,11 +66,23 @@
 \makeatother
 \title{\protect\Ntitle}
 \author{\protect\Nauthor}
-\newcommand{\oldnums}[1]{{\fontspec[Numbers={Proportional,OldStyle}]{TeX Gyre TermesX}#1}}
-\newcommand{\oldnumsbold}[1]{{\fontspec[Numbers={Proportional,OldStyle}]{TeX Gyre TermesX}\textbf{#1}}}
 \setsecnumformat{\csname #1secnumformat\endcsname}
-\newcommand\sectionsecnumformat{\oldnumsbold{\thesection}\quad }
-\newcommand\onpage{\oldnums{\thepage}}
+\newcommand\sectionsecnumformat{\oldstylenums{\thesection.\ }}
+
+\newcommand\onpage{\addfontfeature{Numbers={Proportional,OldStyle}}\thepage}
+\usepackage{etoolbox}
+\makeatletter
+% \patchcmd{<cmd>}{<search>}{<replace>}{<success>}{<failure>}
+\patchcmd{\M@sect}{\@hangfrom}{}{}{}
+\makeatother
+
+\setsecheadstyle{\centering\LARGE\scshape\MakeLowercase}
+\setsubsecheadstyle{\centering\large\scshape\MakeLowercase}
+\setsubsubsecheadstyle{\normalsize\scshape\raggedright}
+\setbeforesecskip{-1.5ex plus -.5ex minus -.2ex}
+\setaftersecskip{1.3ex plus .2ex}
+\setbeforesubsecskip{-1.25ex plus -.5ex minus -.2ex}
+\setaftersubsecskip{1ex plus .2ex}
 
 % Button for CC 4.0 BY
 \newcommand{\ccbylicenseButton}{%
@@ -179,7 +191,7 @@
 \usepackage{booktabs,multirow}
 \usepackage{wrapfig}
 \usepackage{enumitem}
-\setlist[itemize]{labelindent=\parindent,itemsep=0.15em,topsep=0pt,leftmargin=\parindent}
+\setlist[itemize]{labelindent=\parindent,itemsep=0.15em,topsep=0pt,leftmargin=\parindent,label={\tiny\fontspec{Printers Ornaments One}e}}
 \counterwithout{section}{chapter}
 \setsecnumdepth{subsubsection}
 \maxtocdepth{subsubsection}
@@ -258,6 +270,7 @@
   \tableofcontents 
 }
 \end{KeepFromToc}\bigskip
+
 
 \pagestyle{nesar}
 

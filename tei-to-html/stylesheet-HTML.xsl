@@ -16,7 +16,9 @@
     <xsl:apply-templates/>
   </xsl:template> 
   <!-- AB !-->
-  <xsl:template match="tei:ab" />
+  <xsl:template match="tei:ab">
+    <xsl:apply-templates/>
+  </xsl:template>
   <!-- ABBR !-->
   <xsl:template match="tei:abbr">
     <xsl:apply-templates/>
@@ -230,7 +232,6 @@
 	</xsl:for-each>
       </xsl:element>
     </xsl:element>
-    <xsl:apply-templates select="../../tei:teiHeader" mode="bypass"/>
   </xsl:template>
   <xsl:template match="tei:caesura"/>
   <xsl:template match="tei:certainty" />
@@ -244,7 +245,38 @@
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:choice" />
-  <xsl:template match="tei:cit" />
+  <xsl:template match="tei:cit">
+    <!-- cit must have a quote and bibl element !-->
+    <xsl:element name="div">
+      <xsl:attribute name="class">textandnotes</xsl:attribute>
+      <xsl:element name="div">
+	<xsl:attribute name="class">text-blockquote</xsl:attribute>
+	<xsl:element name="blockquote">
+	  <xsl:if test="@type">
+	    <xsl:attribute name="class">
+	      <xsl:value-of select="@type"/>
+	    </xsl:attribute>
+	  </xsl:if>
+	  <xsl:apply-templates select="tei:quote"/>
+	  <xsl:element name="p">
+	    <xsl:attribute name="class">bibl-string</xsl:attribute>
+	    <xsl:apply-templates select="tei:bibl"/>
+	  </xsl:element>
+	</xsl:element>
+      </xsl:element>
+      <xsl:element name="div">
+	<xsl:attribute name="class">sidenote-column</xsl:attribute>
+	<xsl:if test=".//tei:note[@place='foot']">
+	  <xsl:element name="ul">
+	    <xsl:attribute name="class">sidenotes</xsl:attribute>
+	    <xsl:for-each select=".//tei:note[@place='foot']">
+	      <xsl:apply-templates select="." mode="sidenotes"/>
+	    </xsl:for-each>
+	  </xsl:element>
+	</xsl:if>
+      </xsl:element>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:citedRange">
     <xsl:apply-templates/>
   </xsl:template>
@@ -268,7 +300,13 @@
   <xsl:template match="tei:desc">
     <xsl:apply-templates/>
   </xsl:template>
-  <xsl:template match="tei:div[parent::tei:body]">
+  <xsl:template match="tei:div[@type='ack']">
+    <xsl:element name="div">
+      <xsl:attribute name="class">acknowledgements</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:div[parent::tei:body][not(@type='ack')]">
     <xsl:element name="div">
       <xsl:attribute name="class">text-section</xsl:attribute>
       <xsl:if test="tei:head">
@@ -307,10 +345,57 @@
   <xsl:template match="tei:fileDesc">
     <xsl:apply-templates/>
   </xsl:template>
+  <xsl:template match="tei:figure">
+    <xsl:variable name="figurenumber">
+      <xsl:value-of select="count(preceding::tei:figure)+1"/>
+    </xsl:variable>
+    <xsl:element name="div">
+      <xsl:attribute name="class">textandnotes</xsl:attribute>
+      <xsl:element name="div">
+	<xsl:attribute name="class">figure-wrapper</xsl:attribute>
+	<xsl:element name="figure">
+	  <xsl:if test="tei:graphic">
+	    <xsl:element name="img">
+	      <xsl:attribute name="src">
+		<xsl:value-of select="tei:graphic/@url"/>
+	      </xsl:attribute>
+	      <xsl:if test="tei:figDesc">
+		<xsl:attribute name="alt">
+		  <xsl:value-of select="tei:figDesc"/>
+		</xsl:attribute>
+	      </xsl:if>
+	    </xsl:element>
+	  </xsl:if>
+	</xsl:element>
+      </xsl:element>
+      <xsl:element name="div">
+	<xsl:attribute name="class">figure-label</xsl:attribute>
+	<xsl:if test="tei:head">
+	  <xsl:element name="figcaption">
+	    <xsl:element name="h5">
+	      <xsl:element name="a">
+		<xsl:attribute name="id">
+		  <xsl:value-of select="concat('fig',$figurenumber)"/>
+		</xsl:attribute>
+	      </xsl:element>
+	      <xsl:text>Figure </xsl:text>
+	      <xsl:value-of select="$figurenumber"/>
+	    </xsl:element>
+	    <xsl:apply-templates select="tei:head" mode="bypass"/>
+	  </xsl:element>
+	</xsl:if>
+      </xsl:element>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:filiation" />
   <xsl:template match="tei:foreign">
     <xsl:element name="span">
       <xsl:attribute name="class">foreign</xsl:attribute>
+      <xsl:if test="@xml:lang">
+	<xsl:call-template name="langScript">
+	  <xsl:with-param name="langScript" select="@xml:lang"/>
+	</xsl:call-template>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -338,6 +423,12 @@
   <xsl:template match="tei:handDesc" />
   <xsl:template match="tei:handNote" />
   <xsl:template match="tei:head"/>
+  <xsl:template match="tei:head[ancestor::tei:figure]" mode="bypass">
+    <xsl:apply-templates/>
+  </xsl:template>
+  <xsl:template match="tei:head[ancestor::tei:table]" mode="bypass">
+    <xsl:apply-templates/>
+  </xsl:template>
   <xsl:template match="tei:head" mode="bypass">
     <xsl:if test="tei:anchor">
       <xsl:element name="a">
@@ -366,8 +457,19 @@
       </xsl:element>
     </xsl:element>
   </xsl:template>
+  <xsl:template match="tei:hi[@rend='smallcaps']">
+    <xsl:element name="span">
+      <xsl:attribute name="style">font-variant:small-caps;</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:hi[@rend='bold']">
     <xsl:element name="b">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:hi[@rend='subscript']">
+    <xsl:element name="sub">
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -465,6 +567,14 @@
 	  <xsl:apply-templates/>
 	</xsl:otherwise>
       </xsl:choose>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:link">
+    <xsl:element name="a">
+      <xsl:attribute name="href">
+	<xsl:value-of select="@target"/>
+      </xsl:attribute>
+      <xsl:value-of select="@target"/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:list[@type='examples']">
@@ -573,12 +683,12 @@
       <xsl:attribute name="id">
 	<xsl:value-of select="@xml:id"/>
       </xsl:attribute>
-      <xsl:apply-templates select="./tei:p" mode="endnotes"/>
+      <xsl:apply-templates mode="endnotes"/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:note[@place='foot']" mode="sidenotes">
     <xsl:element name="li">
-      <xsl:apply-templates select="./tei:p" mode="sidenotes"/>
+      <xsl:apply-templates mode="sidenotes"/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:notesStmt" />
@@ -610,12 +720,15 @@
   </xsl:template>
   <xsl:template match="tei:p[ancestor::tei:note]" mode="endnotes">
     <xsl:element name="p">
-      <xsl:element name="a">
-	<xsl:attribute name="href">
-	  <xsl:value-of select="concat(concat('#','ret-'),ancestor::tei:note/@xml:id)"/>
-	</xsl:attribute>
-	<xsl:text>↑</xsl:text>
-      </xsl:element>
+      <xsl:if test="not(preceding-sibling::tei:*)">
+	<xsl:element name="a">
+	  <xsl:attribute name="href">
+	    <xsl:value-of select="concat(concat('#','ret-'),ancestor::tei:note/@xml:id)"/>
+	  </xsl:attribute>
+	  <xsl:attribute name="class">jump-up</xsl:attribute>
+	  <xsl:text>↑</xsl:text>
+	</xsl:element>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -635,6 +748,11 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
+  <xsl:template match="tei:p[ancestor::tei:quote]">
+    <xsl:element name="p">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:pb"/>
   <xsl:template match="tei:persName">
     <xsl:apply-templates/>
@@ -644,16 +762,13 @@
   <xsl:template match="tei:prefixDef" />
   <xsl:template match="tei:profileDesc" />
   <xsl:template match="tei:projectDesc" />
-  <xsl:template match="tei:ptr" />
-  <xsl:template match="tei:publicationStmt">
-    <xsl:element name="div">
-      <xsl:attribute name="class">nesar-publication-stmt</xsl:attribute>
-      <xsl:element name="h3">
-	<xsl:text>Publication details</xsl:text>
-      </xsl:element>
-      <xsl:apply-templates/>
+  <xsl:template match="tei:ptr">
+    <xsl:element name="a">
+      <xsl:attribute name="href"><xsl:value-of select="@target"/></xsl:attribute>
+      <xsl:value-of select="@target"/>
     </xsl:element>
   </xsl:template>
+  <xsl:template match="tei:publicationStmt"/>
   <xsl:template match="tei:publisher">
     <xsl:apply-templates/>
   </xsl:template>
@@ -667,7 +782,36 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
+  <xsl:template match="tei:q">
+    <xsl:element name="span">
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:quote">
+    <xsl:apply-templates/>
+  </xsl:template>
+  <xsl:template match="tei:quote[ancestor::tei:note[@place='foot']]" mode="endnotes">
+    <xsl:element name="div">
+      <xsl:attribute name="class">quote-in-note</xsl:attribute>
+      <xsl:if test="not(preceding-sibling::tei:*)">
+	<xsl:element name="a">
+	  <xsl:attribute name="href">
+	    <xsl:value-of select="concat(concat('#','ret-'),ancestor::tei:note/@xml:id)"/>
+	  </xsl:attribute>
+	  <xsl:attribute name="class">jump-up</xsl:attribute>
+	  <xsl:text>↑</xsl:text>
+	</xsl:element>
+      </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:quote[ancestor::tei:note[@place='foot']]" mode="sidenotes">
+    <xsl:element name="div">
+      <xsl:attribute name="class">quote-in-note</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:quote[not(ancestor::tei:cit)][not(ancestor::tei:note[@place='foot'])]">
     <xsl:element name="div">
       <xsl:attribute name="class">textandnotes</xsl:attribute>
       <xsl:element name="div">
@@ -747,20 +891,46 @@
   </xsl:template>
   <xsl:template match="tei:surplus" />
   <xsl:template match="tei:table">
-    <xsl:element name="table">
-      <xsl:choose>
-	<xsl:when test="./tei:row[@role='label']">
-	  <xsl:element name="thead">
-	    <xsl:apply-templates select="./tei:row[@role='label']"/>
-	  </xsl:element>
-	  <xsl:element name="tbody">
-	    <xsl:apply-templates select="./tei:row[not(@role='label')]"/>
-	  </xsl:element>
-	</xsl:when>
-	<xsl:otherwise>
-	  <xsl:apply-templates/>
-	</xsl:otherwise>
-      </xsl:choose>
+    <xsl:variable name="tablenumber">
+      <xsl:value-of select="count(preceding::tei:table)+1"/>
+    </xsl:variable>
+    <xsl:element name="div">
+      <xsl:attribute name="class">textandnotes</xsl:attribute>
+      <xsl:element name="div">
+	<xsl:attribute name="class">table-wrapper</xsl:attribute>
+	<xsl:element name="table">
+	  <xsl:choose>
+	    <xsl:when test="./tei:row[@role='label']">
+	      <xsl:element name="thead">
+		<xsl:apply-templates select="./tei:row[@role='label']"/>
+	      </xsl:element>
+	      <xsl:element name="tbody">
+		<xsl:apply-templates select="./tei:row[not(@role='label')]"/>
+	      </xsl:element>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:apply-templates/>
+	    </xsl:otherwise>
+	  </xsl:choose>
+	</xsl:element>
+      </xsl:element>
+      <xsl:element name="div">
+	<xsl:attribute name="class">table-label</xsl:attribute>
+	  <xsl:if test="tei:head">
+	    <xsl:element name="h5">
+	      <xsl:element name="a">
+		<xsl:attribute name="id">
+		  <xsl:value-of select="concat('tab',$tablenumber)"/>
+		</xsl:attribute>
+	      </xsl:element>
+	      <xsl:text>Table </xsl:text>
+	      <xsl:value-of select="$tablenumber"/>
+	    </xsl:element>
+	    <xsl:element name="caption">
+	      <xsl:apply-templates select="tei:head" mode="bypass"/>
+	    </xsl:element>
+	  </xsl:if>
+      </xsl:element>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:TEI">
@@ -788,6 +958,7 @@
       </xsl:element>
     </xsl:if>
     <xsl:apply-templates/>
+    <xsl:apply-templates select="../tei:teiHeader" mode="bypass"/>
   </xsl:template>
   <xsl:template match="tei:textClass" />
   <xsl:template match="tei:textLang" />
@@ -808,47 +979,50 @@
   <xsl:template match="tei:witness" />
 
   <!-- WRAP ALL TEXT ELEMENTS WITH LANGUAGE AND SCRIPT ATTRIBUTES !-->
-  <xsl:template match="text()">
+  <!-- Okay, I am not sure whether we want to do this for 
+       *all* foreign text, or just those in quote environments.
+       Probably the latter. If you want to match *all* foreign 
+       text, use the xpath text()[ancestor-or-self::*[@xml:lang][1]. !-->
+  <xsl:template match="text()[ancestor-or-self::tei:quote[@xml:lang][1]] | text()[ancestor-or-self::tei:q[@xml:lang][1]]">
+    <xsl:variable name="recentLang">
+      <xsl:value-of select="ancestor-or-self::*[@xml:lang][1]/@xml:lang"/>
+    </xsl:variable>
     <xsl:choose>
-      <xsl:when test="ancestor-or-self::*[@xml:lang][1]">
-	<xsl:variable name="recentLang">
-	  <xsl:value-of select="ancestor-or-self::*[@xml:lang][1]/@xml:lang"/>
-	</xsl:variable>
-	<xsl:choose>
-	  <xsl:when test="$recentLang = 'eng'">
-	    <xsl:value-of select="."/>
-	  </xsl:when>
-	  <xsl:otherwise>
-	    <xsl:element name="span">
-	      <xsl:attribute name="class">scriptWrapper</xsl:attribute>
-	      <xsl:call-template name="langScript">
-		<xsl:with-param name="langScript" select="$recentLang"/>
-	      </xsl:call-template>
-	      <xsl:attribute name="data-original">
-		<xsl:value-of select="."/>
-	      </xsl:attribute>
-	      <xsl:if test="ancestor-or-self::*[@rend='closetranscription'][1]">
-		<xsl:attribute name="data-transcription-type">
-		  <xsl:text>close</xsl:text>
-		</xsl:attribute>
-	      </xsl:if>
-	      <xsl:value-of select="."/>
-	    </xsl:element>
-	  </xsl:otherwise>
-	</xsl:choose>
+      <xsl:when test="$recentLang = 'eng'">
+	<xsl:value-of select="."/>
       </xsl:when>
       <xsl:otherwise>
-	<xsl:value-of select="."/>
+	<xsl:element name="span">
+	  <xsl:attribute name="class">scriptWrapper</xsl:attribute>
+	  <xsl:call-template name="langScript">
+	    <xsl:with-param name="langScript" select="$recentLang"/>
+	  </xsl:call-template>
+	  <xsl:attribute name="data-nesar-original">
+	    <xsl:value-of select="."/>
+	  </xsl:attribute>
+	  <xsl:if test="ancestor-or-self::*[@rend='closetranscription'][1]">
+	    <xsl:attribute name="data-nesar-transcription-type">
+	      <xsl:text>close</xsl:text>
+	    </xsl:attribute>
+	  </xsl:if>
+	  <xsl:value-of select="."/>
+	</xsl:element>
       </xsl:otherwise>
     </xsl:choose>
+  </xsl:template>
+
+  <!-- TEXT PROCESSING:
+       remove dashes from edited text !-->
+  <xsl:template match="text()">
+    <xsl:copy-of select="replace(replace(.,' *— *','&#8212;'),'…','&#x2026;')"/>
   </xsl:template>
 
   <!-- NAMED TEMPLATES !-->
   <xsl:template name="langScript">
     <xsl:param name="langScript"/>
     <xsl:if test="contains($langScript,'-')">
-      <xsl:attribute name="data-lang"><xsl:value-of select="substring-before($langScript,'-')"/></xsl:attribute>
-      <xsl:attribute name="data-script"><xsl:value-of select="substring-after($langScript,'-')"/></xsl:attribute>
+      <xsl:attribute name="data-nesar-lang"><xsl:value-of select="substring-before($langScript,'-')"/></xsl:attribute>
+      <xsl:attribute name="data-nesar-script"><xsl:value-of select="substring-after($langScript,'-')"/></xsl:attribute>
     </xsl:if>
   </xsl:template>
 

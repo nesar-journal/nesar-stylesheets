@@ -1,0 +1,39 @@
+\begin{document}
+%\RaggedRight
+
+\thispagestyle{empty}
+\titleM
+\clearpage
+
+\input{components/component-infopage}
+\setcounter{page}{0}
+\clearpage
+
+\thispagestyle{firstpage}
+\begin{center}
+\IfFileExists{metadata/metadata-subtitle.tex}{%
+          {\LARGE\thetitle:\par}\vspace{1ex}%
+          {\Large\input{metadata/metadata-subtitle.tex}\par}\vspace{1.5ex}%
+}{%
+          {\LARGE\thetitle\par}\vspace{1.5ex}%
+}\bigskip
+
+\input{metadata/metadata-author-list}
+\end{center}\bigskip
+
+\setlength{\absparsep}{0.5\parskip}
+\begin{abstract}
+\noindent\input{metadata/metadata-abstract.tex}\medskip
+
+\noindent\textbf{Keywords:} \input{metadata/metadata-tags.tex}
+\end{abstract}
+
+\pagestyle{nesar}
+\clearpage
+
+\begin{KeepFromToc}
+  {\small 
+  \tableofcontents 
+}
+\end{KeepFromToc}\bigskip
+

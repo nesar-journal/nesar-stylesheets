@@ -28,7 +28,8 @@ def xsl_postprocess(tei,inputfile):
     source = "-s:intermed.xml"
     stylesheet = "-xsl:'"+xsl+"'"
     output = "-o:'"+outputfile+"'"
-    javacall = "java -cp /usr/share/java/*:/usr/share/java/ant-1.9.6.jar net.sf.saxon.Transform "+source+ " "+stylesheet+" "+output
+    javacall = "java -cp /usr/share/java/*:/usr/share/java/antlrall.jar net.sf.saxon.Transform "+source+ " "+stylesheet+" "+output
+#    javacall = "java -cp /usr/share/java/*:/usr/share/java/ant-1.9.6.jar net.sf.saxon.Transform "+source+ " "+stylesheet+" "+output
     try:
         txt = subprocess.Popen(javacall,stdout=subprocess.PIPE,shell=True).wait()
         with open(outputfile,"r") as i:
@@ -57,22 +58,23 @@ def detect_bibliography(tei):
 def generate_yaml(inputfile):
     with open(inputfile.stem + ".yaml","w") as y:
         y.write("""---
-authors: 
-  - author:
-      firstname: FIRSTNAME (STRING)
-      lastname: LASTNAME (STRING)
-      institution: INSTITUTION (STRING)
-      email: EMAIL (STRING)
-title: TITLE (STRING)
-shorttitle: TITLE (STRING)
-issue: ISSUE (INTEGER)
-article: ARTICLE (INTEGER)
-year: YEAR (STRING)
-date: DATE (STRING)
-doi: DOI (STRING)
-license: LICENSE (STRING)
-slug: SLUG (STRING)
-citation: CITATION (STRING)
+type: article
+identifier: SLUG
+doi: DOI
+title: TITLE
+subtitle: SUBTITLE
+authors:
+  - AUTHOR
+abstract: ABSTRACT
+dates:
+  publication: PUBLICATION DATE
+paths:
+  cover: COVER JPG
+  pdf: PDF
+  content: HTML CONTENT
+  tei: XML FILE
+tags:
+  - LIST OF TAGS
 """)
 
 def cleanup(inputfile):
