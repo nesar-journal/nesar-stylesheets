@@ -40,7 +40,7 @@ If there are text-critical notes:
 
 ### Step 3: Add the YAML metadata
 
-Edit the file `metadata.yml` to reflect the correct metadata. This will be used in the LaTeX conversion.
+Edit the file `metadata.yml` to reflect the correct metadata. This will be used in the LaTeX conversion, but it's also a necessary component of the NESAR website.
 
 ## Going from TEI to HTML
 
