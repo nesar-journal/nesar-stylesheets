@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+	<title type="main">Desecrating the Divine</title>
+	<title type="sub">Vyāsa’s Body between Polemic and Procession</title>
+	<author>Jonathan Peterson</author>
+      </titleStmt>
+      <editionStmt>
+	<edition><date>2024-07-30</date></edition>
+      </editionStmt>
+      <publicationStmt>
+	<p>unknown</p>
+      </publicationStmt>
+      <sourceDesc>
+	<p>Converted from a Word document</p>
+      </sourceDesc>
+    </fileDesc>
+    <encodingDesc>
+      <appInfo><application xml:id="docxtotei" ident="TEI_fromDOCX" version="2.15.0"><label>DOCX to TEI</label></application></appInfo>
+    </encodingDesc>
+    <revisionDesc>
+      <listChange>
+	<change>
+	  <date>2024-08-18</date>
+	  <name>Andrew Ollett</name>
+	  <desc>Converted to TEI from a DOCX document.</desc>
+	</change>
+	<change>
+	  <date>2024-08-23</date>
+	  <name>Andrew Ollett</name>
+	  <desc>Changes to first proofs.</desc>
+	</change>
+      </listChange>
+    </revisionDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div>
+	<head>Introduction</head>
+	<p>Early in May 1911, the residents of Kolhapur braced for a riot. The city’s Vīraśaivas planned to celebrate the arrival of a prominent monastic leader with a procession. Anticipating backlash, organizers asked Kolhapur’s nominal ruler, Chhatrapati Rajarshi Shahu (descendent of the Maratha leader Shivaji Bhonsle), to personally approve the event. Shahu later recalled in his memoirs that Brahmans in the city “threatened a breach of the peace” were the procession to take place.<note place="foot" xml:id="ftn1" n="1"><p><ref target="#Latthe1924">Latthe</ref> (<ref target="#Latthe1924">1924</ref>: vol. 2, 345).</p></note> They objected not to the arrival of a prominent religious figure, or even to using city streets as a stage for Vīraśaiva piety. Kolhapur’s Brahmans objected to a specific processional object — the severed arm of Vyāsa, fabled author of the <title>Mahābhārata</title>. Made of bundled rags or gnarled wood, an effigy of Vyāsa’s severed arm — known in Kannada simply as <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> (Vyāsa’s arm) — would dangle atop a tall pole alongside cymbals, streamers, and a flag decorated with the image of Śiva’s bull, Nandin. During the procession, devotees would hoist the pole aloft while dancing and singing. Some might even swing at Vyāsa’s arm with sticks or swords, reenacting an event from Purāṇic lore when Nandin lopped off Vyāsa’s arm in a fit of pious rage.</p>
+	<p>Vyāsa’s severed arm had sparked violence elsewhere in the Deccan. There were riots in Bellubbi in 1882, and the <title>Gazetteer of the Bombay Presidency</title> reported in 1884 that “many lives were lost” during a conflict in Dharwad a few decades earlier.<note place="foot" xml:id="ftn2" n="2"><p><ref target="#Gazetteer"><title>Gazetteer</title></ref> (1884), pp. 229–230.</p></note> “Formerly riots were of constant occurrence,” the <title>Gazetteer</title> reads. “The parading of Vyāsa’s hand was forbidden, but in outlying villages the practice is still kept up.”<note place="foot" xml:id="ftn3" n="3"><p><ref target="#Gazetteer"><title>Gazetteer</title></ref> (1884), p. 229.</p></note> Vyāsa’s arm may have put parade-goers and passersby at risk, but it seems to have been especially dangerous for organizers. In 1830, at the request of Brahmans in the western reaches of the Mysore state, Krishnaraja Wodeyar III ordered the execution of two Vīraśaiva leaders for organizing a Vyāsa procession.<note place="foot" xml:id="ftn4" n="4"><p>Wodeyar’s dispensation was found in the library of the Sringeri Śāṅkara <foreign>maṭha</foreign> at Koodli (near Channagiri) in 1945. Collectors deduced that Wodeyar sent a copy of the decree to Brahmans at the <foreign>maṭha</foreign> because they petitioned the court to intervene in the procession. Doing so may have endeared Wodeyar to the region’s Mādhva and Smārta Brahmans at a moment when their support was vital to securing Mysore’s power over western Karnataka. It is unclear whether a copy of the document was also sent to the Akṣobhyatīrtha Mādhva <foreign>maṭha</foreign> in Koodli. See sannad no. 3 in the “Sannads of the Mysore King Mummadi Krishnaraja Wodeyar,” in <ref target="#ARMAD"><title>Annual Report</title></ref> (1946).</p></note> Despite the potential for bloodshed, Shahu approved the parade in Kolhapur and promised his royal marching band as a token of support.</p>
+	<p>The controversy about Vyāsa’s body in the nineteenth and twentieth centuries was, of course, a product of a particular place and time. The establishment of British common law in the subcontinent, for instance, required that both defenders and challengers of <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> adopt new conceptual and legal categories. But <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> was not an iatrogenic product of colonial law, which is to say that it was not produced by the advent of colonial law itself.<note place="foot" xml:id="ftn5" n="5"><p>On iatrogenesis and law see <ref target="#Pinney2009">Pinney</ref> (<ref target="#Pinney2009">2009</ref>: 29–62).</p></note> Though British courts had a hand in refiguring <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> along new conceptual lines, the rhetoric and perhaps even the practice of Vyāsa desecration is evident as early as the late sixteenth century.</p>
+	<p>This article examines the first known anti-<foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> writing, a short Sanskrit poem titled <title>Praising Vyāsa, Condemning the Apostates</title> (<title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title>).<note place="foot" xml:id="ftn6" n="6"><p>Elsewhere, Vādirāja writes that Buddhists, Jains, and Vīraśaivas — the <foreign xml:lang="san-Latn">pāṣaṇḍa</foreign>s — once accepted, but ultimately rejected, the authority of the Vedas. “Apostate” is closer to this understanding than the more commonly translated “heretic.” See <ref target="#Peterson2023">Peterson</ref> (<ref target="#Peterson2023">2023</ref>).</p></note> Written by Vādirāja Tīrtha (ca. 1550–1610), an influential poet, scholar, and proselyte of Madhva’s dualist Vedānta, <title>Praising Vyāsa</title> provides a starting point for not only plotting the murky history of a particular controversy, but also for rethinking prehistories of religious conflict to include textual polemics and philological disputes.</p>
+	<p>By invoking the language of religious conflict, I am, of course, thinking of Christopher Bayly and his work on riots in late precolonial and early colonial north India.<note place="foot" xml:id="ftn7" n="7"><p><ref target="#Bayly1985">Bayly 1985</ref>.</p></note> Bayly was working against at least two accounts of conflict in the subcontinent. The first was only “dimly aware” of religious violence prior to the rise of colonial commercial power, and the second, while acknowledging the fact of precolonial religious violence, nevertheless maintained that its “quality and incidence” changed dramatically after 1860. Bayly advanced a position of continuity, in which moments of religious conflict in the late nineteenth century are thought to have analogues in the early colonial period. These earlier moments were linked not to religious revivalism or civilizational clashes, Bayly suggested, but to localized shifts of resources and power. Bayly’s work has invited nuancing and criticism since it was written in 1985, but few have challenged the way Bayly consigned texts and their interpretation to little more than symbolic outgrowths or second-order effects of politics and economy.<note place="foot" xml:id="ftn8" n="8"><p>For instance, see <ref target="#Pandey1990">Pandey</ref> (<ref target="#Pandey1990">1990</ref>).</p></note></p>
+	<p>This article examines the textual prehistories of what became, in the nineteenth and twentieth centuries, a site of violent agitation and acrimonious litigation. Through a close reading of <title>Praising Vyāsa</title> and related texts, I argue several things. First, no <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> text was itself the pretext for conflict. Nor were <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> texts the mere sublimation of strife on the ground. The desecration of Vyāsa’s body and its ceremonial display in city streets in the nineteenth and twentieth centuries emerged from an interplay of text and practice — a kind of mimetic loop — in which forms of interpretation informed paradigms of performance and vice versa.</p>
+	<p>The movement between reading, performance, and public spectacle was accelerated in part by Vyāsa’s migration from a fictive figure of epic antiquity to a centerpiece of devotion among Vaiṣṇavas of various orders, and especially among a community of Viṣṇu devotion and Vedānta organized around the figure of Madhva (ca. 1238–1317 <abbr>CE</abbr>). Styled as both an emanation of Viṣṇu as well as Madhva’s guru, Vyāsa imparted to Madhva’s writings, and by extension to his dualist Vedānta philosophy, both soteriological and scholastic legitimacy. It is unsurprising, then, that followers of Madhva wrote numerous Vyāsa praise poems and that even the notional desecration of Vyāsa’s body would be interpreted as an affront to the very affective and soteriological core of Madhva’s devotional community.</p>
+	<p>Whether Vyāsa’s arm was a processional object before the early nineteenth century is unclear. Even its presence in writing before the nineteenth century is fleeting. The second part of this article puts forward a provisional genealogy of <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign>. Episodes of divine dismemberment are not uncommon in Sanskrit literature, and the case of Vyāsa’s arm appears to adapt and amplify earlier motifs of “aggressive bodily intervention” seen in Sanskrit epics, Śaiva Purāṇas, and Vīraśaiva didactic texts.<note place="foot" xml:id="ftn9" n="9"><p>See Jesse Pruitt’s forthcoming work on the <title xml:lang="san-Latn">Śivadharmōttara</title>.</p></note> The closest parallel to the amputation of Vyāsa’s arm is its paralysis. I look at several examples of Vyāsa’s monoplegia. The first is from the <title xml:lang="san-Latn">Skanda Purāṇa</title>, where Vyāsa confronts Śiva with a sermon about Viṣṇu’s superiority and is paralyzed in turn. Similar moments of paralysis are found in earlier texts, including the <title>Mahābhārata</title> and the <title xml:lang="san-Latn">Śivadharmōttara</title>. Yet these cases of paralysis are usually reversed and are thus symbolically distinct from the permanent dismemberment of <title xml:lang="kan-Latn">Vyāsantōḷ</title>. Earlier motifs of paralysis appear to have undergone a consequential intensification in the fourteenth and fifteenth centuries. This is apparent, for instance, in Vīraśaiva didactic texts like Śivayogin’s (ca. fourteenth century <abbr>CE</abbr>) <title xml:lang="san-Latn">Siddhāntaśikhāmaṇi</title> and its early-modern commentaries, where Śiva’s slanderers are met with more egregious forms of bodily harm. </p>
+	<p>Here I must emphasize that these were textual dictates, and that the gap between text and life on the ground — at least where they concern violence against those who challenge Vīraśaivas and their institutions — appears to have been vast indeed. When Vādirāja wrote <title>Praising Vyāsa</title> in the late sixteenth century, swaths of his home in western Karnataka were controlled by a powerful Vīraśaiva ruling family. Rather than curse or kill critics of Vīraśaivas, the Nāyakas of western Karnataka lavished them, including Vādirāja, with royal largesse.</p>
+	<p>The sources I present here show Vyāsa’s arm as a surrogate for several things simultaneously. By the end of the sixteenth century, it had become a token of sectarian triumph, where Śiva could win over the most ardent devotee of Viṣṇu, even if only by force. For Vādirāja, the desecration of Vyāsa was both an egregious textual misinterpretation and an unforgivable attack on the legitimacy of Madhva and his Vedānta. What I do not touch on here, but which hangs over the entire <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> controversy, is caste. Vyāsa’s venerated position among Vaiṣṇava and Śaiva Brahmans alike would have rendered his desecration a potent symbol of anti-caste agitation. And with the rise of the Vīraśaiva ruling family of western Karnataka, the flagrant desecration of an exemplar of caste elitism may have marked a turn in subaltern political power and its symbolic expression.</p>
+	<p>I conclude with a perfunctory examination of <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign>’s juridical life, which allows me to highlight at least two avenues of further research. The first might be a new direction in the study of the <title>Mahābhārata</title>. While anthropologists and historians have noted the <title>Mahābhārata</title>’s various localizations and retellings, Sanskrit epics as points of sectarian, caste, and legal conflict are largely unstudied. Second are the legal afterlives of premodern Sanskrit polemics in colonial India. I have in mind both the direct and indirect ways that precolonial Sanskrit disputes, especially over issues of inheritance, property, marriage, temple access, procession, and so on, shaped legal discussions in the nineteenth and twentieth centuries. But early modern Sanskrit polemics about <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> are interesting not because of their influence on later legal debates, but because they appear to have had no influence at all. Though Vyāsa’s body remained a source of outrage, modes of what we might call “philological containment” — erudite (if still vitriolic) Sanskrit polemics as a strategy of conflict management — seem to have given way to political violence and courtly machinations.</p>
+      </div>
+
+      <div>
+	<head>Conjuring the Image of Vyāsa</head>
+	<p>Vyāsa was probably never a real person, though some of the deeds ascribed to him may have been the work of many people over many centuries.<note place="foot" xml:id="ftn10" n="10"><p>Later Purāṇas speak of as many as eighteen Vyāsas. See <title xml:lang="san-Latn">Viṣṇupurāṇa</title> 3.3.9.</p></note> Yet when Vādirāja wrote <title>Praising Vyāsa, Condemning the Apostates</title> in the late-sixteenth century, Vyāsa had long been transformed into a god. To do justice to his divinization alone would warrant a separate study.<note place="foot" xml:id="ftn11" n="11"><p>The figure of Vyāsa has accumulated a considerable scholarship. A study of his divinization alone would include <ref target="#Shembavnekar1947">Shembavnekar</ref> (<ref target="#Shembavnekar1947">1947</ref>), who showed that “Vyāsa had nothing to do with the four Vedas.” It would include volumes written about Vyāsa in the field of <title>Mahābhārata</title> studies, such as <ref target="#Sullivan1999">Sullivan</ref> (<ref target="#Sullivan1999">1999</ref>) and also studies on specific chapters and sections of the <title>Mahābhārata</title>. Grünendahl (<ref target="#Gruenendahl1989">1989</ref> and <ref target="#Gruenendahl2002">2002</ref>, and <ref target="#Gruenendahl1997">Grünendahl and Schreiner 1997</ref>) for instance, describes how Vyāsa became an “emanation of Nārāyaṇa,” and the scholarship of <ref target="#Biardeau2002">Biardeau</ref> (<ref target="#Biardeau2002">2002</ref>), <ref target="#Hiltebeitel2005">Hiltebeitel</ref> (<ref target="#Hiltebeitel2005">2005</ref>), and others has convincingly shown the <title xml:lang="san-Latn">Nārāyaṇīyaparvan</title> to be a later feature of the epic and to reflect the interests of new cults of Viṣṇu worship in the first centuries <abbr>CE</abbr>. Such a study would also include work on Vyāsa in the Purāṇas, like <ref target="#Saindon20042005">Saindon</ref> (<ref target="#Saindon20042005">2004–2005</ref>) and <ref target="#Bisschop2021">Bisschop</ref> (<ref target="#Bisschop2021">2021</ref>). </p></note> My starting point here, however, is Vyāsa after apotheosis.</p>
+	<p>Vyāsa’s identity as Viṣṇu had not only been a given for Madhva and his early followers; it was vital for establishing Madhva’s legitimacy as a Vedānta commentator. Vyāsa plays an especially prominent role in Madhva’s <title>Determining the Ultimate Aim of the Mahābhārata</title> (<title xml:lang="san-Latn">Mahābhāratatātparyanirṇaya</title>), which emplots the tenets of Madhva’s Vedānta within the narrative arcs of the <title>Mahābhārata</title> and the <title>Rāmāyaṇa</title>. In addition to peppering the commentary with his own Vyāsa encomia, Madhva dutifully reiterates the few existing <title>Mahābhārata</title> verses that equate Vyāsa with God. “You should know Kr̥ṣṇa Dvaipāyana Vyāsa as the Lord Nārāyaṇa,” Madhva repeats.<note place="foot" xml:id="ftn12" n="12"><p>See Madhva’s <title xml:lang="san-Latn">Mahābhāratatātparyanirṇaya</title> (ed. <ref target="#Madhva2009">Gōvindācārya</ref>), v. 2.41, and <title>Mahābhārata</title> 12.334.9 (ed. <ref target="#MBh">Sukthankar and Belvalkar</ref>):</p>
+	<quote xml:lang="san-Latn"><lg met="anuṣṭubh"><l>kr̥ṣṇadvaipāyanaṁ vyāsaṁ viddhi nārāyaṇaṁ prabhum</l></lg></quote>
+	</note> </p>
+	<p>One of the “ultimate aims” Madhva wanted his readers to take from his <title>Mahābhārata</title> commentary was that Viṣṇu-as-Vyāsa sanctioned both Madhva’s divine nature and his dualist Vedānta project. In the commentary’s second chapter, for instance, Vyāsa announces Madhva as an incarnation of the god Vāyu. Citing a verse from the Bhaviṣyatparvan, but which is not found in any recension of the text, Vyāsa proclaims:</p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>tasyāṅgaṁ prathamaṁ vāyuḥ prādurbhāvatrayānvitaḥ</l>
+	    <l>prathamō hanumān nāma dvitīyō bhīma ēva ca</l>
+	  </lg>
+	  <lg>
+	    <l>pūrṇaprajñas tr̥tīyas tu bhagavatkāryasādhakaḥ</l>
+	    <l>trētādyēṣu yugēṣv ēṣa saṁbhūtaḥ kēśavājñayā</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+	    <ab>
+	      The first subsidiary of Viṣṇu is Vāyu,<lb/>
+	      who has three worldly manifestations.<lb/>
+	      The first is called Hanumān, the second, Bhīma.<lb/>
+	      But the third is Madhva, fulfiller of God’s deeds.<lb/>
+	      At Viṣṇu’s decree, Vāyu has appeared in the first three epochs.<note place="foot" xml:id="ftn13" n="13"><p>Madhva says the verse is from the Bhaviṣyatparvan of the <title xml:lang="san-Latn">Harivaṁśa</title>, but it is probably one of his own compositions. For more on Madhva’s untraceable sources, see Mesquita (<ref target="#Mesquita2000">2000</ref>, <ref target="#Mesquita2008">2008</ref>).</p></note>
+	    </ab>
+	  </quote>
+	  <bibl>Madhva, <title xml:lang="san-Latn">Mahābhāratatātparyanirṇaya</title> (ed. <ref target="#Madhva2009">Gōvindācārya</ref>, vv. 2.124–125, pp. 88–89)</bibl>
+	</cit>
+	<p>The clamor that Madhva’s messianic self-styling caused in the centuries after his death obscured the messenger himself. Strictly speaking, Madhva did not announce his own divine nature, Vyāsa did. As an emanation of Viṣṇu, Vyāsa transformed Madhva’s unprecedented claim of his own divinity into a scriptural dictate. To deny Vyāsa’s declaration of Madhva’s divine nature, in other words, would be tantamount to denying the authority of the <title>Mahābhārata</title> itself.</p>
+	<p>Elsewhere, Madhva invokes Vyāsa as his guru, which allowed for elaborate narratives about Madhva’s connection to Vyāsa in early hagiographies. Nārāyaṇa Paṇḍita (ca. fourteenth century <abbr>CE</abbr>), for instance, devotes the seventh chapter of his <title xml:lang="san-Latn">Śrīmadhvavijaya</title> to narrating Madhva’s visit to Vyāsa’s Himalayan hermitage. Daniel Sheridan has shown how this episode connects Madhva and his writings to Vyāsa by asserting a direct student-teacher relation.<note place="foot" xml:id="ftn14" n="14"><p><ref target="#Sheridan1992">Sheridan</ref> (<ref target="#Sheridan1992">1992</ref>).</p></note> But this didactic connection is, by measure of verse, an utterly minor feature of Madhva’s life story. Far more significant, both as a narrative fact and for their influence on devotional practice, are the dozens of verses Nārāyaṇa devotes to Madhva’s inner monologue upon seeing Vyāsa in the flesh.<note place="foot" xml:id="ftn15" n="15"><p>Concealed from ordinary people during the Kali Age, Vyāsa nevertheless welcomes Madhva’s mind and eyes (<foreign xml:lang="san-Latn">cetōnayanābhinandana</foreign>). Nārāyaṇa likens Vyāsa’s disappearance from the vision of ordinary people in the Kali Age to the disappearance of the sun at night (Nārāyaṇa Paṇḍita, <title xml:lang="san-Latn">Śrīmadhvavijaya</title> [ed. <ref target="#NarayanaPandita2017">Gōvindācārya</ref>] v. 7.22).:</p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>adhunā kalikālavr̥ttayē savitēva kṣaṇadānuvr̥ttayē</l>
+	    <l>janadr̥gviṣayatvam atyajad bhagavān āśramam āvasann imam</l>
+	  </lg>
+	</quote>
+      </note> “Even though Madhva had always seen Vyāsa in his pure, lotus heart,” Nārāyaṇa writes, “upon seeing Vyāsa again anew, Madhva became wonderstruck and thought the following to himself.”<note place="foot" xml:id="ftn16" n="16"><p>Nārāyaṇa Paṇḍita, <title xml:lang="san-Latn">Śrīmadhvavijaya</title> (ed. <ref target="#NarayanaPandita2017">Gōvindācārya</ref> v. 7.17):</p><quote xml:lang="san-Latn"><lg><l>nijahr̥tkamalē ’tinirmalē satataṁ sādhu niśāmayann api</l><l>avalōkya punaḥ punar navaṁ tam asau vismita ity acintayat</l></lg></quote></note> The next thirty verses describe Madhva’s cascade of observations about Vyāsa’s body, from the dust on Vyāsa’s feet to the matted hair on his head. Madhva’s life story, in other words, takes a sharp detour into Vyāsa encomia. About Vyāsa’s feet, for instance, Madhva thinks to himself:</p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>kamalākamalāsanānilair vihagāhīndraśivēndrapūrvakaiḥ</l>
+	    <l>padapadmarajō ’sya dhāritaṁ śirasā hanta vahāmy ahaṁ muhuḥ</l>
+	    <l>praṇamāmi padadvayaṁ vibhōr dhvajavajrāṅkuśapadmacihnavat</l>
+	    <l>nijamānasarāgapīḍanād aruṇībhūtam ivāruṇaṁ svayam</l>
+	    <l>nanu kēvalam ēva vaiṣṇavaṁ śritavantaḥ padam ātmarōciṣā</l>
+	    <l>tamasō ’py ubhayasya nāśakā vijayantē nakharā navaṁ ravim</l>
+	    <l>sukumāratarāṅgulīmatōḥ padayōr asya nigūḍhagulphayōḥ</l>
+	    <l>upamānam ahō na dr̥śyatē kavivaryair itarētaraṁ vinā</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            <p>Wow! I have the dust of Vyāsa’s lotus feet on my head, the same dust that Lakṣmī, Brahmā, Vāyu, Garuḍa, Śeṣa, Śiva, and Indra once had on theirs. I bow to the lord’s two feet, which are marked with Viṣṇu’s banner, lightning bolt, goad, and lotus. Though naturally ruddy, his two feet appear to have become even more so after beating back the mental passions of his followers. His toenails, which have taken refuge at Viṣṇu’s feet, destroy two kinds of darkness (internal and external) with their luster, and thus surpass even the sun at daybreak. Except for one or the other foot, the best poets fail to find an adequate analogy for Vyāsa’s two feet, which have the most delicate toes and concealed ankles.<note place="foot" xml:id="ftn17" n="17"><p>The verb <foreign xml:lang="san-Latn">śritavantaḥ</foreign> in verse 27 conveys that the toenails are both connected to and have taken refuge at Viṣṇu’s feet, much as a disciple might. The suggestion seems to be that just as the toenails remove darkness and surpass the sunrise in their splendor, so too the disciple — in this case, Madhva — can do the same. </p></note></p>
+	  </quote>
+	  <bibl>Nārāyaṇa Paṇḍita, <title xml:lang="san-Latn">Śrīmadhvavijaya</title> (ed. <ref target="#NarayanaPandita2017">Gōvindācārya</ref> v. 7.25–28)</bibl>
+	</cit>
+	<p>Madhva’s encounter with Vyāsa allowed Nārāyaṇa to conjure an intimate portrait of Vyāsa’s body in the minds of his readers. It is worth dwelling on this image for a moment. Vyāsa’s legs are “fittingly burly from bottom to top,” and “cause the person who worships him to become the same.”<note place="foot" xml:id="ftn18" n="18"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, v. 7.29:</p><quote xml:lang="san-Latn"><lg><l>ucitāṁ gurutāṁ dadhat kramāc chuci tējasvi suvr̥ttam uttamam</l><l>bhajatō ’tra ca bhājayaty adō vibhujaṅghayugalaṁ sarūpatām</l></lg></quote><p>“The Lord’s two legs, appearing fittingly burly from bottom to top, are pure, brilliant, well-made, and excellent. They cause the person who worships him to become the same/to attain <foreign xml:lang="san-Latn">mōkṣa</foreign>.” The pun here is on <foreign xml:lang="san-Latn">sarūpatā</foreign> being a stage of <foreign xml:lang="san-Latn">mōkṣa</foreign>, on which reading the legs confer the appropriate <foreign xml:lang="san-Latn">gurutā</foreign> according to one’s stage of enlightenment (cf. <title xml:lang="san-Latn">Br̥hadāraṇyaka Upaniṣad</title> 5.13.1–4 [ed. <ref target="#Olivelle1998">Olivelle</ref>], which is echoed later in the <title xml:lang="san-Latn">Bhāgavatapurāṇa</title> and elsewhere).</p></note> Sitting on a deerskin that shines with the “lovely sheen of sunlight,” Vyāsa possesses a miraculous hue.<note place="foot" xml:id="ftn19" n="19"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, vv. 7.30–31:</p><quote xml:lang="san-Latn"><lg><l>acalāsanayōgapaṭṭikā varakakṣyā sakr̥dāptam iṣṭadam</l><l>paritō ’pi hariṁ sphuranty ahō aniśaṁ dhanyatamēti mē matiḥ</l></lg><lg><l>rucirēṇa varēṇa carmaṇā rucirājadyuticārurōciṣā</l><l>paramōrunitambasaṅginā paramāścaryatayā virājyatē</l></lg></quote><p>“A meditation cloth for steady sitting posture, which has the finest hems, shines from all sides upon Hari as Vyāsa, who gives whatever is desired even when approached once — that cloth, in my opinion, is the most praiseworthy thing. The resplendent deer skin upon which he sits, which has the lovely sheen of sunlight, makes him appear most miraculous.” Bāṇa used the term <foreign xml:lang="san-Latn">yōgapaṭṭaka</foreign> several times in the <title xml:lang="san-Latn">Harṣacarita</title>. It means both a meditation cloth and a forged royal document. In his edition of the text, P. V. <ref target="#Kane1918">Kane</ref> (<ref target="#Kane1918">1918</ref>: notes, 26) gives the following explanatory verse. From where it comes, I am not sure.</p><quote xml:lang="san-Latn"><lg><l>pr̥ṣṭhajānvōḥ samāyoge vastraṁ valayavad dr̥ḍham</l><l>parivēṣṭya yad ūrdhvajñus tiṣṭhēt tad yōgapaṭṭakam</l></lg></quote></note> His “slender, soft, beautiful lotus belly” contains the whole universe.<note place="foot" xml:id="ftn20" n="20"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, v. 7.32:</p><quote xml:lang="san-Latn"><lg><l>tanunimnasunābhiśōbhitē valibhē vārijanābha ādadhē</l><l>pratanāv atisundarē mr̥dāv udarē ’smin jagadaṇḍamaṇḍalam</l></lg></quote><p>“He has kept the sphere of the universe in this slender, soft, beautiful lotus belly, which has delicate folds, and which is adorned with a soft, deep navel.”</p></note> Nārāyaṇa exploits the ambiguous word division in the phrase <foreign xml:lang="san-Latn">brahma-su-sūtram</foreign> to simultaneously tell us that Vyāsa’s chest appears white because of the <foreign xml:lang="san-Latn">upanayana</foreign> thread (<foreign xml:lang="san-Latn">brahmasu sūtram</foreign>) and that his heart is captivating because it holds the glorious aphorisms about <foreign xml:lang="san-Latn">brahman</foreign>, that is, the <title xml:lang="san-Latn">Brahmasūtra</title>s (<foreign xml:lang="san-Latn">brahmasusūtra</foreign>).<note place="foot" xml:id="ftn21" n="21"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, vv. 7.33–34:</p><quote xml:lang="san-Latn"><lg><l>hr̥dayē kr̥tasajjanōdayē suviśālē vimalē manōharē</l><l>ubhayaṁ vahati trayīmayaṁ bhagavān brahmasusūtram uttamam</l></lg><lg><l>asamē ’nadhikē susādhitē nijatātē ravirāśidīdhiti</l><l>pradadau trijagajjayadhvajaṁ vidhir ētad galasaṅgibhūṣaṇam</l></lg></quote><p>“The lord holds the two best Vedic <foreign xml:lang="san-Latn">sūtra</foreign>s: One he wears on his broad chest, the other he holds in his expansive heart, which uplifts the righteous. In the case of the [<foreign xml:lang="san-Latn">upanayana</foreign>] thread on Brahmans [<foreign xml:lang="san-Latn">brahmasu sūtra</foreign>], his chest is white and beautiful, whereas in the case of the glorious aphorisms about <foreign xml:lang="san-Latn">brahman</foreign> [i.e., the <title xml:lang="san-Latn">Brahmasūtra</title>], his heart is pure and captivating. When Vyāsa proved [through his various compositions] that Viṣṇu is unequaled and unsurpassed, Brahmā gave him this ornament, the <foreign xml:lang="san-Latn">kaustubha</foreign> gem, which hangs around his throat as a symbol of his conquest over the three worlds and which shines like a cluster of suns.” The word <foreign xml:lang="san-Latn">susūtra</foreign> can be glossed as <q xml:lang="san-Latn">śōbhanam sūtram iti susūtram</q>.</p></note> His arms possess soft, ruddy hands that have the marks of Viṣṇu’s discus and conch.<note place="foot" xml:id="ftn22" n="22"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, vv. 7.35–36:</p><quote xml:lang="san-Latn"><lg><l>arivārijalakṣaṇōllasatsukumārārūṇapāṇipadmayōḥ</l><l>pr̥thupīvaravr̥ttahastayōr upamāṁ naiva labhāmahē ’nayōḥ</l></lg><lg><l>bhavatāṁ varatarkamudrayā dyati hastāgram abōdham īśituḥ</l><l>adhijānusamarpitaṁ paraṁ kr̥tabhūyōbhayabhaṅgamaṅgalam</l></lg></quote><p>“I cannot find a comparison for these two arms, which have large, brawny, and round forearms, which have lotus-like hands that are soft, ruddy, and resplendent with the marks of Viṣṇu’s discus and conch. Through <foreign xml:lang="san-Latn">jñānamudrā</foreign>, the fingers of one hand destroy the ignorance of devotees. The fingers of the other sit atop the knee, auspicious for their part in vanquishing tremendous fear.”</p></note> His neck has three auspicious lines, one for each of the Vedas he composed.<note place="foot" xml:id="ftn23" n="23"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, v. 7.37:</p><quote xml:lang="san-Latn"><lg><l>satataṁ galatā svataḥ śrutitritayēnēva nikāmam aṅkitaḥ</l><l>suviḍambitakambur īkṣyatē vararēkhātrayavān guror galaḥ</l></lg></quote><p>“I see Vyāsa’s neck, which, perfectly resembling a conch shell, has three auspicious lines; the neck, which is clearly marked [or numbered] by the three Vedas that issue forth [from his throat] eternally.”</p></note> Vyāsa’s face outshines the light of a thousand beams from a spotless moon, and the appearance of his teeth against his red lips “put to shame a string of new pearls glimmering on ruby facets.”<note place="foot" xml:id="ftn24" n="24"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, vv. 7.38–39:</p><quote xml:lang="san-Latn"><lg><l>sakalāstakalaṅkakālimasphuradinduprakarōruvibhramam</l><l>adharīkurutē svaśōbhayā vadanaṁ dēvaśikhāmaṇēr idam</l></lg><lg><l>aruṇāśmadalāntarōllasannavamuktāvalim asya lañjayēt</l><l>hasataḥ sitadantasantatiḥ paramaśrīr aruṇoṣṭharōciṣaḥ</l></lg></quote><p>“By its own splendor, the face of Vyāsa — the crown jewel of the gods — outshines even the beautiful light from a thousand moon rays blazing brightly after the moon’s spots have been completely removed. Smiling and effulgent with red lips, Vyāsa has a row of the most beautiful white teeth that would put to shame a string of new pearls glimmering on ruby facets.”</p></note> His speech, likened to a infinite spring of freshwater, fills the “wells which are the questions posed by thousands of Brahmans.”<note place="foot" xml:id="ftn25" n="25"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, v. 7.40:</p><quote xml:lang="san-Latn"><lg><l>dvijavr̥ndakr̥taṁ kutūhalād anuyōgāndhusahasram uttamam</l><l>iyam ēkapadē sarasvatī śrutibhartuḥ paripūrayaty ahō</l></lg></quote><p>“Amazing! With a single word, the Lord of Scripture’s riverine speech miraculously fills up thousands of well-like questions posed by scores of Brahmans.”</p></note> The Tulasi leaf that sits upon Vyāsa’s ear whispers, “O Lord, please do not let the lotus and other flowers steal my position out of jealousy.”<note place="foot" xml:id="ftn26" n="26"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, vv. 7.41–42:</p><quote xml:lang="san-Latn"><lg><l>jalajāyatalōcanasya mām avalōkō ’yam upētya lālayan</l><l>kurutē parirabhya pūritaṁ bhuvanānandakarasmitānvitaḥ</l></lg><lg><l>upakarṇam amuṣya bhāsitā tulasī mantrayatīva lālitā</l><l>mama nātha padaṁ na matsarāj jalajādyāni hareyur ity alam</l></lg></quote><p>“I became fulfilled after this sportive gaze of Vyāsa — whose eyes are wide like lotus petals — fell to me and embraced me, the gaze accompanied by a smile that makes all sentient beings happy. It is as if the beloved Tulasi leaf that sits just above his ear mutters silently to itself — ‘O Lord! Let not the lotus and other flowers steal my position out of jealousy.’”</p></note> And after describing his eyebrows and forehead, Madhva thinks about Vyāsa’s miraculous body and its innumerable qualities:<note place="foot" xml:id="ftn27" n="27"><p><ref target="#NarayanaPandita2017"><hi rend="italic">ibid.</hi></ref>, vv. 7.43–44:</p><quote xml:lang="san-Latn"><lg><l>vibhavābhibhavōdbhavādikaṁ bhuvanānāṁ bhuvanaprabhōr bhruvōḥ</l><l>anayōr api dabhravibhramāt sabhavāṁbhōjabhavātmanāṁ bhavēt</l></lg><lg><l>trijagattilakālikāntarē tilakō ’yaṁ parabhāgam āptavān</l><l>harinīlagirīndramastakasphuṭaśōṇōpalapaṅktisannibhaḥ</l></lg></quote><p>“From the slightest quiver of the Lord of Creation’s eyebrows would result the destruction, maintenance, and birth of all existing things, which have as their nature Śiva and Brahmā. This <foreign xml:lang="san-Latn">tilaka</foreign> — which is indistinguishable from a row of rubies shining resplendent atop a sapphire mountain — has attained eminence in the middle of the Ornament of the Three Worlds’ forehead.”</p></note></p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>navam ambudharaṁ viḍambayad varavidyudvalayaṁ jagadgurōḥ</l>
+	    <l>avalōkya kr̥tārthatām agāṁ sajaṭāmanḍalamanḍanaṁ vapuḥ</l>
+	  </lg>
+	  <lg>
+	    <l>na ramāpi padāṅgulīlasannakhadhūrājadanantasadguṇān</l>
+	    <l>gaṇayēd gaṇayanty anārataṁ paramān kō ’sya parō guṇān vadēt</l>
+	  </lg>
+	  <lg>
+	    <l>na kutūhalitā kutūhalaṁ tanum ēnām avalōkya sadgurōḥ</l>
+	    <l>sanavāvaraṇāṇḍadarśinō gr̥habuddhyā mama niṣkutūhalam</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            <p>I became completely satisfied upon seeing the Lord of the Worlds’ body, which, with its most precious, lightning-bright arm band, resembles a new raincloud, and is festooned with a matted knot of hair. Not even Lakṣmī, despite continuously counting, could keep track of the innumerable, sanctified qualities emanating from just the movement of the toenails of Vyāsa’s feet. Who could possibly describe his virtues?</p>
+	  </quote>
+	  <bibl>Nārāyaṇa Paṇḍita, <title xml:lang="san-Latn">Śrīmadhvavijaya</title> (ed. <ref target="#NarayanaPandita2017">Gōvindācārya</ref> vv. 7.45–48)</bibl>
+	</cit>
+	<p>Simile, metaphor, alliteration, pun, and other poetic devices are key to conjuring Vyāsa’s image in the minds of Nārāyaṇa’s readers. So, too, is the failure of poetic language. Twice Nārāyaṇa stresses that words fail to express Vyāsa’s true glory. Even Lakṣmī cannot fully enumerate the qualities of Vyāsa’s toenails, let alone the totality of his body. How could a poet? Yet later Mādhva poets nevertheless tried. Nārāyaṇa’s <title xml:lang="san-Latn">Vyāsastōtra</title> is a precursor for later Vyāsa praise poems. In addition to <title>Praising Vyāsa, Condemning the Apostates</title>, several other <title xml:lang="san-Latn">Vyāsastōtra</title>s are attributed to Vādirāja, including <title>Eight Verses to Vyāsa</title> (<title xml:lang="san-Latn">Vyāsāṣṭaka</title>) and <title>Describing Vyāsa</title> (<title xml:lang="san-Latn">Vyāsavarṇana</title>). Simple but rich compositions, <title>Eight Verses</title> and <title>Describing Vyāsa</title> appear to have been written for popular consumption. Vādirāja says as much — “For those devotees who recite <title>Eight Verses</title> every day, there is no defeat for them anywhere.”<note place="foot" xml:id="ftn29" n="28"><p>Vādirāja, <title xml:lang="san-Latn">Vyāsāṣṭaka</title>, v. 9, p. 40:</p><quote xml:lang="san-Latn"><lg><l>vāsiṣṭhavaṁśatilakasya harēr manōjñaṁ dōṣaughakhaṇḍanaviśāradam aṣṭakaṁ yē</l><l>dāsāḥ paṭhanty anudinaṁ bhuvi vādirājadhīsambhavaṁ paribhavō na diśāsu tēṣām</l></lg></quote><p>“For those devotees who recite <title>Eight Verses</title> every day, which pleases Hari (Vyāsa), the ornament of the Vāsiṣṭha Dynasty, which is famous for destroying a deluge of faults, and which is born from the intellect of Vādirāja himself — for those devotees, there is no defeat anywhere.”</p></note></p>
+	<p>Reciting Vādirāja’s <foreign xml:lang="san-Latn">stōtra</foreign>s in the sixteenth century would have entailed repeating banal tropes. Vyāsa is Viṣṇu. He is the infallible author of the <title>Mahābhārata</title>, Purāṇas, and the <title xml:lang="san-Latn">Brahmasūtra</title>s. He is dear to the gods, and he shares a special connection to Madhva. But these tropes provided a frame for deft poetic flourishes: </p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>indrādidaivatahr̥dākhyacakōracandrāmandāṁśukalpaśubhajalpitapuṣpavr̥ndaḥ</l>
+	    <l>vr̥ndārakāṅghryupalatōguṇaratnasāndrō mandāya mē phalatu kr̥ṣṇataruḥ phalaṁ drāk</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            May the black tree (<foreign xml:lang="san-Latn">kr̥ṣṇataru</foreign>) that is Vyāsa<lb/>
+            quickly yield its fruits to me, Vādirāja, unintelligent as I am —<lb/>
+            that black tree whose dazzling, flower bunch–like arguments<lb/>
+            are like moon rays that sate the Cakōra birds<lb/>
+            we call the hearts of gods like Indra and others;<lb/>
+            that black tree, which has small creepers at its feet that are the other gods,<lb/>
+            and which is encrusted with gem-like qualities.
+	  </quote>
+	  <bibl>Vādirāja, <title xml:lang="san-Latn">Vyāsāṣṭaka</title> (<ref target="#Vyasastaka">1953</ref>, v. 4, p. 39)</bibl>
+	</cit>
+	<p>Like Nārāyaṇa, Vādirāja uses a handful of images to describe Vyāsa’s dark skin. His skin resembles the hue of emeralds.<note place="foot" xml:id="ftn31" n="29"><p>Vādirāja’s <title xml:lang="san-Latn">Vyāsāṣṭaka</title>, v. 1, p. 39.</p></note> It resembles the roiling, saturnine waters of the Yamuna river.<note place="foot" xml:id="ftn32" n="30"><p>Vādirāja’s <title xml:lang="san-Latn">Vyāsavarṇana</title>, p. 42. </p></note> And, following the image of the verse above, it is like a dark tree in the night sky. </p>
+	<p>Vādirāja seems to reserve his most creative flourishes for verses that connect Vyāsa’s body to his literary creations. In the image of the dark tree above, Vyāsa’s skin is likened to the night sky; his textual creations — the <title>Mahābhārata</title>, the <title xml:lang="san-Latn">Brahmasūtra</title>s, and the Purāṇas — are like the cool rays of the moon; and the hearts of the gods are like Cakora birds, who slake their thirst on Vyāsa’s textual moonbeams. Vādirāja indulges in a similar strategy of stacking body and text when bowing to Vyāsa’s feet:</p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>vēdāntasūtrapavanōddhr̥tapañcavēdāmōdāṁśatōṣitasurarṣinarādibhēdām</l>
+	    <l>bōdhāmbujātalasitāṁ sarasīm agāḍhāṁ śrīdāṁ śritō ’smi śukatātapadām akhēdām</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            I have taken refuge at the deep lake that is the feet of Vyāsa, father of Śuka;<lb/>
+            the lake-like feet that give wealth,<lb/>
+            are tireless,<lb/>
+            are adorned with lotuses of knowledge,<lb/>
+            and by which the various gods, sages, and men are satisfied<lb/>
+            by just a whiff of the fragrance of the five Vedas,<lb/>
+            which has been lifted aloft<lb/>
+            by the breeze of the <title>Vēdāntasūtra</title>s.
+	  </quote>
+	  <bibl>Vādirāja, <title xml:lang="san-Latn">Vyāsavarṇana</title>, v. 2, p. 39.</bibl>
+	</cit>
+	<p>Both Nārāyaṇa and Vādirāja used poetry to produce an image of Vyāsa in the minds of readers and listeners. Perhaps this sort of poetic image production was tantamount to a “corpothetics” before the age of print. Like the modern mass-produced images of Hindu gods that Christopher Pinney has suggested entail a “desire to fuse image and beholder,” the poetic reproduction and appreciation of Vyāsa’s image in the sixteenth century was made possible through the listener’s or reader’s faculties of linguistic understanding and literary imagination, all of which, of course, belong to the “beholder” of the image.<note place="foot" xml:id="ftn34" n="31"><p><ref target="#Pinney2004">Pinney</ref> (<ref target="#Pinney2004">2004</ref>: 194). Sanskrit literary aesthetics never presumed the mind-body dichotomy that defined western aesthetic theory since at least Alexander Gottlieb Baumgarten, and so Pinney’s effort to coin a neologism to describe a long-standing fact of aesthetic theory in South Asia is somewhat misplaced.</p></note></p>
+      </div>
+
+      <div>
+	<head>Violating Vyāsa, Slandering Śiva</head>
+	<p>By the turn of the seventeenth century, a new form of incendiary ritual involving Vyāsa’s amputated arm appears to have emerged among some Vīraśaivas in northwestern Karnataka. Vādirāja’s <title>Praising Vyāsa, Condemning the Apostates</title> is the first writing that I know of to critique the practice of cutting Vyāsa’s arm. Most of the essay is concerned with clearing up confusions about who, precisely, Vyāsa speaks for as a raconteur of epic events. But the last verses suggest that Vādirāja directed the essay toward a generic Śaiva devotee — an “idiot” — who wants to cut Vyāsa’s arm not just notionally, it would seem, but in practice.</p>
+
+	<figure>
+	  <head>Leaf from the <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title> with marginal commentary by an unknown author. Mysore Oriental Research Institute, ms. 4347C.</head>
+	  <graphic url="peterson-desecrating-the-divine/figure-01.webp"/>
+	  <figDesc>Leaf from the <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title> with marginal commentary by an unknown author. Mysore Oriental Research Institute, ms. 4347C.</figDesc>
+	</figure>
+
+	<p><title>Praising Vyāsa</title> consists of thirty-one verses in <foreign xml:lang="san-Latn">śloka</foreign> meter. It has been published at least twice. There are no known commentaries, but a manuscript in Mysore has extensive marginal notes that function as a kind of commentary.<note place="foot" xml:id="ftn35" n="32"><p>The marginalia are anonymous, but they appear to have been copied by the same scribe who copied the main text. It is not impossible that the marginal notes belong to Surōttama, who many believe to be Vādirāja’s brother. Surōttama commented on several of Vādirāja’s writings, including the <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title>’s companion text, the <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍana</title>.</p></note> Both the printed text and the Mysore manuscript end with a short colophon: “Vādirāja Yati has composed this praise poem to Vyāsa (<foreign xml:lang="san-Latn">vyāsastōtra</foreign>) in the form of a critique of the apostates.”<note place="foot" xml:id="ftn36" n="33"><p>Vādirāja’s <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title> (<ref target="#VP">Rāmācārya 1911</ref>): <q xml:lang="san-Latn">iti śrīvādirājayatikr̥taṁ pāṣaṇḍakhaṇḍanaṁ vyāsastōtraṁ</q>.</p></note> Vādirāja may have called the essay a <foreign xml:lang="san-Latn">vyāsastōtra</foreign>. Or perhaps a later copyist or cataloguer supplied the title. In either case, it is worth thinking about what, exactly, makes <title>Praising Vyāsa</title> a <foreign xml:lang="san-Latn">stōtra</foreign>. </p>
+	<p>Some have suggested that <foreign xml:lang="san-Latn">stōtra</foreign>s are stylistically distinct. Yigal Bronner, for instance, understands <foreign xml:lang="san-Latn">stōtra</foreign>s as “relatively short works in verse, whose stanzas directly and repeatedly address a divinity in the vocative case.”<note place="foot" xml:id="ftn37" n="34"><p><ref target="#Bronner2007">Bronner</ref> (<ref target="#Bronner2007">2007</ref>).</p></note> Others have suggested that a <foreign xml:lang="san-Latn">stōtra</foreign>’s profusion of vocatives are the linguistic outgrowth of far more profound orientation toward a subject of praise. Hamsa Stainton, for instance, suggests that <foreign xml:lang="san-Latn">stōtra</foreign>s possess a certain “vectorial” or directional quality that foregrounds the act of praise itself.<note place="foot" xml:id="ftn38" n="35"><p><ref target="#Stainton2019">Stainton</ref> (<ref target="#Stainton2019">2019</ref>).</p></note> Yet <title>Praising Vyāsa</title> requires that we tweak either definition. Vādirāja’s addressees are not gods or divinities, but “idiots” and “scoundrels.” Insults replace sweet vocatives. And the very title of the essay betrays a multi-vectoral devotionality in which opprobrium is not inimical to the act of supplication but is in fact vital to it.</p>
+	<p>The text has a simple structure. The first third argues against <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> on the basis of narrative-criticism. Vādirāja argues that Vyāsa is a victim of wrongful punishment. As a reporter of epic events, the thinking goes, Vyāsa was simply conveying a statement Bhīṣma had made about Viṣṇu being the ultimate lord instead of Śiva. Vīraśaivas have mutilated the messenger. The second third of the text poses a set of hypotheticals about wrongful punishment, which is followed by an argument about the <foreign xml:lang="san-Latn">liṅga</foreign> being a symbol of Śiva’s dismemberment. The first two sections give way to a description of the painted image of Vyāsa and a set of concluding verses that say any Śaiva who wants to cut Vyāsa’s arm ends up harming Śiva instead.</p>
+
+	<p>Vādirāja begins by describing a declaration Bhīṣma made in front of an assembly of learned men:</p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>bhīṣmēṇa kāmyakavanē dharmarāja(ṁ) nr̥paṁ prati</l>
+	    <l>satyaṁ satyam iti ślōkō bhujāv uddhr̥tya pīvarau</l>
+	  </lg>
+	  <lg>
+	    <l>uktaḥ kila sabhāmadhyē kathēyam akhilā sphuṭā</l>
+	    <l>śēṣadharmāścaryaparvadvitīyādhyāyamadhyagā</l>
+	  </lg>
+	  <lg>
+	    <l>atas tasya bhujāv ēva chēdyau yady asti pauruṣaṁ</l>
+	    <l>vyāsas tu tāṁ kathāṁ granthē nibabandha paraṁ sudhīḥ</l>
+	  </lg>
+	  <lg>
+	    <l>kiṁ yamaḥ pāpinaṁ hanyāt kiṁ vā pāpasya sākṣiṇaḥ</l>
+	    <l>hr̥tā sītā rāvaṇēnēty uktē nahi jaṭāyuṣaḥ</l>
+	  </lg>
+	  <lg>
+	    <l>śiraś cicchēda bhagavān rāmō rājīvalōcanaḥ</l>
+	    <l>kiṁ tu bhāryāpahartāraṁ jaghāna yudhi rāvaṇaṁ</l>
+	  </lg>
+	  <lg>
+	    <l>idaṁ nidarśanaṁ paśya māvivekē manaḥ kr̥thāḥ</l>
+	    <l>uddhr̥tya śēṣadharmasthavākyāny api ca kānicit</l>
+	  </lg>
+	  <lg>
+	    <l>mandānām upakārāya darśayiṣyāmi tattvataḥ</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            <p>Among the assemblymen in the Kāmyaka forest, Bhīṣma proclaimed the verse “this is the truth, this is the truth” to king Dharmarāja (Yudhiṣṭhira), brawny arms lifted high. This well-known tale is found in the second chapter of the Āścaryaparvan on <foreign xml:lang="san-Latn">śeṣadharma</foreign>. Therefore, the heroic thing to do would have been to cut off Bhīṣma’s arm. Vyāsa, who is exceedingly learned, simply recorded that event in the <title>Mahābhārata</title>. Should Yama, the god of death, kill the sinner? Or should he kill the one who witnessed the sin? The lotus-eyed Rāma didn’t cut off Jaṭāyus’s head after he reported that Rāvaṇa abducted Sītā Rather, Rāma killed the kidnapper of his wife, Rāvaṇa, in battle. Take a look at the evidence! Don’t fix your mind on this stupidity. After quoting a few statements from the <foreign xml:lang="san-Latn">śeṣadharma</foreign> section of the <title>Mahābhārata</title> to help the idiots, I will make you understand the verses as they really are.</p>
+	  </quote>
+	  <bibl>Vādirāja, <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title> (<ref target="#VP">Rāmācārya 1911</ref>, vv. 1–7a)</bibl>
+	</cit>
+	<p>Vādirāja poses a peculiar genealogy of <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign>. By his account, cutting off Vyāsa’s arm is born from a misreading of the <title xml:lang="san-Latn">Harivaṁśa</title> (the Āścaryaparvan of the <title>Mahābhārata</title>). Yet the verses he cites are not found in the Bhandarkar edition of the text or in its critical apparatus, and only one can be found in Madhva’s commentary on the <title>Mahābhārata</title>, which Vādirāja invokes approvingly in the next passage. According to Vādirāja, it was Bhīṣma who lifted his arm and declared, “this is the truth, this is the truth, again, this is the truth.” Vādirāja continues:</p>
+	<quote xml:lang="san-Latn">
+	  <ab>yudhiṣṭhiraḥ —</ab>
+	  <lg>
+	    <l>pitāmaha mahāprajña sarvaśāstraviśārada</l>
+	    <l>kr̥ṣṇē dharmē ca mē bhaktir yathā syād dhi tathā vada</l>
+	  </lg>
+	  <ab>bhīṣmaḥ —</ab>
+	  <lg>
+	    <l>śr̥ṇu pāṇḍava vakṣyāmi haribhaktiṁ sudurlabhāṁ</l>
+	    <l>śrōtṝṇām sarvapāpāghnīṁ vadatāṁ ca yudhiṣṭhira</l>
+	  </lg>
+	  <lg>
+	    <l>satyaṁ satyaṁ punaḥ satyam uddhr̥tya bhujam ucyatē</l>
+	    <l>vēdaśāstrāt paraṁ nāsti na daivaṁ kēśavāt paraṁ</l>
+	  </lg>
+	  <lg>
+	    <l>satyaṁ vacmi hitaṁ vacmi sāraṁ vacmi punaḥ punaḥ</l>
+	    <l>asārē khalu saṁsārē sāraṁ yad viṣṇupūjanaṁ</l>
+	  </lg>
+	  <lg>
+	    <l>uddhr̥tya svabhujau bhīṣmaḥ śaśaṁsa kila saṁsadi</l>
+	    <l>ēvaṁ cēd vyāsadēvasya kō ’parādhō vicāraya</l>
+	  </lg>
+	  <lg>
+	    <l>atō madhvamunēr vākyē bhāratajñaśikhāmaṇēḥ</l>
+	    <l>uddhr̥taṁ bāhuyugulaṁ yathā bhavati vai tathā</l>
+	  </lg>
+	  <lg>
+	    <l>bhīṣmācāryakr̥tasyōgraśapathasyānuvāditaṁ</l>
+	    <l>yatra tad vai vyāsavacaḥ śr̥ṇu cēt tava yōjanā</l>
+
+	  </lg>
+	  <lg>
+	    <l>tattatkr̥tyānuvaktā ca śāstrācāryō ’khilasya ca</l>
+	    <l>aśēṣanigamōddhartā hartā duḥsamayasya ca</l>
+	  </lg>
+	  <lg>
+	    <l>manaḥsaṁkalpamātrēṇa kurupāṇḍavasēnayōḥ</l>
+	    <l>kartā satyavatīputrō vihartā munimaṇḍalē</l>
+	  </lg>
+	  <lg>
+	    <l>rājasūyasya cārcāyaḥ sarpayāgasya ca prabhuḥ</l>
+	    <l>kas tasya bhujayōś chēttā kiṁ vā tac chēdakāraṇam</l>
+	  </lg>
+	  <lg>
+	    <l>bhramamūlā tataḥ sarvā kathāsīd vyāsavairiṇām</l>
+	    <l>rajakadrōhatō bhikṣōḥ śūlārōpaṇavākyavat</l>
+	  </lg>
+	  <lg>
+	    <l>bhrāmakaṁ tasya śāstraṁ ca yatrētthaṁ samudīritam</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            <p>Yudhiṣṭhira said: “O grandfather, great intellect, expert in all the sciences, teach me in such a way that I should be devoted to Kr̥ṣṇa and <foreign>dharma</foreign>.” </p>
+            <p>Bhīṣma replied: “Listen up, Yudhiṣṭhira. I’ll tell you about devotion to Viṣṇu, which is very difficult to get in this world, a devotion that destroys the sins of both listeners and speakers alike. This is the truth! This is the truth! Again, this is the truth! I proclaim this lifting my arm. There is no scripture superior to the Vedas. There is no god superior to Viṣṇu. I am telling you the truth. I am describing what is beneficial for you. I am telling you again and again the essence of everything. The one essential thing in this essence-less existence is worshiping Viṣṇu.”</p>
+            <p>Lifting his arms in the air, Bhīṣma proclaimed this in the assembly of kings. If this is the way it was, why fault Vyāsa? Think about it! This is why Madhva — the crest-jewel among those who know the <title>Mahābhārata</title> — wrote in his commentary on the <title>Mahābhārata</title> that just as Bhīṣma said this while raising his arms, Vyāsa recounted it in the same way (i.e., arms raised). If only you would pay attention to Vyāsa’s speech, then your sense of the passage would be that it is a retelling of the great vow taken by Bhīṣma. Vyāsa is the narrator of this or that person’s deeds in the epic and is the teacher of the whole <title>Mahābhārata</title>. He is the rescuer of the Vedas and destroyer of incorrect codes of conduct. By simply setting his mind to it, Vyāsa — the son of Satyavatī and who relishes being in the assembly of sages — creates the Kurus and Pāṇḍavas (in the minds of the reader) and presides over the Rājasūya, Arcā, and Sarpayāga rites. Who could cut off Vyāsa’s arms, and what is the purpose of doing so? Thus, the whole story about severing Vyāsa’s hand is, at its root, erroneous and belongs to those who hate him. This is like calling for a sage to be impaled on a spike for the crimes of a washman. And where a text prescribes cutting off Vyāsa’s arm, it does so to deceive whoever reads it.</p>
+	  </quote>
+	  <bibl><ref target="#VP"><hi rend="italic">ibid.</hi></ref>, vv. 7b–19.</bibl>
+	</cit>
+	<p>After arguing that Vyāsa was simply relaying Bhīṣma’s sermon when he repeated the phrase, “this is the truth,” Vādirāja turns his attention to Śiva. If any god has been dismembered, Vādirāja claims, it is Śiva not Vyāsa. He cites a story from the <title xml:lang="san-Latn">Padma Purāṇa</title> in which Śiva, who had been distracted while having sex with Pārvatī, snubs Bhr̥gu who then chops Śiva to pieces out of anger. All that remains is Śiva’s penis mid-coitus, which is symbolized by the <foreign xml:lang="san-Latn">liṅga</foreign> that Vīraśaivas wear and worship. He writes: </p>
+
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>nārīsaṁgamamattō ’sau yasmān mām avamanyatē</l>
+	    <l>yōniliṅgasvarūpaṁ hi tasmād asya bhaviṣyati</l>
+	  </lg>
+	  <lg>
+	    <l>iti padmapurāṇōktaṁ bhr̥guśāpasya sāhasaṁ</l>
+	    <l>paśyantu pañcaśīrṣāṇi bhujānām ca catuṣṭayaṁ</l>
+	  </lg>
+	  <lg>
+	    <l>dvau pādāv adaraṁ vakṣaḥ kaṭī cōrū ca dhūrjaṭēḥ</l>
+	    <l>vichidya tatkṣaṇād ēva petuḥ kila mahītalē</l>
+	  </lg>
+	  <lg>
+	    <l>śiśnamātraṁ tūrvaritaṁ tac ca yōnyām nivēśitaṁ</l>
+	    <l>atra pramāṇaṁ śaivānāṁ kaṇṭhē kaṇṭhē vilaṁbinī</l>
+	  </lg>
+	  <lg>
+	    <l>liṅgamālaiva yā nityaṁ karē vāmē prapūjyatē</l>
+	    <l>ataḥ pādmōditakathā śaivānām api saṁmatā</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            <p>In the <title xml:lang="san-Latn">Padma Purāṇa</title>, the punishment of the curse of Bhr̥gu is relayed in the following way: 
+	    </p>
+            <p>“Śiva, who was out of his mind because he was having sex with his wife, disrespected me (Bhr̥gu). Because of this, Śiva’s body will be reduced to his penis in Pārvatī’s vagina. Let everyone see that after Śiva’s five heads, his four arms, his two feet, stomach, chest, hips, and thighs are chopped off, they fall to the ground in an instant. Only his penis, which had entered the vagina, remained.” </p>
+            <p>The proof for this is that around Śaivas’ throats dangle a necklace of Śiva’s penis, which they worship with the left hand. Thus, the Śaivas, too, agree with me on this story from the <title xml:lang="san-Latn">Padma Purāṇa</title>.</p>
+	  </quote>
+	  <bibl><ref target="#VP"><hi rend="italic">ibid.</hi></ref>, vv. 20–24.</bibl>
+	</cit>
+	<p>The salacious provocation gives way to reverential praise, where Vādirāja invokes the “knowledge-giving image of Vyāsa” as painted on walls by artists and described in <foreign xml:lang="san-Latn">mantra</foreign> texts: </p>
+
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>hastadvayavatī ramyajaṭāmaṇḍalamaṇḍitā</l>
+	    <l>padmapādā śyāmavarṇā lasatkr̥ṣṇājinōjjvalā</l>
+	  </lg>
+	  <lg>
+	    <l>mandasmitā candramukhī bimbōṣṭhī paṅkajēkṣaṇā</l>
+	    <l>kundakuḍmaladantābhā sāndrakuntalasaṅkulā</l>
+	  </lg>
+	  <lg>
+	    <l>kandarpakōṭisadr̥śī saundaryāṁbudhimandirā</l>
+	    <l>vandārūṇām abhayadā vandyamānāsurair naraiḥ</l>
+	  </lg>
+	  <lg>
+	    <l>adyāpi pūjyatē vyāsapratimā jñānadāyinī</l>
+	    <l>citrakair likhyate bhittau mantraśāstreṣu varṇyate</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            <p>Even today, the knowledge-giving image of Vyāsa is painted on walls by artists and is described in various <foreign xml:lang="can-Latn">mantra</foreign> texts — </p>
+            <ab>
+	      the image, which shows Vyāsa as having two hands;<lb/>
+	      as being lustrous with beautiful hair;<lb/>
+	      as having dark, lotus-like feet;<lb/>
+	      as luminous from the radiant antelope skin he sits on;<lb/>
+	      as smiling with happiness;<lb/>
+	      as having a moon-like face with lips like the bimba fruit;<lb/>
+	      as having lotus-like eyes and teeth like budding jasmine flowers;<lb/>
+	      as having thick hair;<lb/>
+	      the image of Vyāsa is like a crore of gods of love;<lb/>
+	      is the object of devotion for those who worship beauty;<lb/>
+	      it gives fearlessness to all those who prostrate;<lb/>
+	      and it is worshiped by both gods and humans alike.
+	    </ab>
+	  </quote>
+	  <bibl>Vādirāja, <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title> (<ref target="#VP">Rāmācārya 1911</ref>, vv. 25–28)</bibl>
+	</cit>
+	<p>Vādirāja concludes by writing: </p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>atō vyāsabhujacchēdam āśāsānasya durmatēḥ</l>
+	    <l>svadairvasarvagātrāṇāṁ chēdaḥ khēdakarō ’bhavat</l>
+	  </lg>
+	  <lg>
+	    <l>tadvr̥ddhim icchatō mūlachēdō ’bhūt tava durjana</l>
+	    <l>yadvyāsāya druhyatas te śivadrōhō ’bhavad dhruvaḥ</l>
+	  </lg>
+	  <lg>
+	    <l>vivādaparihārāya kathēyaṁ grathitā kila</l>
+	    <l>yatinā vādirājēna vyāsakaiṅkaryakāminā</l>
+	  </lg>
+	  <ab>iti śrīvādirājayatikr̥taṁ pāṣaṇḍakhaṇḍanaṁ vyāsastōtraṁ</ab>
+	</quote>
+	<cit>
+	  <quote>
+            <p>It follows, then, that the idiot who is longing to amputate Vyāsa’s arm is tormented instead by cutting off all of your own god’s limbs. Hey, loser! You wanted interest on your capital, but you ended up losing your capital instead. By violating Vyāsa, you ended up slandering Śiva. Desiring servitude to Vyāsa, I have composed this story to solve the controversy of his arm.</p>
+	  </quote>
+	  <bibl>Vādirāja, <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title> (<ref target="#VP">Rāmācārya 1911</ref>, vv. 29–31)</bibl>
+	</cit>
+	<p>Unlike other Vyāsa <foreign xml:lang="san-Latn">stōtra</foreign>s, <title>Praising Vyāsa</title> combines perfunctory textual arguments with declarations about Vyāsa’s painted image not to construct a new image of Vyāsa in the minds of readers, but to restore an image under threat. The textual and visual arguments about Vyāsa’s body amount to two intersecting axes for managing the volatility of Vyāsa’s representation. The close connection between image and text suggests that the problem of cutting Vyāsa’s arm was not simply an act of iconoclasm, but also a form of textoclasm in which the <title>Mahābhārata</title> and its interpretive methods were wounded alongside Vyāsa’s body. </p>
+      </div>
+
+      <div>
+	<head>Piety and Paralysis at Śiva’s Doorstep</head>
+	<p>I want to begin a provisional genealogy of <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> by looking at an episode in the <title xml:lang="san-Latn">Skanda Purāṇa</title>, in which Vyāsa, who is depicted as a zealous devotee of Viṣṇu, was paralyzed and convinced of Śiva’s supremacy. That Vyāsa was the target of a type of forced conversion is unsurprising. Peter Bisschop has recently argued that the <title xml:lang="san-Latn">Skanda Purāṇa</title> emerged in part as a Śaiva rejoinder to the Vaiṣṇavization of the <title>Mahābhārata</title>, and so any reappropriation of the epic would inevitably involve Vyāsa.<note place="foot" xml:id="ftn44" n="36"><p>In Bisschop’s words, the <title xml:lang="san-Latn">Skanda Purāṇa</title> is where Vyāsa became “a dedicated Pāśupata adept” (<ref target="#Bisschop2021">Bisschop 2021</ref>: 49).</p></note> In an episode in the <title xml:lang="san-Latn">Kāśīkhaṇḍa</title>, Vyāsa is depicted as a haughty Vaiṣṇava who wandered around haranguing sages about the glories of Hari. Once in the Naimiṣa Forest, Vyāsa found himself standing before thousands of ash-smeared Śaivas. He lifted a finger and indulged in a sanctimonious sermon: </p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>parinirmathya vāgjālaṁ suniścityāsakr̥d bahu</l>
+	    <l>idam ēkaṁ parijñātaṁ sēvyaḥ sarvēśvarō hariḥ</l>
+	  </lg>
+	  <lg>
+	    <l>vēdē rāmāyaṇē caiva purāṇēṣu ca bhāratē</l>
+	    <l>ādimadhyāvasānēṣu harir ēkō ’tra nāparaḥ</l>
+	  </lg>
+	  <lg>
+	    <l>satyaṁ satyaṁ trisatyaṁ punaḥ satyaṁ na mr̥ṣā punaḥ</l>
+	    <l>na vēdād aparaṁ śāstraṁ na dēvō ’cyutataḥ paraḥ</l>
+	  </lg>
+	  <lg>
+	    <l>lakṣmīśaḥ sarvadō ’nānyo lakṣṁīśō ’py apavargadaḥ</l>
+	    <l>ēka ēva hi lakṣṁīśas tatō ’dhyēyō na cāparaḥ</l>
+	  </lg>
+	  <lg>
+	    <l>bhuktēr muktēr ihānyatra nānyō dātā janārdanāt</l>
+	    <l>tasmāc caturbhujō nityaṁ sēvanīyaḥ sukhēpsubhiḥ</l>
+	  </lg>
+	  <lg>
+	    <l>vihāya kēśavād anyaṁ yē sēvantē ’lpamēdhasaḥ</l>
+	    <l>saṁsāracakrē gahane tē viśanti punaḥ punaḥ</l>
+	  </lg>
+	  <lg>
+	    <l>ēka ēva hi sarvēśō hr̥ṣīkēśaḥ parāt paraḥ</l>
+	    <l>taṁ sēvamānaḥ satataṁ sēvyas trijagatāṁ bhavēt</l>
+	  </lg>
+	  <lg>
+	    <l>ēkō dharmapradō viṣṇus tv ēkō bahvarthadō hariḥ</l>
+	    <l>ēkaḥ kāmapradaś cakrī tv ēkō mōkṣapradō ’cyutaḥ</l>
+	  </lg>
+	  <lg>
+	    <l>śārṅgiṇaṁ yē parityajya dēvam anyam upāsatē</l>
+	    <l>tē sadbhiś ca bahiṣkāryā vēdahīnā yathā dvijāḥ</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            <p>After churning a vast ocean of words, and after becoming perfectly sure of their meaning time and again, I’ve come to know this one thing — Hari is the one who should be worshiped. Hari is the lord of all. From beginning to end, the Vedas, <title >Rāmāyaṇa</title>, Purāṇas, and <title>Mahābhārata</title> convey only Hari and no one else. This is the truth! This is the truth! Again, this is the truth! A triple oath. It’s not wrong to say that there is no scripture greater than the Vedas, no god greater than Hari. No one but the Lord of Lakṣmī is the giver of all, and no one but Lakṣmī is the giver of heaven. Because the Lord of Lakṣmī is the one and only, it follows that he should be worshiped and no one else. No one but Janārdana gives enjoyment in this world and liberation hereafter. Thus, those who want happiness should always serve Viṣṇu. Having abandoned him, the stupid people who worship another god consign themselves again and again to the mysterious cycle of <foreign>saṁsāra</foreign>. Indeed, there is only one lord of all. Hr̥ṣīkēśa is the best of the best. Whoever attends to him would themselves be the object of constant worship of the three worlds. Only Viṣṇu is the giver of <foreign>dharma</foreign>. Only Hari is the giver of riches. Only the Discus-Bearer is the giver of pleasure. And only Acyuta is the giver of liberation. Those who forsake the Archer and worship another god should be abandoned by the virtuous, like a Dvija who has lost the Vedas.</p>
+	  </quote>
+	  <bibl><title xml:lang="san-Latn">Skāṇḍapurāṇīyakāśīkhaṇḍa</title> (<ref target="#Kasikhanda1908">Śrēṣṭhin 1908</ref>, vv. 95.11–19, fol. 351v)</bibl>
+	</cit>
+
+	<p>The Śaiva sages of the Naimiṣa Forest revered Vyāsa for arranging the Vedas and authoring the <title>Mahābhārata</title>, but his homily made them agitated. The sages spoke up: “The people here don’t trust what you have just argued with your finger raised confidently. But we would trust you if you proclaim it in front of Śiva in Benares.”<note place="foot" xml:id="ftn46" n="37"><p><title xml:lang="san-Latn">Skāṇḍapurāṇīyakāśīkhaṇḍa</title> (<ref target="#Kasikhanda1908">Śrēṣṭhin 1908</ref>, vv. 95.23–25, foll. 351v–352r):</p><quote xml:lang="san-Latn"><lg><l>bhavatā yat pratijñātaṁ niścityōtkṣipya tarjanīm</l><l>asmin māṇavakās tatra pariśraddadhatē na hi</l><l>pratijñātasya vacasas tava śraddhā bhavēt tadā</l></lg><lg><l>yadānandavanē śaṁbhōḥ pratijānāsi vai vacaḥ</l></lg></quote></note> Annoyed, Vyāsa set off for Śiva’s city with his entourage. Their time in Benares began wondrously: Vyāsa bathed at the city’s ghats and performed rites for Viṣṇu. Conch-calls announced his presence. Devotees adorned him with fresh garlands of Tulasi. And he sang the lord’s many names in the streets. It was in the buoyant din of devotion that Vyāsa and his followers danced their way to Śiva’s doorstep at the Viśveśa Temple. They sang some more, and when the music stopped, Vyāsa stood there among his students. “He lifted his right arm,” the passage reads, “and he loudly recited the Naimiṣa sermon again, this time as if it were song — ‘After churning a vast ocean of words, and after becoming perfectly sure of their meaning time and again, I’ve come to know this one thing — Hari is the one who should be worshiped, Hari is the lord of all.’”<note place="foot" xml:id="ftn47" n="38"><p><title xml:lang="san-Latn">Skāṇḍapurāṇīyakāśīkhaṇḍa</title> (<ref target="#Kasikhanda1908">Śrēṣṭhin 1908</ref> v. 95.44, fol. 352r):</p><quote xml:lang="san-Latn"><lg><l>punar ūrdhvaṁ bhujaṁ kr̥tvā dakṣiṇaṁ śiṣyamadhyagaḥ</l><l>punaḥ papāṭha tān ēva ślōkān gāyann ivōccakaiḥ</l></lg><lg><l>parinirmathya vāgjalāṁ suniścityāsakr̥d bahu</l><l>idam ēkaṁ parijñātaṁ sēvyaḥ sarvēśvarō hariḥ</l></lg></quote></note></p>
+
+	<figure>
+	  <head>Lithograph of Vyāsa lifting his right arm while proclaiming to Śiva that Viṣṇu is the supreme lord. Frontispiece of the 74th chapter of a Marathi translation of the Kāśīkhaṇḍa (1881).</head>
+	  <graphic url="peterson-desecrating-the-divine/figure-02.webp"/>
+	  <figDesc>Lithograph of Vyāsa lifting his right arm while proclaiming to Śiva that Viṣṇu is the supreme lord. Frontispiece of the 74th chapter of a Marathi translation of the Kāśīkhaṇḍa (1881).</figDesc>
+	</figure>
+
+	<p>Vyāsa the pious provocateur became a chapter frontispiece for a Marathi translation of the <title xml:lang="san-Latn">Kāśīkhaṇḍa</title> published in 1881. The lithograph shows Vyāsa standing in front of Śiva and Pārvatī, right arm lifted as he pronounces Viṣṇu the lord of all. In the Marathi edition, Gayāsura is the one who points his finger and curses Vyāsa. The more popular telling has Śiva’s attendee Nandin doing the cursing. In both, Vyāsa’s arm became stiff and his voice faltered mid-sermon. For all the dancing and singing, Vyāsa could never quite summon Viṣṇu. But in the silent paralysis of Nandin’s curse, Viṣṇu finally appeared. Rather than praise Vyāsa for his devotion, however, Viṣṇu admonished him. “O Vyāsa! You’ve committed a serious sin. Even I’m terrified by your offense.”<note place="foot" xml:id="ftn48" n="39"><p><title xml:lang="san-Latn">Skāṇḍapurāṇīyakāśīkhaṇḍa</title> (1908), vss. 95.48b–49a, fol. 352v:</p><quote xml:lang="san-Latn"><lg><l>aparādhaṁ mahac cātra bhavatā vyāsa niścitam</l><l>tavaitad aparādhēna bhītir mē ’pi mahattarā</l></lg></quote></note> Viṣṇu explains: </p>
+	<quote xml:lang="san-Latn">
+	  <lg>
+	    <l>ēka ēva hi viśvēśō dvitīyō nāsti kaścana</l>
+	    <l>tatprasādād ahaṁ cakrī lakṣmīśas tatprabhāvataḥ</l>
+	    <l>trailōkyarakṣāsāmārthyaṁ dattaṁ tēnaiva śambhunā</l>
+	    <l>tadbhaktyā paramaiśvaryaṁ mayā labdhaṁ varāt tataḥ</l>
+	    <l>idānīm stuhi śaṁbhuṁ yadi mē śubham icchasi</l>
+	  </lg>
+	</quote>
+	<cit>
+	  <quote>
+            <p>Śiva is the one true lord of the universe. There’s no second. His grace makes me the discus bearer, his power makes me Lakṣmī’s husband. It’s Śambhu who gives me the ability to protect the three worlds. It’s only by devotion to Śiva that he granted me divine status as a boon. If you desire my welfare, praise Śambhu.</p>
+	  </quote>
+	  <bibl><title xml:lang="san-Latn">Skāṇḍapurāṇīyakāśīkhaṇḍa</title> (<ref target="#Kasikhanda1908">Śrēṣṭhin 1908</ref>, vv. 95.49b–51, fol. 352v)</bibl>
+	</cit>
+
+	<p>Still speechless, Vyāsa gestured for Viṣṇu to restore his speech. Viṣṇu obliged, and Vyāsa (arm still paralyzed) praised Śiva as the ultimate lord with eight verses (a <title xml:lang="san-Latn">Vyāsāṣṭaka</title> of a different kind).</p>
+
+	<p>Paralysis was only the beginning of Vyāsa’s difficulties in Kāśī. Hunger, desperation, and, in some tellings, exile would await him after Nandin lifted the curse.<note place="foot" xml:id="ftn50" n="40"><p>Skanda goes on to narrate the famous episode of Vyāsa’s hunger in Kāśī. The fourteenth-century Vīraśaiva and Telugu poet Śrīkaṇṭha used this episode in his <title xml:lang="tel-Latn">Bhīmēśvarakhaṇḍamu</title> to foreground Vyāsa’s exile from Kāśī and his arrival at Dakṣarāma. See <ref target="#Rao2012">Narayana Rao and Shulman</ref> (<ref target="#Rao2012">2012</ref>: 76–81).</p></note> Yet of all Vyāsa’s travails, his paralyzed arm proved an especially potent subject of poetic focus. The Telugu poet Śrīnātha elaborated on this episode in his <title xml:lang="tel-Latn">Kāśīkhaṇḍamu</title>, and it appears to have migrated out of the Purāṇas altogether and circulated as a standalone work.<note place="foot" xml:id="ftn51" n="41"><p>Śrīnātha, <title xml:lang="tel-Latn">Kāśīkhaṇḍamu</title> 7.103–110 in <ref target="#Rao1990">Narayana Rao and Roghair</ref> (<ref target="#Rao1990">1990</ref>: 281, n. 29).</p></note> For instance, a short manuscript at the Rajasthan Oriental Research Institute in Jodhpur titled <title>Praising the Paralysis of Vyāsa’s Arm</title> (<title xml:lang="san-Latn">Vyāsabhujastambhanastōtra</title>) recounts Vyāsa’s paralysis in Kāśī in the form of praise poem.<note place="foot" xml:id="ftn52" n="42"><p><title xml:lang="san-Latn">Vyāsabhujastambhastōtra</title> (1984), p. 266.</p></note></p>
+
+	<figure>
+	  <head>Leaf from the <title xml:lang="san-Latn">Vyāsabhujastambhanastōtra</title>. Rajasthan Oriental Research Institute, ms. no. 2392. The inscription in green ink reads <foreign xml:lang="san-Latn">śrīskandapurāṇē kāśīkhaṇḍē vyāsabhujastaṁbhana(ṁ) nāma stōtram</foreign>.</head>
+	  <graphic url="peterson-desecrating-the-divine/figure-03.webp"/>
+	  <figDesc>Leaf from the <title xml:lang="san-Latn">Vyāsabhujastambhanastōtra</title>. Rajasthan Oriental Research Institute, ms. no. 2392. The inscription in green ink reads <foreign xml:lang="san-Latn">śrīskandapurāṇē kāśīkhaṇḍē vyāsabhujastaṁbhana(ṁ) nāma stōtram</foreign>.</figDesc>
+	</figure>
+
+	<p>In both the <title xml:lang="san-Latn">Skanda Purāṇa</title> and <title>Praising Vyāsa</title>, Vyāsa lifts his arm and proclaims his triple oath about Viṣṇu’s supremacy — “This is the truth! This is the truth! Again, this is the truth!” In the <title xml:lang="san-Latn">Skanda Purāṇa</title>, Vyāsa’s declaration is his own, whereas in <title>Praising Vyāsa</title> it is Bhīṣma’s. Vādirāja does not mention what happens to Vyāsa’s voice, but the <title xml:lang="san-Latn">Skanda Purāṇa</title> positions aphonia alongside monoplegia as connected afflictions. Vyāsa’s arm is simply an extension of a pious speech act, and its uplifted position a gesture of steadfast devotion. It is the arm’s connection to Vyāsa’s Viṣṇu worship that transformed it into a location for, and an eventual symbol of, the rejection of the belief of Viṣṇu's supremacy over Śiva.</p>
+
+	<p>The arm as a site of divine intervention is a well-worn trope. Vyāsa’s paralysis in Kāśī mirrors an episode in the Drōṇaparvan of the <title>Mahābhārata</title>, where the infant Śiva paralyzed Indra’s uplifted arm just as Indra was about to kill him with a lightning bolt.<note place="foot" xml:id="ftn53" n="43"><p><title>Mahābhārata</title>, <title>Drōṇaparvan</title>, v. 7.173.60.</p></note> The <title xml:lang="san-Latn">Śivadharmōttara</title> (ca. seventh century <abbr>CE</abbr>), for instance, describes a variety of divine afflictions: the Sun has leprosy, Varuṇa has dropsy, Pūṣan is missing teeth, Soma has consumption, Dakṣa Prajāpati has a fever, and Indra has a paralyzed arm (<foreign xml:lang="san-Latn">bhujastambha</foreign>). The <title xml:lang="san-Latn">Śivadharmōttara</title> and the later Tamil <title xml:lang="tam-Latn">Civatarumōttaram</title> (ca. sixteenth century <abbr>CE</abbr>) do not specify Śiva’s role in Indra’s paralysis, but the <title xml:lang="tam-Latn">Taṇikaipurāṇam</title> (ca. eighteenth century <abbr>CE</abbr>) clarifies that it was indeed Śiva who brought on these afflictions.<note place="foot" xml:id="ftn54" n="44"><p>See <title xml:lang="san-Latn">Śivadharmōttara</title> (<ref target="#Sivadharmottara">2019</ref>), vv. 8.224-25. Thanks are due to Jesse Pruitt for bringing these verses to my attention.</p></note></p>
+
+	<p>The paralysis of Indra’s arm in the <title>Mahābhārata</title> and <title xml:lang="san-Latn">Śivadharmōttara</title> may have provided a template for the story of Vyāsa’s paralysis in Kāśī. Amputation is medically distinct from paralysis, but their narrative forms are distinguished only by degrees of permanence. The severing of Vyāsa’s arm is different from the paralysis of Vyāsa’s arm because it is a permanent intervention in a pious gesture instead of a temporary one. Amputation is perhaps best understood as an inevitable amplification of the kind of bodily interventions Śiva had long been depicted as exercising over other gods. The drift from paralysis to amputation is difficult to track, but it is evident in faint traces in Vīraśaiva writings from the sixteenth and seventeenth centuries, where Purāṇic accounts of Vyāsa’s paralysis became a reference point for prescribed interventions against Śiva’s naysayers and critics.</p>
+
+	<p>The ninth chapter of the <title xml:lang="san-Latn">Siddhāntaśikhāmaṇi</title> of Śivayōgin (ca. mid-thirteenth century <abbr>CE</abbr>), for instance, enumerates a pious Śaiva’s ideal conduct and their salvific rewards.<note place="foot" xml:id="ftn55" n="45"><p>Here I take M. R. Sakhare’s dates. See <ref target="#Sakhare1942">Sakhare</ref> (<ref target="#Sakhare1942">1942</ref>: 370).</p></note> Many dictates concern matters of conduct, almsgiving, and ritual purity. But a handful of others promote a punitive strategy against Śiva’s enemy’s — “one should be ready to martyr themselves to protect a <foreign xml:lang="san-Latn">liṅga</foreign> and its devotees from destruction,” reads one verse.<note place="foot" xml:id="ftn56" n="46"><p>Śivayōgin, <title xml:lang="san-Latn">Siddhāntaśikhāmaṇi</title> (<ref target="#Sivayogin2015">Śivakumāra 2015</ref>, v. 9.34–35).</p></note> Another reads: </p>
+
+	<quote>
+          <p>If you see someone criticizing Śiva, then you should hurt them (<foreign xml:lang="san-Latn">ghātayēt</foreign>), or (in the least) you should curse them (<foreign xml:lang="san-Latn">śapēt</foreign>). If you can’t do either, then you should turn from that place and go away.<note place="foot" xml:id="ftn57" n="47"><p>Śivayōgin, <title xml:lang="san-Latn">Siddhāntaśikhāmaṇi</title> (<ref target="#Sivayogin2015">Śivakumāra 2015</ref>, v. 9.36). The causative imperative verb <foreign xml:lang="san-Latn">ghātayēt</foreign>, from the root <foreign xml:lang="san-Latn">han</foreign> in the sense of violence (<foreign xml:lang="san-Latn">hiṁsā</foreign>) or going (<foreign xml:lang="san-Latn">gati</foreign>), is perhaps intentionally underdefined.</p></note> </p>
+	</quote>
+
+	<p>For Maritōṇṭadārya, a commentator who lived between the fifteenth and eighteenth centuries, “to hurt” Śiva’s enemies was an insufficiently harsh reading of the verb <foreign xml:lang="san-Latn">ghātayēt</foreign>.<note place="foot" xml:id="ftn58" n="48"><p><foreign xml:lang="kan-Latn">Tōṇṭada</foreign> in old Kannada means “garden.” Tiziana <ref target="#Ripepi1997">Ripepi</ref> (<ref target="#Ripepi1997">1997</ref>) has argued that as a name or title, Tōṇṭada only came into circulation after the Vijayanagara ruler Virūpākṣa, whose guru was given the title <foreign xml:lang="kan-Latn">Tōṇṭada Siddhaleṅgēśvara</foreign>. Ripepi disagrees with Jan Gonda, who dates Maritōṇṭadārya to the fifteenth century. She suggests instead that he lived in the eighteenth century.</p></note> Śiva’s enemies should be cursed or killed, and to support this, Maritōṇṭadārya classifies the verse under the heading “The Conduct of Vīrabhadra and Nandin” (<foreign xml:lang="kan-Latn">vīrabhadrācāranandikēśvarācāra</foreign>).<note place="foot" xml:id="ftn59" n="49"><p>In some recensions the heading reads, “The Conduct of Vīrabhadra and Basavēśvara” (<foreign xml:lang="kan-Latn">vīrabhadrācārabasavēśvarācāra</foreign>), which pairs with the mandate to turn away and leave if one is not able to curse or beat, which is an homage to a story of Basava leaving Kalyāṇa after the city was overrun and looted by marauding anti-Śaivas.</p></note> The reference is clear: In the eighty-ninth chapter of the <title xml:lang="san-Latn">Skanda Purāṇa</title>, just a few chapters before Vyāsa’s paralysis, Dakṣa hosted an enormous sacrifice but did not invite Śiva. Worried that Dakṣa’s irreverence will spread to others, Śiva commanded Vīrabhadra to destroy the sacrificial grounds. The result was a bloodbath. Vīrabhadra and his gang destroyed the sacrificial pavilion. They dug up the altars, drank the oblations, crushed the utensils, and devoured the sacrificial animals. Drunk on power, they massacred those who attempted to flee — they castrated Vāyu and cut off Sarasvatī’s nose. Aditi lost his lips, Aryaman his arms, Agni his tongue. Viṣṇu — the source of Dakṣa’s strength and the recipient of the sacrifice — was nearly killed, but a voice from the heavens intervened just as Vīrabhadra was about to sink a trident into his chest. Vīrabhadra redirected his rage to Dakṣa, whom he swiftly bludgeoned to death with bare knuckles. Dakṣa’s demise was hardly the end of the butchery. Those who had not yet fled were methodically dismembered and hung from the sacrificial post.</p>
+
+	<p>Maritōṇṭadārya seems to have had Vīrabhadra’s murderous rage in mind when glossing the verb <foreign xml:lang="san-Latn">ghātayēt</foreign> as “the conduct of Vīrabhadra,” that is, “mutilating and murdering Śiva’s enemies.” Perhaps Maritōṇṭadārya found the end of the chapter, where Śiva, dismayed by Vīrabhadra’s savagery, brought his victims back to life, an unsatisfactory coda to apostasy, for he never recommends taking pity on those who speak ill against Śiva or his followers. Or perhaps Śiva’s mercy for those who were righteously slain was precisely what made violence palatable, even if only notionally. Regardless, Maritōṇṭadārya linked the second verbal action — “should curse” (<foreign xml:lang="san-Latn">śapēt</foreign>) — to the story of Nandin and Vyāsa’s arm just a few chapters later, thus presenting butchery and bodily maiming as a logical concatenation of cursing.<note place="foot" xml:id="ftn60" n="50"><p>For Śivayōgin, cursing and beating are complimentary responses to critics, but there’s no reason to suspect that he had the <title xml:lang="san-Latn">Skanda Purāṇa</title> in mind when writing the verse.</p></note></p>
+
+	<p>Like most scriptural dictates, Maritōṇṭadārya’s prescriptions mapped unevenly onto life on the ground. Critics of Vīraśaivism like Vādirāja Tīrtha — who was historically and regionally proximate to Maritōṇṭadārya — were, so far as we know, never cursed, beaten, or tortured for their dissenting views, despite having brushed shoulders with south India’s most powerful Vīraśaiva warlords. In fact, the opposite was true. The Vīraśaiva kings at Keḷadi and Ikkeri, erstwhile vassals of Vijayanagara who controlled what is now western Karnataka, Goa, and the Kanara coasts, lavished Vādirāja and other putative critics of Vīraśaivism, including Jains and Muslims, with royal largesse.<note place="foot" xml:id="ftn61" n="51"><p rend="Footnote">See <ref target="#Peterson2023">my essay</ref> (<ref target="#Peterson2023">2023</ref>) on Vādirāja’s <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍana</title> — an anti-Jain essay — for more on these patronage connections.</p></note> Perhaps, then, cutting Vyāsa’s arm was realpolitik, a calculated displacement of a perilous, even impossible, command onto a symbolically potent figure. Why waste energy on an ordinary slanderer when Vyāsa, “the paragon of Vedic Brahmanical <foreign xml:lang="kan-Latn">r̥ṣi</foreign>-hood,” to borrow Christopher Minkowski’s words, is available instead?<note place="foot" xml:id="ftn62" n="52"><p><ref target="#Minkowski1989">Minkowski</ref> (<ref target="#Minkowski1989">1989</ref>: 420).</p></note> </p>
+      </div>
+
+      <div>
+	<head>Conclusion: Contesting <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> in Colonial Courts</head>
+	<p>Vādirāja, Śivayōgin, and Maritōṇṭadārya (to say nothing of Purāṇas and epics) leave a crucial question unanswered: how was <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> practiced in the late sixteenth and early seventeenth centuries? Vādirāja argues against the practice on textual grounds. Its proponents have confused or exploited the labyrinthine dialogues and frame stories of the <title>Mahābhārata</title> and pilloried Vyāsa for a declaration that was not his. By the early nineteenth century, however, when the Vīraśaivas of Kolhapur were preparing Vyāsa’s arm for display in the city’s streets, <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> had spilled well beyond the written page. What follows is hardly an exhaustive account of this transition, but I want to conclude by way of a provisional sketch of <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign>’s juridical life in the nineteenth and twentieth centuries.</p>
+
+	<p>Vādirāja does not treat <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> as a processional practice, but epigraphic evidence suggests that Vīraśaivas may have incorporated Vyāsa’s arm into a fixed pillar or mobile pole adorned with a flag of Nandin and other decorations (aptly called the <title xml:lang="kan-Latn">Nandikamba</title>) sometime before the nineteenth century. In the early 1870s, Colonel John Mackenzie made a sketch of a stone tablet in Mysore that depicts a man and woman at the base of a fixed pillar mounted with a large arm. The woman touches the pillar while the man next to her brandishes a scythe or sword. Mackenzie labeled the image <q xml:lang="kan-Latn">Vyāsana tōḷu-kattu</q> — “cutting off Vyāsa’s arm.” </p>
+
+	<figure>
+	  <head>Col. J. S. F. Mackenzie’s sketch of a stone tablet depicting the Nandikamba, Vyāsantōḷ, and a pious Vīraśaiva couple. After much searching, I was never able to locate the tablet or an estampage. See <ref target="#Mackenzie1873">Mackenzie</ref> (<ref target="#Mackenzie1873">1873</ref>: 49).</head>
+	  <graphic width="0.65%" url="peterson-desecrating-the-divine/figure-04.webp"/>
+	</figure>
+
+	<p>The pillar on the tablet appears to be fixed, perhaps even made of stone, but it nevertheless resembles the kind of objects that were vigorously litigated in the nineteenth and twentieth centuries. Processional <title xml:lang="kan-Latn">Nandikamba</title>s were made of bamboo and festooned with streamers, bells, brass globes, and, before it was outlawed, an effigy of Vyāsa’s arm and Nandin’s horn (<foreign xml:lang="kan-Latn">nandikōḍu</foreign>). Even today, Vīraśaivas parade an armless <title xml:lang="kan-Latn">Nandikamba</title> through the streets of villages and towns in northern Karnataka and southern Maharashtra.</p>
+
+	<p>A comprehensive study of <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign>’s path through District and High Courts warrants a separate study and is beyond the scope of this article. What I present here is selective and sketchy, consisting mostly of cases presented before the Bombay High Court in the early and mid-twentieth century. A richer story will surely emerge from a close study of court archives, judge’s notes, case records, private collections, and local newspapers. But even a cursory examination of the available legal material shows how the story of <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> in colonial India is really a story about the definition of religion and its place in public life.</p>
+	<p>It is unclear precisely when, and through what legal pathways, <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> became a subject of litigation, but records attest to district-level courts in the Deccan hearing civil cases in 1881 and probably earlier.<note place="foot" xml:id="ftn63" n="53"><p>See <ref target="#Oppert1893">Oppert</ref> (<ref target="#Oppert1893">1893</ref>: 58 n. 57), where Oppert mentions a decision at the Cittur Jilla court in 1881.</p></note> Gazetteers and other records suggest that <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> was unevenly practiced throughout the Deccan and that no discernible consensus had emerged about its legal standing before the first decades of the twentieth century, after which a series of high-profile cases wound their way to the Bombay High Court and tested settled decisions about religious processions and more technical matters of procedure. </p>
+
+	<p>In July of 1910, Lingayats in Athani, a small town in the Bijapur District of the erstwhile Bombay Presidency, petitioned the Collector of Belgaum to approve a <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> procession planned for September 20. Like the Kolhapur procession a year later, they hoped to commemorate the arrival of a prominent monastic leader. Similar events on the Kanara coast had been approved despite resistance from local Brahmans. The Vīraśaivas of Athani informed Collector B. A. Brenson of these earlier processions. After a month or so of deliberation, Brenson approved the Lingayats’ request, albeit with clear instructions for where and how the procession should take place. Brenson wrote: </p>
+	<cit>
+	  <quote>
+	    <p>I therefore allow the Lingayats of Athani to hold a <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> procession after the termination of the Ganesh festival. The procession will be allowed to take place in Athani town on the 20th September 1910, between the hours of 8 and 10 AM. It will enter the town at the Siddheshwar Gate, pass through the Aditwar Peth, the road connecting the latter with the Buddhwar Peth, and then down the Buddhwar Peth to the Gachin Math, where it will terminate at 10 AM. In this quarter of the town the residents are nearly all Lingayats. The Police Sub-Inspector will conduct the procession with a sufficient force to prevent any possible disturbance.</p>
+	  </quote>
+	  <bibl><ref target="#Pandurang"><title>Pandurang Shidrao v. Revapa Rudrapa Mohajan</title></ref> (<ref target="#Pandurang">1910</ref>).</bibl>
+	</cit>
+
+	<p>Pandurang Shidrao Gumaste Patil and other “Brahmans and non-Lingayats” appealed Brenson’s decision to M. C. Gibbs, Commissioner of the Southern Division. In a fragile victory for the Lingayats, Gibb’s declared on the 15th of September — four days before they were due to take to the streets — that Brenson’s decision was sound and that <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> could take place. In a bid to halt the procession, Patil and the others filed an ex-parte application to the Bombay High Court. The <title>Times of India</title> reported that the justices, aware of scheduled police presence and the potential for unrest, were “reluctant to grant an order at the eleventh hour on an ex-parte application.” Yet the court succumbed to the situation and halted the procession until the “matter could be decided on merits.”<note place="foot" xml:id="ftn65" n="54"><p><ref target="#ToI1910a"><title>Times of India</title></ref> (<ref target="#ToI1910a">October 1910</ref>).</p></note> The Lingayats of Athani would never march.</p>
+
+	<p>While reporting on the case, the <title>Times of India</title> explained <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> to its educated, Anglophone readership: </p>
+
+	<cit>
+	  <quote>
+            <p>The word “Vyasantol” literally meant the “arm of Vyas.” It was carried in procession on the top of a long pole in pursuance of a legend that Vyas, the composer of the Mahabharat epic and the other Hindu Puranic Shastras, was a great devotee of Vishnu in preference to Shiva. The arm which he had raised in devotion to Vishnu was therefore lopped off by a devotee of Shiva. In commemoration of this episode the arm was carried in public procession by the Lingayats who proposed themselves to be the ardent devotees of Shiva. The Brahman applicants on the other hand averred that this processional conveyance of the lopped limb of a sage man and sacred person like the muni Vyas, whom they held in considerable veneration was insulting, offensive, and revolting to their religious sentiments.</p>
+	  </quote>
+	  <bibl><ref target="#ToI1910a">Times of India</ref> (<ref target="#ToI1910">October 1910</ref>)</bibl>
+	</cit>
+
+	<p>Despite being “revolting” to the “religious sentiments” of some, <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> was never litigated on the basis of blasphemy law. The case before the Court concerned the right of religious procession and the authority of a District Magistrate to approve and oversee it. On <!--Friday,!--> October 14, the Bombay High Court ruled against Patil and the Brahman applicants, citing earlier cases that protected religious procession in public streets, including a judgment the court had issued just months earlier about a Lingayat parade in Deshnur (a controversy involving an automobile).<note place="foot" xml:id="ftn67" n="55"><p>The cases are <ref target="#Sadagopachariar"><title>Sadagopachariar v. A. Rama Rao</title></ref> (<ref target="#Sadagopachariar">1902</ref>), which was followed in <ref target="#Baslingappa"><title>Baslingappa Parappa Chedachal v. Dharmappa Basappa Chedachal</title></ref> (<ref target="#Baslingappa">1910</ref>).</p></note> </p>
+
+	<p>Newspapers played an important role both in bringing <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> to a wider readership and in amplifying misinformation.<note place="foot" xml:id="ftn68" n="56"><p>See for instance a piece titled “Behind the Indian Veil: Faiths and Feuds” (<ref target="#ToI1910b"><title>Times of India</title>, November 1910</ref>). The anonymous author named “an Indian” suggests that it was Virabhadra who cut off Vyāsa’s arm.</p></note> A year after the Athani court case, the <title>Times of India</title> reported from so-called “vernacular sources” about a marauding band of Lingayats in Bagalkot, a small town in the Bijapur District. In addition to parading Vyāsa’s arm through the town’s streets, the <title>Times</title> reported, the Lingayats “defiled” the town’s Viṭṭhala temple, carried their guru’s palanquin “cross-wise” through the streets (an honor evidently restricted to Brahmans), and “committed on the Brahman residents numerous and unprovoked assaults.” The story was not true. The <title>Times</title> ran a brief press report on November 9 titled “Disturbance at Bagalkot” clarifying that Vyāsa’s arm had in fact not been paraded, that Lingayats had every right to parade their guru “cross-wise,” and that “the few individuals who did receive injuries seem to have provoked them (the Lingayats) by wantonly meddling with a lawful procession.”<note place="foot" xml:id="ftn69" n="57"><p><ref target="#ToI1911">Times of India</ref> (<ref target="#ToI1911">1911</ref>).</p></note></p>
+
+	<p>After the Bombay High Court dismissed the Athani Brahman’s ex parte application in October 1910 and sent <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> back to lower civil courts, an atmosphere of legal ambiguity seems to have provided an opening for Vīraśaivas elsewhere in the Deccan to hold their own <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> processions. Rajarshi Shahu — the Maharaj of Kolhapur who approved the parade in May 1911 and promised his marching band to boot — cited the Athani case as a reason for allowing the procession to proceed. But this favorable ambiguity would be short lived. On May 6, 191, just a week before the procession was due to take place in Kolhapur, Government Resolution no. 2658 was passed, which not only banned <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> in Athani, but in the District of Belgaum “for all time.”<note place="foot" xml:id="ftn70" n="58"><p><ref target="#ToI1916">Times of India</ref> (<ref target="#ToI1916">1916</ref>).</p></note> The Lingayats of Athani swiftly sued. </p>
+
+	<p>A lengthy appeals process in lower courts meant that the Bombay High Court would not decide another case on <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> until 1916. <ref target="#Dundappa"><title>Dundappa Mallappa Sigandhi and Others v. Secretary of State for India and Others</title></ref> would prove a more complex and consequential case than the ex parte application of 1910. Having done considerable research, the judges (one of whom presided over the 1910 case) wrote that <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> had been the subject of acrimonious litigation and civil conflict for more than a century and that a dispute about the right to parade Vyāsa’s arm had “always existed.”<note place="foot" xml:id="ftn71" n="59"><p><ref target="#Dundappa"><title>Dundappa Mallappa Sigandhi and Others v. Secretary of State for India and Others</title></ref> (<ref target="#Dundappa">1916</ref>).</p></note> They specified that it was “Vaishnavite Brahmans” who were “most directly aggrieved,” but that Śaiva Brahmans and “non-Lingayat Hindus” sympathize with an “agitation against the procession.”<note place="foot" xml:id="ftn72" n="60"><p><ref target="#Dundappa"><title>Sigandhi v. Secretary of State</title></ref> (<ref target="#Dundappa">1916</ref>).</p></note> </p>
+
+	<p>Despite <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> being an “obnoxious” and “unbecoming ceremony,” according to the defendants’ council, <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> appeared to be on firm legal footing for two reasons: First, the way in which the Government Resolution had been upheld in lower courts was illegal (the details of which need not be dealt with here).<note place="foot" xml:id="ftn73" n="61"><p>It had been upheld on the basis of the District Police Act (Bom. Act IV of 1890), which, the defendants argued, allowed the Government not to “prohibit” <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> per se, but to deny future applications for its procession in perpetuity across the whole district. </p></note> Second, religious procession was a right that had been secured some years earlier by the Bombay High Court itself. The judges ruled in favor of the Lingayats once again. </p>
+
+	<p>Two cases decided by the Bombay High Court secured the right to religious procession. The first, <ref target="#Sadagopachariar"><title>Sadagopachariar v. A. Rama Rao</title></ref> (<ref target="#Sadagopachariar">1907</ref>), concerned a century-long dispute between Vadakalai and Tenkalai Vaiṣṇavas over the use of streets around the Devanatha Swamy Temple in Thiruvanthipuram and its adjoining shrine dedicated to Vedānta Deśika, an important Vadakalai guru. After a century of legal wrangling, the Court ruled in 1907 that the public have a right to use city streets, even those adjoining prominent temples.<note place="foot" xml:id="ftn74" n="62"><p>In 1807, Tenkalais in Thiruvanthipuram sued Vadakalais for having been prevented from installing an image of a Tenkalai guru in the Devanatha Swamy Temple. The Tenkalais lost the suit but installed the image in a nearby house and began parading it in the streets around the temple. The Vadakalais sued in response, alleging that the streets around the temple were originally the property of Vadakalais who permitted the construction of houses on the condition that no “alien deity” be worshiped in them or processed on nearby streets. The court consulted a handful of sympathetic pandits who, the 1907 judges remark, based their decision “not so much on legal grounds as on precepts relating to ritual and ceremonial observances to be found in the ancient treatises on such subjects.” The Vadakalais won their case but there were numerous suits and countersuits until 1886, when the Magistrate of the Southern Arcot District refused to prohibit the public procession of Tenkalai images. Vadakalais lost on appeal and then brought the case to the Bombay High Court. The Court determined that there was no evidence attesting to the streets surrounding the temple belonging to Vadakalais. To the contrary, the streets belonged to the public under Madras Act No. V of 1884. See <ref target="#Baslingappa"><title>Baslingappa Parappa Chedachal v. Dharmappa Basappa Chedachal</title></ref> (<ref target="#Baslingappa">1910</ref>).</p></note> The second case, which involved the use of automobiles in Lingayat processions, pushed the Court to clarify its position further: “every member of the public and every sect has a right to use the public streets in a lawful manner and it lies on those who would restrain him or it to show some law or custom having the force of law abrogating the privilege.”<note place="foot" xml:id="ftn75" n="63"><p><ref target="#Baslingappa"><title>Baslingappa Parappa Chedachal v. Dharmappa Basappa Chedachal</title></ref> (<ref target="#Baslingappa">1910</ref>).</p></note> </p>
+
+	<p>Despite these safeguards, the courts never distinguished a “religious” procession from a non-religious one, nor had it specified whether laws protecting religious processions extended to others. This ambiguity laid the groundwork for a strategy that would be <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign>’s undoing — prove that Vyāsa’s arm is not a “religious” feature of the <title xml:lang="kan-Latn">Nandikamba</title> procession and that non-religious processions are not protected under the law. A series of cases in the 1930s and 1940s did precisely this. </p>
+
+	<p>In the early 1930s, the Sub-Divisional Magistrate of Bijapur prohibited Lingayats in the small village of Mangoli from conducting a <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> procession. In the process of hearing the Lingayats’ lawsuit against the magistrate’s decision, a lower appellate court determined that <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> was not a “religious” rite on the grounds that it had not been “enjoined or even recommended by any shastra or work containing the tenets of the Lingayats or the Veershaiva faith.”<note place="foot" xml:id="ftn76" n="64"><p><ref target="#Sangabasavaswami"><title>Sangabasavaswami Mahantaswami v. Baburao Ganesh</title></ref> (<ref target="#Sangabasavaswami">1945</ref>).</p></note> In other words, <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> lacked the kind of scriptural and scholastic edifice that propped up many Brahmanical rituals. This extraordinarily narrow definition of a “religious procession” was upheld by the Bombay High Court in 1945, after the Mangoli case had bounced around in lower courts for more than a decade. </p>
+
+	<p>The 1945 case is significant not only because it determined that <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> was not properly religious and was thus not protected under the law; it also appears to have been the first time a plaintiff argued for a general non-religious right to procession. Drawing on a series of rulings concerning the Shi’i Matam procession, the lawyer arguing the Lingayats’ case in 1945 claimed that the law protects a general right to procession.<note place="foot" xml:id="ftn77" n="65"><p><ref target="#Saiyid"><title>Saiyid Manzur Hasan v. Saiyid Muhammad Zaman</title></ref> (<ref target="#Saiyid">1924</ref>) and <ref target="#Martin"><title>Martin and Co. v. Syed Faiyaz Husain</title></ref> (<ref target="#Martin">1943</ref>).</p></note> The Bombay High Court disagreed, but three years later, while hearing a lawsuit that sought to prevent a procession during the Dasara festival from passing by a mosque in Sakur, Maharashtra, the Bombay High Court reversed their position and determined that the law protects a general right to procession. In their decision the judges wryly asked, “can it be said that conducting a non-religious procession along a thoroughfare is a less lawful and reasonable use of a highway than conducting a religious procession?”<note place="foot" xml:id="ftn78" n="66"><p><ref target="#Chandu"><title>Chandu Sajan Patil and Others v. Nyahalchand Panamchand and Others</title></ref> (<ref target="#Chandu">1948</ref>).</p></note> Too late. By 1948, the litigious zeal of Lingayats in the Deccan appears to have dissipated, or at least the practice seems to have no longer been litigated.</p>
+
+	<p>In deciding that texts make a rite or ritual “religious,” the courts tilted the tables toward Brahman religiosity and away from oral and non-textual forms of devotion. This is not an unfamiliar story: historians have long pointed to the outsized power of Brahman pandits in colonial jurisprudence. But <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign> is not simply a story of Brahman triumph over lay religiosity. The circuitous path the practice took through colonial courts highlights decisions on the part of the judiciary to protect (at least for a time) certain practices that Brahman communities vigorously opposed. <foreign xml:lang="kan-Latn">Vyāsantōḷ</foreign>’s public life many have ended when the judge’s gavel dropped in Bombay in 1945, but the practice has much to tell us about religious conflict in the subcontinent and their textual pre-histories. </p>
+      </div>
+      <div type="ack">
+	<p>Thanks are due to Elisa Freschi, J. Barton Scott, Andrew Ollett and the anonymous reviewers, whose comments and insights on various drafts proved most crucial.</p>
+      </div>
+    </body>
+    <back>
+      <div>
+	<head>Bibliography</head>
+	<listBibl>
+          <head>Legal Cases and Newspaper Articles (Chronological)</head>
+          <bibl xml:id="Sadagopachariar"><title>Sadagopachariar v. A. Rama Rao</title>, <title>Indian Law Reports</title> 26 Mad 376 (1907).</bibl>
+	  <bibl xml:id="ToI1910a">“The ‘Vyasantol’ Procession,” <title>Times of India</title>, <!--Thursday,!--> October 13, 1910, p. 5.</bibl>
+	  <bibl xml:id="ToI1910b">“Behind the Indian Veil: Faiths and Feuds,” <title>Times of India</title>, <!--Friday,!--> November 4, 1910, p. 6.</bibl>
+          <bibl xml:id="Baslingappa"><title>Baslingappa Parappa Chedachal v. Dharmappa Basappa Chedachal</title>, <title>Bombay Law Reporter</title> 586 (1910); also in <title>Indian Cases</title> (1910), p. 750.</bibl>
+          <bibl xml:id="Pandurang"><title>Pandurang Shidrao v. Revapa Rudrapa Mohajan</title> 12 <title>Bombay Law Reporter</title> 1029 (1910); also in <title>Indian Cases</title> (1910), pp. 747–750.</bibl>
+	  <bibl xml:id="ToI1911">“Disturbance at Bagalkot,” <title>Times of India</title>, November 9, 1911, p. 4.</bibl>
+	  <bibl xml:id="ToI1916">The ‘Vyasantol’ Procession,” <title>Times of India</title>, <!--Thursday,!--> March 2, 1916, p. 7.</bibl>
+          <bibl xml:id="Dundappa"><title>Dundappa Mallappa Sigandhi and Others v. Secretary of State for India and Others</title> 37 <title>Indian Cases</title> 363 (1916).</bibl>
+          <bibl xml:id="Saiyid"><title>Saiyid Manzur Hasan v. Saiyid Muhammad Zaman</title> 27 <title>Bombay Law Reporter</title> 170 (1924).</bibl>
+          <bibl xml:id="Martin"><title>Martin and Co. v. Syed Faiyaz Husain</title> 47 <title>Bombay Law Reporter</title> 575 (1943).</bibl>
+          <bibl xml:id="Sangabasavaswami"><title>Sangabasavaswami Mahantaswami v. Baburao Ganesh</title> 48 <title>Bombay Law Reporter</title> 100 (1945).</bibl>
+          <bibl xml:id="Chandu"><title>Chandu Sajan Patil and Others v. Nyahalchand Panamchand and Others</title> 52 <title>Bombay Law Reporter</title> 214 (1948).</bibl>
+	</listBibl>
+	<listBibl>
+          <head>Law Reports, Gazetteers, and Epigraphic Records</head>
+          <bibl xml:id="ARMAD"><title>Annual Report of the Mysore Archaeological Department for the Year 1945</title>. 1946. Mysore: Government Branch Press.</bibl>
+
+          <bibl xml:id="Gazetteer"><title>Gazetteer of the Bombay Presidency</title>. Vol. 23 (Bijapur). 1884. Bombay: Government Central Press.</bibl>
+
+          <bibl xml:id="IndianCases"><title>Indian Cases: Containing Full Reports of Decisions of the Privy Council, the High Courts of Allahabad, Bombay, Calcutta, and Madras, the Chief Courts of Lower Burma and the Punjab, the Courts of the Judicial Commissioners of Central Provinces, Oudh, Sind, and Upper Burma, Reported in the Following 20 Legal Periodicals: Allahabad (1) Indian Law Reports, (2) Law Journal; Bombay (1) Indian Law Reports (2) Law Reporter; Burma (1) Law Times, (2) Lower Burma Rulings, (3) Upper Burma Rulings; Calcutta (1) Indian Law Reports, (2) Law Journal, (3) Weekly Notes; Madras (1) Indian Law Reports, (2) Law Journal, (3) Law Times, (4) Weekly Notes; Nagpur Law Reports; Oudh Cases; Punjab (1) Law Reporter, (2) Record, (3) Weekly Reporter; Sind Law Reporter, With a Large Number of Extra Rulings of High Courts Not Reported Elsewhere.</title> 1910. Lahore: Manager at the Law Pub. Press.</bibl>
+	</listBibl>
+	<listBibl>
+          <head>Sanskrit and Marathi</head>
+          <bibl xml:id="Kane1918">Bānabhaṭṭa, <title xml:lang="san-Latn">Harṣacarita</title> = P.V. Kane (ed.). 1918. <title xml:lang="san-Latn">Harṣacarita</title>. Bombay: Nirnaya Sagara Press.</bibl>
+	  <bibl xml:id="Olivelle1998"><title xml:lang="san-Latn">Br̥hadāraṇyaka Upaniṣad</title>. = Patrick Olivelle (ed.). 1998. <title>The Early Upaniṣads: Annotated Text and Translation</title>. New York: Oxford University Press.</bibl>
+          <bibl><title xml:lang="san-Latn">Kāśīkhaṇḍa</title> (Marathi). 1881. Mumbai: Śivayantrachāpakhāna.</bibl>
+          <bibl xml:id="Madhva2009">Madhva, <title xml:lang="san-Latn">Śrīmahābhāratatātparyanirṇaya</title> = Bannañje Gōvindācārya (ed.). 2009. <title xml:lang="san-Latn">Śrīmahābhāratatātparyanirṇaya</title>. Udupi: Tattvasamśodhanasaṁsat.</bibl>
+	  <bibl xml:id="MBh">Mahābhārata (Śāntiparvan). = V. S. Sukthankar and S. K. Belvalkar (eds.). 1953. <title>The Mahābhārata: The Śāntiparvan [Part I]</title>. Poona: Bhandarkar Oriental Research Institute.</bibl>
+          <bibl xml:id="NarayanaPandita2017">Nārāyaṇa Paṇḍita, <title xml:lang="san-Latn">Śrīmadhvavijaya</title> = Bannañje Gōvindācārya (ed.). 2017. <title xml:lang="san-Latn">Śrīmadhvavijaya</title> Bangalore: Dvaipāyanapratiṣṭhāna.</bibl>
+          <bibl xml:id="Sivadharmottara"><title xml:lang="san-Latn">Śivadharmōttara</title> =  Bhāgavataprasāda Śarman (ed.). 2019. <title xml:lang="san-Latn">Śivadharmōttara</title>. Kathmandu:  Rāṣṭrīya Abhilekhālaya. </bibl>
+          <bibl xml:id="Kasikhanda1908"><title xml:lang="san-Latn">Skāṇḍapurāṇīyakāśīkhaṇḍa</title> = Kṣēmarāja Śrēṣṭhin (ed.). 1908. <title xml:lang="san-Latn">Skāṇḍapurāṇīyakāśīkhaṇḍa</title> Mumbai: Shri Venkateshwar Steam Press.</bibl>
+          <bibl xml:id="Sivayogin2015">Śivayōgin, <title xml:lang="san-Latn">Siddhāntaśikhāmaṇī</title> = Svāmī Śivakumāra (ed.). 2015. <title>Siddhāntaśikhāmaṇī with Maritoṇṭadārya’s Tattvapradīpikā</title>. Bengaluru: Chetan Books.</bibl>
+          <bibl>Vādirāja, <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍana</title> = (1) Mysore Oriental Research Institute, ms. 4347C. (2) K. K. Rāmācārya (ed.). 1911. <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍana</title>. Belgaum: Rāmatattvaprakāśa.</bibl>
+          <bibl xml:id="VP">Vādirāja, <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title> = (1) K. K. Rāmācārya (ed.). 1911. <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title>. Belgaum: Rāmatattvaprakāśa. (2) [No editor]. 1953. <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍanavyāsastōtra</title>.” In <title xml:lang="san-Latn">Stōtraratnamālā</title>. Udupi: Udupi Mejiṣṭik Mudraṇālaya. (3) <title xml:lang="san-Latn">Pāṣaṇḍakhaṇḍana(vyāsa)stōtra</title>. Mysore Oriental Research Institute, ms. C.2927. 
+	  </bibl>
+          <bibl xml:id="Vyasastaka">Vādirāja, <title xml:lang="san-Latn">Vyāsāṣṭaka</title> = [No editor]. 1953. <title xml:lang="san-Latn">Vyāsastuti</title> (<title xml:lang="san-Latn">Vyāsāṣṭaka</title>). In <title xml:lang="san-Latn">Stōtraratnamālā</title>. Udupi: Udupi Mejiṣṭik Mudraṇālaya.</bibl>
+          <bibl xml:id="Vyasavarnana">Vādirāja, <title xml:lang="san-Latn">Vyāsavarṇana</title>. = [No editor]. 1953. <title xml:lang="san-Latn">Vyāsavarṇana</title>. In <title xml:lang="san-Latn">Stōtraratnamālā</title>. Udupi: Udupi Mejiṣṭik Mudraṇālaya.</bibl>
+          <bibl><title xml:lang="san-Latn">Vyāsabhujastambhastōtra</title>. 1984. “Ms No. 2392.” In <title>Catalogue of Sanskrit and Prakrit Manuscripts (Jaipur Collection), Vol. 18.</title> Jodhpur: Rajasthan Oriental Research Institute.</bibl>
+	</listBibl>
+
+	<listBibl>
+          <head>Secondary Sources</head>
+          <bibl xml:id="Bayly1985">Bayly, C. A. 1985. “The Pre-History of Communalism: Religious Conflict in India, 1700–1860.” <title>Modern Asian Studies</title> 19 (2): 177–203. DOI <ref target="https://doi.org/10.1017/S0026749X00012300">10.1017/S0026749X00012300</ref>.</bibl>
+          <bibl xml:id="Biardeau2002">Biardeau, Madeleine. 2002. <title>Le Mahābhārata: Un récit fondateur de brahmanisme et so interprétation</title>. Paris: Éditions du Seuil.</bibl>
+          <bibl xml:id="Bisschop2021">Bisschop, Peter C. 2021. “After the <title>Mahābhārata</title>: On the Portrayal of Vyāsa in the Skandapurāṇa.” In Peter C. Bisschop and Elizabeth A. Cecil (eds.),  <title>Primary Sources and Asian Pasts</title>, 44–63. Boston: De Gruyter. DOI <ref target="https://doi.org/10.1515/9783110674088-003">10.1515/9783110674088-003</ref>.</bibl>
+          <bibl xml:id="Bronner2007">Bronner, Yigal. 2007. “Singing to God, Educating the People: Appayya Dīkṣita and the Function of Stotras.” <title>Journal of the American Oriental Society</title> 127 (2): 113–130.</bibl>
+	  <bibl xml:id="Gruenendahl1989">Grünendahl, Reinhold. 1989. <title>Viṣṇudharmāḥ: Precepts for the Worship of Viṣṇu. Part 3.</title> Wiesbaden: Harrassowitz.</bibl>
+	  <bibl xml:id="Gruenendahl2002">Grünendahl, Reinhold. 2002. “On the Frame Structure and ‘Sacrifice Concept’ in the <title xml:lang="san-Latn">Nārāyaṇīya</title> and <title xml:lang="san-Latn">Tīrthayātrā</title> Sections of the <title xml:lang="san-Latn">Mahābhārata</title>, and the Craft of Citation.” <title>Zeitschrift der Deutschen Morganländischen Gesellschaft</title> 152 (2): 309–340.</bibl>
+          <bibl xml:id="Gruenendahl1997">Grünendahl, Reinhold, and Peter Schreiner. 1997. <title>Nārāyaṇīya-Studien</title>. Wiesbaden: Harrassowitz.</bibl>
+          <bibl xml:id="Hiltebeitel2005">Hiltebeitel, Alf. 2005. “On Reading Fitzgerald’s Vyāsa.” <title>Journal of the American Oriental Society</title> 125 (2): 241–261. DOI <ref target="https://doi.org/"></ref>.</bibl>
+          <bibl xml:id="Latthe1924">Latthe, A. B. 1924. <title>Memoirs of His Highness Shri Shahu Chhatrapati: Maharaja of Kolhapur.</title> Vol. 2. Bombay: Times Press</bibl>
+          <bibl xml:id="Mackenzie1873">Mackenzie, John S. F. 1873. “The Mehirs of the Hassan District.” <title>Indian Antiquary</title>, no. 2: 49–50.</bibl>
+          <bibl xml:id="Mesquita2000">Mesquita, Roque. 2000. <title>Madhva’s Unkown Literary Sources: Some Observations</title>. Delhi: Aditya Prakashan.</bibl>
+          <bibl xml:id="Mesquita2008">Mesquita, Roque. 2008. <title>Madhva’s Quotes from the Purāṇas and the Mahābhārata: An Analytic Compilation of Untraceable Source-Quotations in Madhva’s Works Along with Footnotes</title>. Delhi: Aditya Prakashan.</bibl>
+          <bibl xml:id="Minkowski1989">Minkowski, Christopher. 1989. “Janamejaya’s <foreign>Sattra</foreign> and Ritual Structure.” <title>Journal of the American Oriental Society</title> 109 (3): 401–420. DOI <ref target="https://doi.org/10.2307/604141">10.2307/604141</ref>.</bibl>
+          <bibl xml:id="Rao2012">Narayana Rao, Velcheru, and David Shulman. 2012. <title>Śrīnātha: The Poet Who Made Gods and Kings.</title> Oxford: Oxford University Press.</bibl>
+          <bibl xml:id="Rao1990">Narayana Rao, Velcheru, and Gene H. Roghair. 1990. <title>Siva’s Warriors: The Basava Purana of Palkuriki Somanatha</title>. Princeton: Princeton University Press.</bibl>
+          <bibl xml:id="Oppert1893">Oppert, Gustav Salomon. 1893. <title>On the Original Inhabitants of Bharatavarsa or India</title>. Leipzig: Otto Harrassowitz.</bibl>
+          <bibl xml:id="Pandey1990">Pandey, Gyanendra. 1990. <title>The Construction of Communalism in Colonial North India</title>. Delhi: Oxford University Press.</bibl>
+          <bibl xml:id="Peterson2023">Peterson, Jonathan. 2023. “Critique and Catharsis: Jain-Vaiṣṇava Polemics in Early Modern Karnataka.” <title>Journal of South Asian Intellectual History</title> 5 (1): 94–123. DOI <ref target="https://doi.org/10.1163/25425552-12340038">10.1163/25425552-12340038</ref>.</bibl>
+          <bibl xml:id="Pinney2004">Pinney, Christopher. 2004. <title>Photos of the Gods: The Printed Image and Political Struggle in India</title>. London: Reaktion Books.</bibl>
+          <bibl xml:id="Pinney2009">Pinney, Christopher. 2009. “Iatrogenic Religion and Politics.” In Raminder Kaur and William Mazzarella (eds.), <title>Censorship in South Asia: Cultural Regulation from Sedition to Seduction</title>, 29–62. Bloomington: Indiana University Press.</bibl>
+          <bibl xml:id="Ripepi1997">Ripepi, Tiziana. 1997. “On Maritōṇṭadārya and Other Tōṇṭadāryas: Who Is the Author of the Kaivalyasāra? An Attribution Problem Concerning a Vīraśaiva Text in Sanskrit.” <title>Rivista degli studi orientali</title> 71 (1): 169–183.</bibl>
+          <bibl xml:id="Saindon20042005">Saindon, Marcelle. 2004–2005. “Quand Kṛṣṇa Dvaipāyana Vyāsa est considéré comme un avatāra de Viṣṇu.” <title>Bulletin d’études Indiennes</title>, no. 22–23: 307–321.</bibl>
+          <bibl xml:id="Sakhare1942">Sakhare, M. R. 1942. <title>History and Philosophy of Lingayat Religion: Being an Introduction to Lingadhāraṇacandrikā of Nandikeśvara with Translation and Full Notes</title>. Belgaum: Dhundiraja Press.</bibl>
+          <bibl xml:id="Shembavnekar1947">Shembavnekar, K. M. 1947. “The Veda-Vyāsa Myth.” <title>Annals of the Bhandarkar Institute</title> 27: 114–123. DOI <ref target="https://doi.org/"></ref>.</bibl>
+          <bibl xml:id="Sheridan1992">Sheridan, Daniel P. 1992. “Vyāsa as Madhva’s Guru: Biographical Context for a Vedāntic Commentator.” In Jeffrey R. Timm (ed.), <title>Texts in Context: Traditional Hermeneutics in South Asia</title>, 109–125. Albany: State University of New York Press.</bibl>
+          <bibl xml:id="Stainton2019">Stainton, Hamsa. 2019. <title>Poetry as Prayer in the Sanskrit Hymns of Kashmir</title>. New York: Oxford University Press.</bibl>
+          <bibl xml:id="Sullivan1999">Sullivan, Bruce. 1999. <title>Seer of the Fifth Veda: Kṛṣṇa Dvaipāyana Vyāsa in the Mahābhārata</title>. Delhi: Motilal Banarsidass.</bibl>
+	</listBibl>
+      </div>
+    </back>
+  </text>
+</TEI>

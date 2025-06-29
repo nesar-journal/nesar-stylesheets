@@ -76,6 +76,8 @@ def generate_metadata():
     year = input(f"Year (default: {default_year}): ") or default_year
     global first_page
     first_page = input(f"First page (default: {default_first_page}): ") or default_first_page
+    with open(str(metadata_directory) + "/metadata-first-page.tex","w") as firstpage:
+        firstpage.write("\\setcounter{page}{"+first_page+"}")
     iy = issue + " (" + year + "): " + first_page + "–\\total{page}."
     with open(str(metadata_directory) + "/metadata-iy.tex","w") as iyF:
         iyF.write(iy)
@@ -97,6 +99,7 @@ def generate_metadata():
                             s = metadata[key]
                         s = re.sub(r'<i>(.*?)</i>',r'\\emph{\1}',s)
                         s = re.sub(r'<em>(.*?)</em>',r'\\emph{\1}',s)
+                        s = re.sub(r' — ',r' \\Dash ',s)
                         if key == "title":
                             citation["title"] = s
                         if key == "subtitle":

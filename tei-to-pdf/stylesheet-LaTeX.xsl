@@ -24,7 +24,16 @@
     </xsl:template> 
 
     <xsl:template match="tei:abbr">
-      <xsl:apply-templates/>
+      <xsl:choose>
+	<xsl:when test="./text() = 'BCE' or ./text() = 'CE'">
+	  <xsl:text>\textsc{</xsl:text>
+	  <xsl:value-of select="lower-case(./text())"/>
+	  <xsl:text>}</xsl:text>
+	</xsl:when>
+	<xsl:otherwise>
+	  <xsl:apply-templates/>
+	</xsl:otherwise>
+      </xsl:choose>
     </xsl:template>
     <xsl:template match="tei:add" />
     <xsl:template match="tei:anchor" />
@@ -663,10 +672,10 @@
     </xsl:template>
     <xsl:template match="tei:quote[ancestor::tei:note[@place='foot']]">
       <xsl:text>
-\vspace{-1ex}\begin{quote}\raggedright
+\vspace{-1.5ex}\begin{quote}\raggedright
       </xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>\end{quote}\vspace{-2ex}
+      <xsl:text>\end{quote}\vspace{-1.5ex}
       </xsl:text>
     </xsl:template>
     <xsl:template match="tei:quote[not(ancestor::tei:note[@place='foot'])]">
@@ -853,6 +862,8 @@
 	</xsl:text>
       </xsl:if>
       <xsl:apply-templates/>
+      <xsl:text>\\
+</xsl:text>
     </xsl:template>
     
     <xsl:template match="tei:ab[@type='translation']">

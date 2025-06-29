@@ -1,0 +1,33 @@
+type: article
+
+identifier: peterson-desecrating-the-divine
+
+doi: 10.82239/2834-3875.2024.2.2
+
+title: Desecrating the Divine
+subtitle: Vyāsa’s Body between Polemic and Procession
+
+authors:
+  - peterson
+
+abstract: This paper examines the textual and juridical history of Vyāsantōḷ, a once-popular Vīraśaiva procession in which the severed arm of Vyāsa — the storied author of the <em>Mahābhārata</em> — was paraded through villages and cities throughout the Deccan. As a sacred figure for some, Vyāsa’s desecration provoked ire and occasional violence until 1945, when the Bombay High Court outlawed the practice. This paper examines Vyāsantōḷ across three turning points. The first is a polemical praise-poem (<em>stōtra</em>) titled <em>Praising Vyāsa, Condemning the Apostates</em> (<em>Pāṣaṇḍakhaṇḍanavyāsastōtra</em>) written by Vādirāja Tīrtha (ca. 1550–1610), a popular intellectual and proselyte of Madhva’s realist Vedānta and the first known writer to weigh in on the question of Vyāsa’s arm. The second is a genealogy of Vyāsantōḷ in the Mahābhārata, Purāṇas, and Śaiva didactic writings. And the third is the circuitous course that Vyāsantōḷ cut through courts in British India. Collectively, these turning points provide not only a provisional genealogy of a religious controversy; they also remind us that figures like Vyāsa belong not to epic antiquity, but to a present in which gods and epic heroes are refigured (or disfigured) according to the interests of historical communities.
+
+dates:
+  publication: December 8, 2024
+
+paths:
+  cover: peterson-desecrating-the-divine.jpg
+  content: peterson-desecrating-the-divine.html
+  tei: peterson-desecrating-the-divine.xml
+  pdf: peterson-desecrating-the-divine.pdf
+
+tags:
+  - vīraśaiva
+  - madhva
+  - vādirāja tīrtha
+  - vyāsa
+  - desecration
+  - procession
+  - vēdānta
+  - deccan
+  - vyāsantōḷ

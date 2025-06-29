@@ -1,0 +1,6 @@
+manually hyphenate:
+Pāṣaṇḍakhaṇḍana(vyāsa)stōtra.
+10.1163/25425552-12340038.
+
+figure 4 width:
+\includegraphics[width=0.8\textwidth]{images/figure-04.jpg}
