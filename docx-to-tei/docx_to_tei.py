@@ -10,7 +10,7 @@ def docx_to_tei(f):
     docxtotei = bin_path + " " + str(f)
     try:
         proc = subprocess.Popen(docxtotei,shell=True).wait()
-        with open(f.stem + ".xml","r") as o:
+        with open(os.path.splitext(f)[0]+'.xml',"r") as o:            
             text = o.read()
             return text
     except Exception as ex:
@@ -19,12 +19,12 @@ def docx_to_tei(f):
         print(message)
 
 def xsl_postprocess(tei,inputfile):
-    outputfile = inputfile.stem + "-postprocessed.xml"
+    outputfile = os.path.splitext(inputfile)[0] + "-postprocessed.xml"
     x = etree.fromstring(tei.encode('utf-8'),parser=parser)
     string = etree.tostring(x, pretty_print=True, encoding='unicode')
     with open('intermed.xml','w') as o:
         o.write(string)
-    xsl = str(pathlib.Path(__file__).parent.absolute()) + "/xsl/postprocess_tei.xsl"
+    xsl = str(pathlib.Path(__file__).parent.absolute()) + "/postprocess_tei.xsl"
     source = "-s:intermed.xml"
     stylesheet = "-xsl:'"+xsl+"'"
     output = "-o:'"+outputfile+"'"
@@ -84,6 +84,7 @@ def cleanup(inputfile):
 
 if __name__ == "__main__":
     inputfile = pathlib.Path(sys.argv[1]).absolute()
+    print(inputfile)
     tei = docx_to_tei(inputfile)
     tei = xsl_postprocess(tei,inputfile)
     tei = detect_bibliography(tei)

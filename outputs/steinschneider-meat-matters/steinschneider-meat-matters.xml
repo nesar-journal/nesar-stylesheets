@@ -2,7 +2,7 @@
   <teiHeader>
     <fileDesc>
       <titleStmt>
-	<title type="main">Meat Matter</title>
+	<title type="main">Meat Matters</title>
 	<title type="sub"><foreign xml:lang="tam-Latn">Kolaimaṟuttal</foreign> and the Genealogy of Tamil Śaiva Vegetarianism</title>
 	<author>Eric Steinschneider</author>
       </titleStmt>
@@ -32,6 +32,11 @@
 	  <date>2024-08-23</date>
 	  <name>Andrew Ollett</name>
 	  <desc>Changes to first proofs.</desc>
+	</change>
+	<change>
+	  <date>2025-07-01</date>
+	  <name>Andrew Ollett</name>
+	  <desc>Final corrections.</desc>
 	</change>
       </listChange>
     </revisionDesc>
@@ -65,17 +70,17 @@
 	<lg>
 	  <l>pollāp pulālai nukarum pulaiyarai</l>
 	  <l>ellāruṅ kāṇa iyamaṉ ṟaṉ tūtuvar</l>
-	  <l>cell ākap paṟṟit tī vāy narakattil</l>
+	  <l>cellākap paṟṟit tī vāy narakattil</l>
 	  <l>mallākkat taḷḷi maṟittu vaippārē</l>
 	</lg>
       </quote>
       <cit>
 	<quote>
 	  <ab>
-	    For all to see, Yama’s messengers quickly<lb/>
-	    seize the outcastes who consume foul flesh,<lb/>
-	    push them on their backs in the fiery maw of hell,<lb/>
-	    and keep them there.<note place="foot" xml:id="ftn11" n="11"><p>All translations, unless otherwise noted, are mine. <foreign xml:lang="tam-Latn">cellāka</foreign>, translated here as “swiftly,” could also be translated “as they die” (“who consume foul flesh as they die”).</p></note>
+	    When outcastes who consume foul flesh die,<lb/>
+	    Yama's messengers seize them while everyone looks on,<lb/>
+	    push them on their backs into the fiery maw of hell,<lb/>
+	    and keep them there.<note place="foot" xml:id="ftn11" n="11"><p>All translations, unless otherwise noted, are mine.</p></note>
 	  </ab>
 	</quote>
 	<bibl><title xml:lang="tam-Latn">Tirumantiram</title> v. 199</bibl>
@@ -149,13 +154,10 @@
       <cit>
 	<quote>
 	  <ab>
-	    Among immobile and mobile beings that possess [comparatively] greater intelligence,<lb/>
-	    mobile beings are superior.<lb/>
-	    Among mobile beings, men. There is superiority and inferiority among men as well.<lb/>
+	    Among immobile and mobile beings that possess [comparatively] greater intelligence, mobile beings are superior. Among mobile beings, men.<lb/>
+	    There is superiority and inferiority among men as well.<lb/>
 	    Lowly men (<foreign xml:lang="tam-Latn">kīḻ</foreign>) nourish their bodies, killing and eating many living beings.<lb/>
-	    Above them are the faultless ones who, accepting with complete certainty that killing the aforementioned living beings yields sorrow for a long time,<lb/>
-	    and that the body itself is false,<lb/>
-	    protect those beings’ lives even if it costs them their own.
+	    Above them are the faultless ones who, accepting with complete certainty that killing the aforementioned living beings yields sorrow for a long time, and that the body itself is false, protect those beings’ lives even if it costs them their own.
 	  </ab>
 	</quote>
 	<bibl><title>Rejecting Killing</title> v. 3  (<ref target="#CantalinkaCuvamikal1927">Cāntaliṅka Cuvāmikaḷ 1927</ref>: 4)</bibl>
@@ -233,11 +235,11 @@
 	    <p><hi rend="subscript">3</hi>How is it that certain species obey men’s command?</p>
 	    <p><hi rend="subscript">4</hi>Why does even this system become flawed and inconsistent in particular instances? </p>
 	    <p><hi rend="subscript">5</hi>It is true that souls assume the form of the aforementioned immobile beings, etc., according to actions performed in previous [births].</p>
-	    <p><hi rend="subscript">6</hi>Your words are mistaken, are they not? (v. 6, p. 17)</p>
+	    <p><hi rend="subscript">6</hi>Your words are mistaken, are they not?</p>
 	  </quote>
 	  <bibl><title>Rejecting Killing</title> v. 6  (<ref target="#CantalinkaCuvamikal1927">Cāntaliṅka Cuvāmikaḷ 1927</ref>: 17)</bibl>
 	</cit>
-	<p>S<hi rend="subscript">1</hi>–S<hi rend="subscript">4</hi>, which rebuts the Christian’s contention, constitutes a highly elliptical paraphrase of three stanzas, cited in the gloss, from an otherwise lost anti-Christian polemic entitled <title xml:lang="tam-Latn">Ēcumatanirākaraṇam</title> (<title>Refutation of the Jesus-Doctrine</title>).<note place="foot" xml:id="ftn27" n="27"><p>For a translation and discussion of these verses see <ref target="#Trento2022">Trento 2022</ref>: 291–294.</p></note> Tradition attributes this text — perhaps the first of its kind in the Tamil language — to the seventeenth-century Vīraśaiva poet Tuṟaimaṅkaḷam Civappirakācar, who is remembered to have been Cāntaliṅka’s brother-in-law. While the polemic’s composition has been linked to a supposed meeting between Civappirakācar and the Italian Jesuit Constanzo Gioseffo Beschi (1680–1747), <ref target="#NilakantaSastri1958">Nilakanta Sastri</ref> (<ref target="#NilakantaSastri1958">1958</ref>: 379) rejects this possibility, and as discussed below the paraphrased verses are better understood as a reply to ideas found in earlier texts attributed to Roberto de Nobili. </p>
+	<p>S<hi rend="subscript">1</hi>–S<hi rend="subscript">4</hi>, which rebuts the Christian’s contention, constitutes a highly elliptical paraphrase of three stanzas, cited in the gloss, from an otherwise lost anti-Christian polemic entitled <title xml:lang="tam-Latn">Ēcumatanirākaraṇam</title> (<title>Refutation of the Jesus-Doctrine</title>).<note place="foot" xml:id="ftn27" n="27"><p>For a translation and discussion of these verses see <ref target="#Trento2022">Trento 2022</ref>: 291–294.</p></note> Tradition attributes this text — perhaps the first of its kind in the Tamil language — to the seventeenth-century Vīraśaiva poet Tuṟaimaṅkalam Civappirakācar, who is remembered to have been Cāntaliṅka’s brother-in-law. While the polemic’s composition has been linked to a supposed meeting between Civappirakācar and the Italian Jesuit Constanzo Gioseffo Beschi (1680–1747), <ref target="#NilakantaSastri1958">Nilakanta Sastri</ref> (<ref target="#NilakantaSastri1958">1958</ref>: 379) rejects this possibility, and as discussed below the paraphrased verses are better understood as a reply to ideas found in earlier texts attributed to Roberto de Nobili. </p>
       <p>S<hi rend="subscript">1</hi> is clear: tiny creatures serve no obvious human purpose. If one claims that they supply food for larger animals that do, S<hi rend="subscript">2</hi> asks why some of the latter harm mankind. If it is answered that animals do not submit to human will because God cursed the first man (i.e., Adam) for his disobedience, S<hi rend="subscript">3</hi> replies by pointing out that some species, such as cows, do obey men. If one retorts that God ordained it such that certain species would submit to men’s will while others would not, S<hi rend="subscript">4</hi> responds by alluding to the fact that humans are sometimes obeyed by proverbially dangerous creatures such as snakes and sometimes killed by proverbially submissive animals such as cows. Finally, S<hi rend="subscript">5</hi> (not part of the paraphrase) affirms the established conclusion, namely that human relations with other forms of life are governed not by the curse of a divine creator but rather the doctrine of transmigration.</p>
       <p>Arguments against rebirth are a recurring theme in the writings of the Madurai-based Jesuit Roberto de Nobili (1577–1656).<note place="foot" xml:id="ftn28" n="28"><p><ref target="#Rajamanickam1972">Rajamanickam 1972</ref> gives an overview of de Nobili’s life and writings.</p></note> Departing from earlier missionary tactics, which prioritized the conversion of low-caste communities, de Nobili (in)famously fashioned himself after the manner of a Brahmin ascetic and wrote Tamil in a style calibrated to engage learned audiences, especially Śaivas.<note place="foot" xml:id="ftn29" n="29"><p><ref target="#Clooney1988">Clooney 1988</ref>: 32. A letter discussed by <ref target="#Zupanov1999">Županov</ref> (<ref target="#Zupanov1999">1999</ref>: 153–157) demonstrates that as early as 1607 de Nobili had attempted to disabuse an upper-caste Śaiva Siddhāntin of his faith in rebirth.</p></note> Although his criticisms of rebirth are, like those of other contemporary Jesuits, framed in strictly philosophical terms (<ref target="#Clooney2014">Clooney 2014</ref>), in certain of his writings they occur in the context of discussions that allude to biblical accounts of humanity’s God-given dominion over the animals and the latter’s rebellion that was precipitated by the Fall. This is the case, for instance, in de Nobili’s <title xml:lang="tam-Latn">Ñāṉōpatēcam</title>, a summation of his great Catechism: </p>
       <cit>

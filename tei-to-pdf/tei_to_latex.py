@@ -4,16 +4,19 @@ from PIL import Image
 
 from itertools import chain
 
+current_dir = pathlib.Path(__file__).resolve().parent.absolute()
+parent_dir = pathlib.Path(__file__).resolve().parents[1].absolute()
+
 namespaces = {'tei': 'http://www.tei-c.org/ns/1.0'}
 parser = etree.XMLParser(recover=True,encoding='utf-8')
 input_file = pathlib.Path(sys.argv[1]).absolute()
 first_page = 1
-schema_file = pathlib.Path(str(pathlib.Path(sys.argv[0]).parents[1].absolute()) + "/schemas/tei_all.rng")
-stylesheet_file = pathlib.Path(str(pathlib.Path(sys.argv[0]).parents[0].absolute()) + "/stylesheet-LaTeX.xsl")
-components_directory = pathlib.Path(str(pathlib.Path(sys.argv[0]).parents[0])+ "/components/").absolute()
-hyphenation_directory = pathlib.Path(str(pathlib.Path(sys.argv[0]).parents[0])+ "/hyphenation/").absolute()
-images_directory = pathlib.Path(str(pathlib.Path(sys.argv[0]).parents[0])+ "/images/").absolute()
-latex_directory = pathlib.Path(str(input_file.parents[0]) + "/latex")
+schema_file = pathlib.Path(str(parent_dir) + "/schemas/tei_all.rng")
+stylesheet_file = pathlib.Path(str(current_dir) + "/stylesheet-LaTeX.xsl")
+components_directory = pathlib.Path(str(current_dir) + "/components/").absolute()
+hyphenation_directory = pathlib.Path(str(current_dir) + "/hyphenation/").absolute()
+images_directory = pathlib.Path(str(current_dir) + "/images/").absolute()
+latex_directory = pathlib.Path(str(current_dir) + "/latex").absolute()
 metadata_directory = pathlib.Path(str(latex_directory) + "/metadata")
 preprocessed_file = pathlib.Path(str(latex_directory) + "/" + str(input_file.stem) + ".xml")
 latex_file = pathlib.Path(str(latex_directory) + "/" + str(input_file.stem) + ".tex")
@@ -56,7 +59,7 @@ def comma_join(lst):
 def convert_webp_to_jpg():
     for file in glob.glob(str(pathlib.Path(sys.argv[1]).parents[0].absolute())+"/*.webp"):
         base_name = pathlib.Path(file).stem
-        out = str(pathlib.Path(str(pathlib.Path(sys.argv[1]).parents[0].absolute()) + "/latex")) + "/images/" + base_name + ".jpg"
+        out = str(pathlib.Path(str(current_dir) + "/latex")) + "/images/" + base_name + ".jpg"
         print(out)
         img = Image.open(file)
         try:
@@ -64,7 +67,7 @@ def convert_webp_to_jpg():
                 img = img.convert('RGB')
             img.save(out,'jpeg',quality=50)
         except Exception as e:
-            print(f"An error occurred: {e}")
+            print("An error occurred: {e}")
 
 def generate_metadata():
     default_issue = "1"
@@ -78,7 +81,7 @@ def generate_metadata():
     first_page = input(f"First page (default: {default_first_page}): ") or default_first_page
     with open(str(metadata_directory) + "/metadata-first-page.tex","w") as firstpage:
         firstpage.write("\\setcounter{page}{"+first_page+"}")
-    iy = issue + " (" + year + "): " + first_page + "–\\total{page}."
+    iy = issue + " (" + year + "): " + first_page + "–\\thelastpage."
     with open(str(metadata_directory) + "/metadata-iy.tex","w") as iyF:
         iyF.write(iy)
     with open(str(pathlib.Path(sys.argv[1]).parents[0].absolute()) + "/metadata.yml","r") as stream:
@@ -117,7 +120,7 @@ def generate_metadata():
                     # and finally the last names only of the authors (+ et al. if more than three)
                     # to be printed in the running header (metadata-author-short.tex)
                     authors = []
-                    with open("../nesar/public/authors.yml","r") as authority:
+                    with open("../../nesar/public/authors.yml","r") as authority:
                         authorList = yaml.safe_load(authority)
                         for y in metadata["authors"]:
                             if y in authorList:

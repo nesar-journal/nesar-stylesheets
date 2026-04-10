@@ -42,6 +42,7 @@
 \usepackage{changepage}
 \usepackage{trimspaces}
 \usepackage{framed}
+\usepackage{lastpage}
 \usepackage[most,breakable]{tcolorbox}
 \usepackage[bottom,marginal,multiple]{footmisc}
 \def\changemargin#1#2{\list{}{\rightmargin#2\leftmargin#1}\item[]}
@@ -246,7 +247,8 @@ DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
     }
 \usepackage{xurl}
 \usepackage{hyperref}
-\hypersetup{pdftitle=\thetitle,
+\hypersetup{pdfencoding=auto,
+        pdfusetitle,
         colorlinks,
         urlcolor=Nesarlink,
         linkcolor=Nesarlink,

@@ -46,6 +46,7 @@
     "changepage"
     "trimspaces"
     "framed"
+    "lastpage"
     "tcolorbox"
     "footmisc"
     "forest"

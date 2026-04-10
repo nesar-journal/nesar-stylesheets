@@ -4,7 +4,7 @@ from itertools import chain
 
 namespaces = {'tei': 'http://www.tei-c.org/ns/1.0'}
 parser = etree.XMLParser(recover=True,encoding='utf-8')
-schemafile = 'schemas/tei_all.rng'
+schemafile = '../schemas/tei_all.rng'
 
 def validate(f):
     relaxng_doc = etree.parse(schemafile)

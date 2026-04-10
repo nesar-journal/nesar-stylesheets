@@ -15,7 +15,7 @@
 \setotherlanguage{kannada}
 \setotherlanguage{malayalam}
 \defaultfontfeatures{Mapping=tex-text}
-\setmainfont[Numbers={Proportional},SmallCapsFont={Adobe Caslon Pro},SmallCapsFeatures={Letters=SmallCaps,Numbers=Lining}]{IndUni-T}
+\setmainfont[Numbers={Proportional},SmallCapsFont={TeX Gyre Termes},SmallCapsFeatures={Letters=SmallCaps,Numbers=Lining}]{IndUni-T}
 \newfontfamily\tamilfont[Script=Tamil]{AksharUnicodeRegular}
 \newfontfamily\sanskritfont[Script=Devanagari]{Jaini}
 \newfontfamily\greekfont[Script=Greek]{GFS Porson}
@@ -100,7 +100,7 @@ published \input{metadata/metadata-dates-publication.tex}}{}
 \expandafter\url\expandafter{https://nesarjournal.org/articles/\expandafter\slug}}
 % Link to DOI
 \newcommand{\doilink}{%
-\expandafter\url\expandafter{https://doi.org/\expandafter\doi}}
+DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
 % Issue.Article (Year)
 %\newcommand{\iay}{%
 %\fontspec[Numbers={Proportional,OldStyle}]{TeX Gyre TermesX}issue \issue, article \article\ (\Nyear)}
