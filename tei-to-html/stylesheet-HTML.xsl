@@ -69,6 +69,9 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
+  <xsl:template match="text()[ancestor::tei:bibl[ancestor-or-self::tei:listBibl]]">
+    <xsl:value-of select="fn:replace(., '([A-Z]\.)([A-Z]\.)', '$1&#x2009;$2')"/>
+  </xsl:template>
   <xsl:template match="tei:biblFull" />
   <!-- BIBLSTRUCT !-->
   <!-- The preferred element for bibliography items. !-->
@@ -242,11 +245,19 @@
   <xsl:template match="tei:certainty" />
   <xsl:template match="tei:change">
     <xsl:element name="li">
-      <xsl:value-of select="./tei:date"/>
-      <xsl:text> (</xsl:text>
-      <xsl:value-of select="./tei:name"/>
-      <xsl:text>): </xsl:text>
-      <xsl:apply-templates select="./tei:desc"/>
+      <xsl:value-of select="@when"/>
+      <xsl:if test="@type">
+	<xsl:text> [</xsl:text>
+	<xsl:value-of select="@type"/>
+	<xsl:text>]</xsl:text>
+      </xsl:if>
+      <xsl:if test="@who">
+	<xsl:text> (</xsl:text>
+	<xsl:value-of select="translate(@who,'#','')"/>
+	<xsl:text>)</xsl:text>
+      </xsl:if>
+      <xsl:text>: </xsl:text>
+      <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:choice" />
@@ -935,12 +946,28 @@
     </xsl:call-template>
   </xsl:template>
   <xsl:template match="tei:ref">
-    <xsl:element name="a">
-      <xsl:if test="@target">
-	<xsl:attribute name="href"><xsl:value-of select="@target"/></xsl:attribute>
-      </xsl:if>
-      <xsl:apply-templates/>
-    </xsl:element>
+    <xsl:choose>
+      <xsl:when test="@type='doi'">
+	<xsl:element name="a">
+	  <xsl:attribute name="href"><xsl:value-of select="@target"/></xsl:attribute>
+	  <xsl:attribute name="class">doi-link</xsl:attribute>
+	  <xsl:element name="img">
+	    <xsl:attribute name="src">/assets/images/DOI_logo.svg</xsl:attribute>
+	    <xsl:attribute name="alt">DOI</xsl:attribute>
+	    <xsl:attribute name="class">doi-logo</xsl:attribute>
+	  </xsl:element>
+	  <xsl:apply-templates/>
+	</xsl:element>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:element name="a">
+	  <xsl:if test="@target">
+	    <xsl:attribute name="href"><xsl:value-of select="@target"/></xsl:attribute>
+	  </xsl:if>
+	  <xsl:apply-templates/>
+	</xsl:element>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <xsl:template match="tei:repository" />
   <xsl:template match="tei:resp" />
@@ -951,7 +978,9 @@
       <xsl:element name="h3">
 	<xsl:text>Revision history</xsl:text>
       </xsl:element>
-      <xsl:apply-templates/>
+      <xsl:element name="ul">
+	<xsl:apply-templates select="tei:change"/>
+      </xsl:element>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:roleName" />

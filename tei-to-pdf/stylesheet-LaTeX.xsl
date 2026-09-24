@@ -244,9 +244,13 @@
 	<xsl:text>}</xsl:text>
       </xsl:if>
       <xsl:apply-templates/>
-	<xsl:text>\medskip
+	<xsl:text>\vspace{0.6\medskipamount}
 
 </xsl:text>
+    </xsl:template>
+
+    <xsl:template match="text()[ancestor::tei:bibl[parent::tei:listBibl]]">
+      <xsl:value-of select="fn:replace(., '([A-Z]\.)([A-Z]\.)', '$1\\,$2')"/>
     </xsl:template>
 
     <xsl:template match="tei:bibl" mode="innote">
@@ -617,8 +621,12 @@
     </xsl:template>
     <xsl:template match="tei:language" />
     <xsl:template match="tei:langUsage" />
-    <xsl:template match="tei:lb[not(ancestor::tei:note)]">
+    <xsl:template match="tei:lb[not(ancestor::tei:note)][not(ancestor::tei:ab)]">
       <xsl:text>\\</xsl:text>
+    </xsl:template>
+    <xsl:template match="tei:lb[ancestor::tei:ab][not(ancestor::tei:note)]">
+      <xsl:text>\par
+\hangindent=4em\hangafter=1 </xsl:text>
     </xsl:template>
     <xsl:template match="tei:lb[ancestor::tei:note]" mode="#all">
       <xsl:text>\\</xsl:text>
@@ -679,6 +687,7 @@
       </xsl:choose>
 <xsl:text>
 \begin{hangparas}{0.125in}{1}
+\raggedright
 </xsl:text>
 <xsl:apply-templates/>
 <xsl:text>
@@ -826,11 +835,29 @@
 	  <xsl:apply-templates/>
 	  <xsl:text>}</xsl:text>
 	</xsl:when>
+	<xsl:when test="@type='doi'">
+	  <xsl:text>\href{</xsl:text>
+	  <xsl:value-of select="@target"/>
+	  <xsl:text>}{\raisebox{-1pt}{\includegraphics[height=11pt]{images/DOI_logo.png}}}\,\href{</xsl:text>
+	  <xsl:value-of select="@target"/>
+	  <xsl:text>}{</xsl:text>
+	  <xsl:apply-templates/>
+	  <xsl:text>}</xsl:text>
+	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:text>\href{</xsl:text>
 	  <xsl:value-of select="@target"/>
 	  <xsl:text>}{</xsl:text>
-	  <xsl:apply-templates/>
+	  <xsl:choose>
+	    <xsl:when test="starts-with(normalize-space(.), 'http')">
+	      <xsl:text>\nolinkurl{</xsl:text>
+	      <xsl:value-of select="@target"/>
+	      <xsl:text>}</xsl:text>
+	    </xsl:when>
+	    <xsl:otherwise>
+	      <xsl:apply-templates/>
+	    </xsl:otherwise>
+	  </xsl:choose>
 	  <xsl:text>}</xsl:text>
 	</xsl:otherwise>
       </xsl:choose>
@@ -981,8 +1008,9 @@
 	<xsl:text>\par
 </xsl:text>
       </xsl:if>
-      <xsl:text>\noindent{}</xsl:text>
+      <xsl:text>{\parindent=0pt\hangindent=4em\hangafter=1 \noindent\ignorespaces</xsl:text>
       <xsl:apply-templates/>
+      <xsl:text>\par}</xsl:text>
     </xsl:template>
     
     <xsl:template match="tei:ab[@type='translation']">

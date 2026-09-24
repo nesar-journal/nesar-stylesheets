@@ -49,7 +49,7 @@
 \let\endchangemargin=\endlist 
 \makeatletter
 \renewcommand\@makefntext[1]{%
-  \par \parindent=\z@ \noindent
+  \par \parindent=1.5em \noindent
   \llap{\@thefnmark.\quad}%
   {\addfontfeatures{Numbers=Lining}#1}%
 }
@@ -242,7 +242,6 @@ DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
     colback=Nesarlinklight,
     sharp corners,
     fontupper=\rmfamily,
-    left skip=24pt,
     breakable
     }
 \newtcolorbox{mediabox}{
@@ -256,15 +255,15 @@ DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
     left=12pt, right=12pt, top=12pt, bottom=10pt,
     breakable
     }
-\usepackage{xurl}
 \usepackage{hyperref}
 \hypersetup{pdfencoding=auto,
         pdfusetitle,
         colorlinks,
         urlcolor=Nesarlink,
         linkcolor=Nesarlink,
-        breaklinks=true} 
+        breaklinks=true}
 \usepackage{xurl}
+\urlstyle{same}
 \DeclareRobustCommand{\thinskip}{\hskip 0.16667em\relax}
 \def\emdash{—}
 \def\d@sh#1#2{\unskip#1\thinskip#2\thinskip\ignorespaces}
