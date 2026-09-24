@@ -189,7 +189,11 @@ DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
             }{
               {\LARGE\thetitle\par}\vspace{2.5ex}
             }
-          {\Large\textit\theauthor\par}\vspace{2ex}
+          {\Large\textit\theauthor\par}
+          \IfFileExists{metadata/metadata-translator-full.tex}{%
+            \vspace{0.5ex}{\large translated by \input{metadata/metadata-translator-full.tex}\par}%
+          }{}%
+          \vspace{2ex}
           \end{center}\end{titlebox}};
       \node[inner sep=0pt] (caption) at ([yshift=1cm,xshift=-4.75cm]current page.south east) {\begin{titlebox}[add to width=-6.5cm,fontupper=\linespread{0.75}\selectfont
 ]%

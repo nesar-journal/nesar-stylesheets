@@ -172,8 +172,26 @@ def generate_metadata():
                         authList.write(" & ".join(institutions) + "\\\\[0.5ex]\n")
                         authList.write(" & ".join(emails) + "\n")
                         authList.write("\\end{tabular}")
-                        with open(str(metadata_directory) +"/metadata-citation.tex","w") as cit:
-                            cit.write(citation["authors"] + ". “" + citation["title"] + ".” \\emph{New Explorations in South Asia Research} "+iy)
+                        with open(str(metadata_directory) + "/metadata-citation.tex", "w") as cit:
+                            cit.write(citation["authors"] + ". \"" + citation["title"] + ".\" \\emph{New Explorations in South Asia Research} "+iy)
+                if key == "translators":
+                    translators = []
+                    authors_url = 'https://raw.githubusercontent.com/nesar-journal/nesar/master/public/authors.yml'
+                    with urllib.request.urlopen(authors_url) as response:
+                        authorList = yaml.safe_load(response.read().decode('utf-8'))
+                        for y in metadata["translators"]:
+                            if y in authorList:
+                                translators.append(authorList[y])
+                            else:
+                                print(f"authors.yml does not contain translator '{y}'. Please add them before proceeding.")
+                    fullnames = []
+                    for translator in translators:
+                        if translator["firstName"]:
+                            fullnames.append(translator["firstName"] + " " + translator["lastName"])
+                        elif translator["name"]:
+                            fullnames.append(translator["name"])
+                    with open(str(metadata_directory) + "/metadata-translator-full.tex", "w") as transOut:
+                        transOut.write(comma_join(fullnames))
         except yaml.YAMLError as exc:
             print(exc)
         

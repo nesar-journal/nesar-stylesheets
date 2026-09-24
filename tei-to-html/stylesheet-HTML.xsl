@@ -19,7 +19,17 @@
   </xsl:template> 
   <!-- AB !-->
   <xsl:template match="tei:ab">
-    <xsl:apply-templates/>
+    <xsl:choose>
+      <xsl:when test="@type">
+        <span>
+          <xsl:attribute name="class">ab-<xsl:value-of select="@type"/></xsl:attribute>
+          <xsl:apply-templates/>
+        </span>
+      </xsl:when>
+      <xsl:otherwise>
+        <xsl:apply-templates/>
+      </xsl:otherwise>
+    </xsl:choose>
   </xsl:template>
   <!-- ABBR !-->
   <xsl:template match="tei:abbr">
@@ -568,8 +578,20 @@
   <xsl:template match="tei:lacunaStart"/>
   <xsl:template match="tei:language" />
   <xsl:template match="tei:langUsage" />
-  <xsl:template match="tei:lb">
+  <xsl:template match="tei:lb[not(ancestor::tei:*[@type='epigraphic'])]">
     <xsl:element name="br"/>
+  </xsl:template>
+  <!-- For <lb> elements in EpiDoc-simulating texts !-->
+  <xsl:template match="tei:lb[ancestor::tei:*[@type='epigraphic']]">
+    <xsl:if test="preceding-sibling::tei:lb">
+      <xsl:element name="br"/>
+    </xsl:if>
+    <xsl:if test="@type = 'label'">
+      <xsl:element name="span">
+	<xsl:attribute name="class">linenum-marker</xsl:attribute>
+	<xsl:value-of select="@n"/>
+      </xsl:element>
+    </xsl:if>
   </xsl:template>
   <xsl:template match="tei:lem">
     <xsl:call-template name="rdg">
@@ -1084,6 +1106,7 @@
   <xsl:template match="tei:textLang" />
   <xsl:template match="tei:title[not(ancestor-or-self::tei:titleStmt)][not(ancestor-or-self::tei:biblStruct)]" mode="#all">
     <xsl:element name="i">
+      <xsl:attribute name="class">title</xsl:attribute>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>

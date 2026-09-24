@@ -778,6 +778,10 @@
       <xsl:if test="ancestor::tei:note[@place='foot'] and not(preceding-sibling::tei:p) and preceding-sibling::tei:cit">
 	<xsl:text>\noindent{}</xsl:text>
       </xsl:if>
+      <xsl:if test="ancestor::tei:quote and not(preceding-sibling::tei:p)">
+	<xsl:text>\raggedright
+</xsl:text>
+      </xsl:if>
       <xsl:apply-templates/>
       <xsl:if test="./following-sibling::tei:p">
 	<xsl:if test="ancestor::tei:quote">
@@ -1103,7 +1107,7 @@
 		</xsl:when>
 		<xsl:otherwise>
 		  <xsl:choose>
-		    <xsl:when test="ancestor::tei:back//tei:bibl or ancestor::tei:title">
+		    <xsl:when test="ancestor::tei:back//tei:bibl or ancestor::tei:title or ancestor::tei:ab[@type='epigraphic']">
 		      <xsl:text>{</xsl:text>
 		    </xsl:when>
 		    <xsl:otherwise>
