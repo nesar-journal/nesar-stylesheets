@@ -5,7 +5,7 @@ from saxonche import PySaxonProcessor
 
 namespaces = {'tei': 'http://www.tei-c.org/ns/1.0'}
 parser = etree.XMLParser(recover=True,encoding='utf-8')
-schemafile = 'schemas/tei_all.rng'
+schemafile = str(pathlib.Path(__file__).parent.parent / 'schemas' / 'tei_all.rng')
 
 def validate(f):
     relaxng_doc = etree.parse(schemafile)

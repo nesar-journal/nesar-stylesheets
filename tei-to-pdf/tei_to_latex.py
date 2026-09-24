@@ -185,9 +185,6 @@ def preprocess_xml():
 def postprocess_latex():
     with open(str(latex_file),"r") as original:
         data = original.read()
-        # insert thin space between initials of names
-        data = re.sub(r'([A-Z])\. ([A-Z])\. ',r'\1.\\thinskip{}\2. ',data)
-        # replace emdashes with LaTeX em dashes (with proper spacing)
         data = re.sub(r'—',r' \\Dash ',data)
     with open(str(latex_file),"w") as modified:
         modified.write(data)
