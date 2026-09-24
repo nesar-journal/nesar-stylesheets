@@ -1,4 +1,4 @@
-import re, os, string, sys, pathlib, subprocess, time, yaml, shutil, glob
+import re, os, string, sys, pathlib, subprocess, time, yaml, shutil, glob, urllib.request
 from lxml import etree
 from PIL import Image
 from itertools import chain
@@ -117,8 +117,9 @@ def generate_metadata():
                     # and finally the last names only of the authors (+ et al. if more than three)
                     # to be printed in the running header (metadata-author-short.tex)
                     authors = []
-                    with open("../nesar/public/authors.yml","r") as authority:
-                        authorList = yaml.safe_load(authority)
+                    authors_url = 'https://raw.githubusercontent.com/nesar-journal/nesar/master/public/authors.yml'
+                    with urllib.request.urlopen(authors_url) as response:
+                        authorList = yaml.safe_load(response.read().decode('utf-8'))
                         for y in metadata["authors"]:
                             if y in authorList:
                                 authors.append(authorList[y])
