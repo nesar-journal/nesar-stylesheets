@@ -1,0 +1,51 @@
+# Editor backups and temp files
+*~
+\#*\#
+.#*
+*.swp
+*.swo
+
+# AUCTeX auto-save files
+auto/
+
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
+
+# Intermediate files produced by scripts
+intermed.xml
+tei-to-pdf/latex/
+
+# Test files
+test-doi-image.*
+
+# Generated outputs in article directories
+# (components/, images/, hyphenation/ are copied there by tei_to_latex.py)
+outputs/*/latex/
+outputs/*/*.pdf
+outputs/*/*.html
+
+# Large binary inputs that don't belong in version control
+inputs/*/*.docx
+inputs/*/*.pdf
+inputs/*/*.mp3
+inputs/*/*.m4a
+inputs/*/*.webp
+inputs/*/*.jpg
+inputs/*/*.png
