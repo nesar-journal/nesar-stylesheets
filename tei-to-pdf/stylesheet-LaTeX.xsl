@@ -311,6 +311,10 @@
       <xsl:text>
 \begin{pullquote}
 </xsl:text>
+      <xsl:if test="tei:quote/@xml:lang[. != 'eng'] or ancestor::*[@xml:lang[. != 'eng']]">
+        <xsl:text>\raggedright
+</xsl:text>
+      </xsl:if>
       <xsl:apply-templates select="tei:quote" mode="plain"/>
       <xsl:apply-templates select="tei:bibl"/>
       <xsl:text>
@@ -334,7 +338,8 @@
 </xsl:text>
       <xsl:apply-templates select="tei:quote" mode="footnote-cit"/>
       <xsl:apply-templates select="tei:bibl" mode="innote"/>
-      <xsl:text>\par}</xsl:text>
+      <xsl:text>\par}\par\vspace{0.25ex}
+</xsl:text>
     </xsl:template>
     <xsl:template match="tei:quote" mode="footnote-cit">
       <xsl:apply-templates mode="footnote-cit"/>
@@ -766,10 +771,8 @@
 
 </xsl:text>
       </xsl:if>
-      <xsl:if test="ancestor::tei:note[@place='foot']">
-	<xsl:if test="preceding-sibling::tei:quote">
-	  <xsl:text>\noindent{}</xsl:text>
-	</xsl:if>
+      <xsl:if test="ancestor::tei:note[@place='foot'] and not(preceding-sibling::tei:p) and preceding-sibling::tei:cit">
+	<xsl:text>\noindent{}</xsl:text>
       </xsl:if>
       <xsl:apply-templates/>
       <xsl:if test="./following-sibling::tei:p">
@@ -810,8 +813,12 @@
 </xsl:text>
     </xsl:template>
     <xsl:template match="tei:quote[not(ancestor::tei:note[@place='foot'])]">
-      <xsl:text>\begin{pullquote}\raggedright
+      <xsl:text>\begin{pullquote}
 </xsl:text>
+      <xsl:if test="@xml:lang[. != 'eng'] or ancestor::*[@xml:lang[. != 'eng']]">
+        <xsl:text>\raggedright
+</xsl:text>
+      </xsl:if>
       <xsl:apply-templates/>
       <xsl:text>
 \end{pullquote}

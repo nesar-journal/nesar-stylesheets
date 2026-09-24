@@ -199,6 +199,12 @@ def postprocess_latex():
     with open(str(latex_file),"r") as original:
         data = original.read()
         data = re.sub(r'—',r' \\Dash ',data)
+    corrections_file = input_file.parent / 'corrections.yml'
+    if corrections_file.exists():
+        with open(corrections_file,'r') as f:
+            corrections = yaml.safe_load(f)
+        for c in corrections:
+            data = data.replace(c['old'], c['new'])
     with open(str(latex_file),"w") as modified:
         modified.write(data)
 

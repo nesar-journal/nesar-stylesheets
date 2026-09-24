@@ -242,7 +242,9 @@ DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
     colback=Nesarlinklight,
     sharp corners,
     fontupper=\rmfamily,
-    breakable
+    breakable,
+    before skip=2pt,
+    after skip=2pt
     }
 \newtcolorbox{mediabox}{
     enhanced,
@@ -255,6 +257,7 @@ DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
     left=12pt, right=12pt, top=12pt, bottom=10pt,
     breakable
     }
+\usepackage[protrusion=true]{microtype}
 \usepackage{hyperref}
 \hypersetup{pdfencoding=auto,
         pdfusetitle,
@@ -281,6 +284,7 @@ DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
 {\end{changemargin}\addtocounter{excounter}{1}}
 \widowpenalty10000
 \clubpenalty10000
+\parfillskip=0pt plus 0.5\hsize
 
 %\usepackage[en]{metre}
 %\usepackage{gb4e}
