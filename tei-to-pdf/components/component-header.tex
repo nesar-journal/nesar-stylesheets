@@ -16,9 +16,9 @@
 \setotherlanguage{malayalam}
 \defaultfontfeatures{Mapping=tex-text}
 \setmainfont[Numbers={Proportional},SmallCapsFont={TeX Gyre Termes},SmallCapsFeatures={Letters=SmallCaps,Numbers=Lining}]{IndUni-T}
-\newfontfamily\tamilfont[Script=Tamil]{AksharUnicodeRegular}
-\newfontfamily\sanskritfont[Script=Devanagari]{Jaini}
-\newfontfamily\greekfont[Script=Greek]{GFS Porson}
+%\newfontfamily\tamilfont[Script=Tamil]{AksharUnicodeRegular}
+%\newfontfamily\sanskritfont[Script=Devanagari]{Jaini}
+%\newfontfamily\greekfont[Script=Greek]{GFS Porson}
 \usepackage[shortcuts]{extdash}
 \usepackage{tikz}
 \usetikzlibrary{backgrounds, matrix, positioning, fadings, through}
@@ -84,8 +84,8 @@ published \input{metadata/metadata-dates-publication.tex}}{}
 \newcommand{\article}{\trim{\input{metadata/metadata-article.tex}}}
 \newcommand{\iy}{\trim{\input{metadata/metadata-iy.tex}}}
 \makeatother
-\newcommand{\oldnums}[1]{{\fontspec[Numbers={Proportional,OldStyle}]{TeX Gyre TermesX}#1}}
-\newcommand{\oldnumsbold}[1]{{\fontspec[Numbers={Proportional,OldStyle}]{TeX Gyre TermesX}\textbf{#1}}}
+\newcommand{\oldnums}[1]{{\fontspec[Numbers={Proportional,OldStyle}]{TeX Gyre Termes}#1}}
+\newcommand{\oldnumsbold}[1]{{\fontspec[Numbers={Proportional,OldStyle}]{TeX Gyre Termes}\textbf{#1}}}
 \setsecnumformat{\csname #1secnumformat\endcsname}
 \newcommand\sectionsecnumformat{\oldnumsbold{\thesection}\quad }
 \newcommand\onpage{\oldnums{\thepage}}
@@ -243,6 +243,17 @@ DOI: \expandafter\href\expandafter{https://doi.org/\expandafter\doi}{\doi}}
     sharp corners,
     fontupper=\rmfamily,
     left skip=24pt,
+    breakable
+    }
+\newtcolorbox{mediabox}{
+    enhanced,
+    boxrule=0.5pt,
+    colframe=Nesarlinkdark,
+    colback=Nesarlinklight,
+    sharp corners,
+    halign=center,
+    fontupper=\rmfamily,
+    left=12pt, right=12pt, top=12pt, bottom=10pt,
     breakable
     }
 \usepackage{xurl}

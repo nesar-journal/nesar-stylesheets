@@ -222,13 +222,16 @@
       <xsl:apply-templates/>
     </xsl:template>
 
-    <xsl:template match="tei:bibl[ancestor::tei:cit]">
+    <xsl:template match="tei:bibl[ancestor::tei:cit][not(ancestor::tei:note)]">
       <xsl:text>
 
 \medskip\hfill\begin{minipage}{0.9\textwidth}\small\hfill
 </xsl:text>
 <xsl:apply-templates/>
 <xsl:text>\end{minipage}\hspace{2em}</xsl:text>
+    </xsl:template>
+    <xsl:template match="tei:bibl[ancestor::tei:cit][ancestor::tei:note]">
+      <xsl:text>\quad </xsl:text><xsl:apply-templates/>
     </xsl:template>
     <xsl:template match="tei:bibl[not(ancestor-or-self::tei:listBibl or ancestor-or-self::tei:cit)]">
       <xsl:apply-templates/>
@@ -246,6 +249,9 @@
 </xsl:text>
     </xsl:template>
 
+    <xsl:template match="tei:bibl" mode="innote">
+      <xsl:text>\ (</xsl:text><xsl:apply-templates/><xsl:text>)</xsl:text>
+    </xsl:template>
     <xsl:template match="tei:bibl" mode="second">
       <xsl:apply-templates/>
     </xsl:template>
@@ -297,7 +303,7 @@
     <xsl:template match="tei:certainty" />
     <xsl:template match="tei:change" />
     <xsl:template match="tei:choice" />
-    <xsl:template match="tei:cit">
+    <xsl:template match="tei:cit[not(ancestor::tei:note)]">
       <xsl:text>
 \begin{pullquote}
 </xsl:text>
@@ -310,6 +316,64 @@
     <xsl:apply-templates select="." mode="text"/>
   </xsl:for-each>
 </xsl:if>
+    </xsl:template>
+    <xsl:template match="tei:cit[ancestor::tei:note]">
+      <xsl:if test="preceding-sibling::*">
+	<xsl:text>\par
+</xsl:text>
+      </xsl:if>
+      <xsl:if test="preceding-sibling::tei:cit">
+	<xsl:text>\vspace{1ex}
+</xsl:text>
+      </xsl:if>
+      <xsl:text>\leavevmode\vtop{\parskip=0pt\parindent=0pt\setlength{\leftskip}{1em}
+</xsl:text>
+      <xsl:apply-templates select="tei:quote" mode="footnote-cit"/>
+      <xsl:apply-templates select="tei:bibl" mode="innote"/>
+      <xsl:text>\par}</xsl:text>
+    </xsl:template>
+    <xsl:template match="tei:quote" mode="footnote-cit">
+      <xsl:apply-templates mode="footnote-cit"/>
+    </xsl:template>
+    <xsl:template match="tei:lg" mode="footnote-cit">
+      <xsl:apply-templates mode="footnote-cit"/>
+      <xsl:if test="following-sibling::tei:lg">
+	<xsl:text>
+
+</xsl:text>
+      </xsl:if>
+    </xsl:template>
+    <xsl:template match="tei:l" mode="footnote-cit">
+      <xsl:text>\hangindent=4em\hangafter=1 </xsl:text>
+      <xsl:apply-templates/>
+      <xsl:if test="not(ancestor::tei:*[@xml:lang][1]/@xml:lang = 'tam-Latn')">
+	<xsl:choose>
+	  <xsl:when test="count(../tei:l) = 2">
+	    <xsl:choose>
+	      <xsl:when test="position() = 1">
+		<xsl:text> \char`~ </xsl:text>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<xsl:text> \char`~\char`~</xsl:text>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:when>
+	  <xsl:when test="count(../tei:l) = 4">
+	    <xsl:choose>
+	      <xsl:when test="count(preceding-sibling::tei:l) = 1">
+		<xsl:text> \char`~ </xsl:text>
+	      </xsl:when>
+	      <xsl:when test="count(preceding-sibling::tei:l) = 3">
+		<xsl:text> \char`~\char`~ </xsl:text>
+	      </xsl:when>
+	    </xsl:choose>
+	  </xsl:when>
+	</xsl:choose>
+      </xsl:if>
+      <xsl:if test="following-sibling::tei:l">
+	<xsl:text>\par
+</xsl:text>
+      </xsl:if>
     </xsl:template>
     <xsl:template match="tei:citedRange">
       <xsl:apply-templates/>
@@ -382,15 +446,21 @@
     <xsl:template match="tei:expan" />
     <xsl:template match="tei:figure">
       <xsl:text>
-\begin{figure}[ht!]\label{fig</xsl:text>
+\begin{figure}[htbp!]\label{fig</xsl:text>
 <xsl:value-of select="count(preceding::tei:figure)+1"/>
 <xsl:text>}\centering
 </xsl:text>
 <xsl:if test="tei:graphic">
-  <xsl:text>
-\includegraphics[width=</xsl:text><xsl:if test="@width and contains(@width,'%')"><xsl:value-of select="translate(@width,'%','')"/></xsl:if><xsl:text>\textwidth]{</xsl:text>
-<xsl:value-of select="replace(concat('images/',substring-after(tei:graphic/@url,'/')),'.webp','.jpg')"/>
-<xsl:text>}</xsl:text>
+  <xsl:text>\includegraphics[width=</xsl:text>
+  <xsl:choose>
+    <xsl:when test="@width and contains(@width,'%')">
+      <xsl:value-of select="number(translate(@width,'%','')) div 100"/>
+    </xsl:when>
+    <xsl:otherwise>1</xsl:otherwise>
+  </xsl:choose>
+  <xsl:text>\textwidth, height=0.85\textheight, keepaspectratio]{</xsl:text>
+  <xsl:value-of select="replace(concat('images/',tei:graphic/@url),'.webp','.jpg')"/>
+  <xsl:text>}</xsl:text>
 </xsl:if>
 <xsl:if test="tei:head">
   <xsl:text>
@@ -495,9 +565,36 @@
     <xsl:template match="tei:join" />
     <xsl:template match="tei:keywords" />
     <xsl:template match="tei:l">
+      <xsl:text>\hangindent=4em\hangafter=1 </xsl:text>
       <xsl:apply-templates/>
+      <!-- PUNCTUATION !-->
+      <!-- skip punctuation if the language is Tamil !-->
+      <xsl:if test="not(ancestor::tei:*[@xml:lang][1]/@xml:lang = 'tam-Latn')">
+	<xsl:choose>
+	  <xsl:when test="count(../tei:l) = 2">
+	    <xsl:choose>
+	      <xsl:when test="position() = 1">
+		<xsl:text> \char`~ </xsl:text>
+	      </xsl:when>
+	      <xsl:otherwise>
+		<xsl:text> \char`~\char`~</xsl:text>
+	      </xsl:otherwise>
+	    </xsl:choose>
+	  </xsl:when>
+	  <xsl:when test="count(../tei:l) = 4">
+	    <xsl:choose>
+	      <xsl:when test="count(preceding-sibling::tei:l) = 1">
+		<xsl:text> \char`~ </xsl:text>
+	      </xsl:when>
+	      <xsl:when test="count(preceding-sibling::tei:l) = 3">
+		<xsl:text> \char`~\char`~ </xsl:text>
+	      </xsl:when>
+	    </xsl:choose>
+	  </xsl:when>
+	</xsl:choose>
+      </xsl:if>
       <xsl:if test="./following-sibling::tei:l">
-	<xsl:text>\\
+	<xsl:text>\par
 </xsl:text>
       </xsl:if>
     </xsl:template>
@@ -520,7 +617,10 @@
     </xsl:template>
     <xsl:template match="tei:language" />
     <xsl:template match="tei:langUsage" />
-    <xsl:template match="tei:lb">
+    <xsl:template match="tei:lb[not(ancestor::tei:note)]">
+      <xsl:text>\\</xsl:text>
+    </xsl:template>
+    <xsl:template match="tei:lb[ancestor::tei:note]" mode="#all">
       <xsl:text>\\</xsl:text>
     </xsl:template>
     <xsl:template match="tei:lem">
@@ -532,6 +632,15 @@
 	<xsl:text>
 
 </xsl:text>
+      </xsl:if>
+    </xsl:template>
+    <xsl:template match="tei:lg[ancestor::tei:note[@place='foot']]">
+      <xsl:text>\par{\parskip=0pt\parindent=0pt\setlength{\leftskip}{1em}
+</xsl:text>
+      <xsl:apply-templates/>
+      <xsl:text>\par}</xsl:text>
+      <xsl:if test="following-sibling::tei:lg">
+	<xsl:text>\vspace{1ex}</xsl:text>
       </xsl:if>
     </xsl:template>
     <xsl:template match="tei:license" />
@@ -596,6 +705,21 @@
     <xsl:template match="tei:listPrefixDef" />
     <xsl:template match="tei:listWit" />
     <xsl:template match="tei:locus" />
+    <xsl:template match="tei:media">
+      <xsl:text>
+\begin{mediabox}
+\noindent\begin{minipage}[c]{1.5cm}%
+\includegraphics[height=1.5cm]{images/Twirl@2x-8.png}%
+\end{minipage}\hspace{10pt}%
+\begin{minipage}[c]{\dimexpr\linewidth-1.5cm-10pt\relax}
+{\itshape </xsl:text>
+      <xsl:apply-templates select="tei:desc"/>
+      <xsl:text>}\\[2pt]
+{\small View this article on \href{https://nesarjournal.org/articles/\slug}{the NESAR website} to play media.}
+\end{minipage}
+\end{mediabox}
+</xsl:text>
+    </xsl:template>
     <xsl:template match="tei:measure" />
     <xsl:template match="tei:msContents" />
     <xsl:template match="tei:msDesc" />
@@ -618,7 +742,7 @@
       <xsl:text>\footnote{</xsl:text>
       <xsl:text disable-output-escaping="yes"><![CDATA[%]]>
 </xsl:text>
-      <xsl:apply-templates/>
+      <xsl:apply-templates select="* | text()[normalize-space()]"/>
       <xsl:text>}
 </xsl:text>
     </xsl:template>
@@ -671,17 +795,14 @@
       <xsl:text>/</xsl:text>
     </xsl:template>
     <xsl:template match="tei:quote[ancestor::tei:note[@place='foot']]">
-      <xsl:text>
-\vspace{-1.5ex}\begin{quote}\raggedright
-      </xsl:text>
+      <xsl:text>{\setlength{\leftskip}{1em}\noindent </xsl:text>
       <xsl:apply-templates/>
-      <xsl:text>\end{quote}\vspace{-1.5ex}
-      </xsl:text>
+      <xsl:text>\par}
+</xsl:text>
     </xsl:template>
     <xsl:template match="tei:quote[not(ancestor::tei:note[@place='foot'])]">
-      <xsl:text>
-\begin{pullquote}\raggedright
-      </xsl:text>
+      <xsl:text>\begin{pullquote}\raggedright
+</xsl:text>
       <xsl:apply-templates/>
       <xsl:text>
 \end{pullquote}
@@ -856,14 +977,12 @@
     </xsl:template>
 
     <xsl:template match="tei:ab[not(@type='translation')]">
-      <xsl:if test="preceding::tei:lg">
-	<xsl:text>
-
-	</xsl:text>
-      </xsl:if>
-      <xsl:apply-templates/>
-      <xsl:text>\\
+      <xsl:if test="preceding-sibling::tei:ab">
+	<xsl:text>\par
 </xsl:text>
+      </xsl:if>
+      <xsl:text>\noindent{}</xsl:text>
+      <xsl:apply-templates/>
     </xsl:template>
     
     <xsl:template match="tei:ab[@type='translation']">
@@ -941,7 +1060,7 @@
 		</xsl:when>
 		<xsl:otherwise>
 		  <xsl:choose>
-		    <xsl:when test="ancestor::tei:bibl or ancestor::tei:title">
+		    <xsl:when test="ancestor::tei:back//tei:bibl or ancestor::tei:title">
 		      <xsl:text>{</xsl:text>
 		    </xsl:when>
 		    <xsl:otherwise>

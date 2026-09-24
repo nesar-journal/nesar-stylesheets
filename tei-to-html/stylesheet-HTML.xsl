@@ -9,8 +9,10 @@
 	      omit-xml-declaration="yes"/>
   <xsl:strip-space elements="*"/>
 
-  <!-- Given a TEI document, this stylesheet transforms it 
+  <!-- Given a TEI document, this stylesheet transforms it
        into an XHTML fragment. !-->
+
+  <xsl:variable name="slug" select="replace(base-uri(/), '^.*/([^/]+)\.[^.]+$', '$1')"/>
 
   <xsl:template match="/">
     <xsl:apply-templates/>
@@ -53,7 +55,10 @@
     <xsl:apply-templates/>
   </xsl:template>
   <!-- BIBL !-->
-  <xsl:template match="tei:bibl[not(ancestor-or-self::tei:listBibl)]">
+  <xsl:template match="tei:bibl[not(ancestor-or-self::tei:listBibl)][not(ancestor::tei:note)]">
+    <xsl:apply-templates/>
+  </xsl:template>
+  <xsl:template match="tei:bibl[ancestor::tei:note]" mode="#all">
     <xsl:apply-templates/>
   </xsl:template>
   <xsl:template match="tei:bibl[ancestor-or-self::tei:listBibl]">
@@ -245,7 +250,7 @@
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:choice" />
-  <xsl:template match="tei:cit">
+  <xsl:template match="tei:cit[not(ancestor::tei:note)]">
     <!-- cit must have a quote and bibl element !-->
     <xsl:element name="div">
       <xsl:attribute name="class">textandnotes</xsl:attribute>
@@ -275,6 +280,28 @@
 	  </xsl:element>
 	</xsl:if>
       </xsl:element>
+    </xsl:element>
+  </xsl:template>
+  <!-- CIT in a NOTE element !-->
+  <xsl:template match="tei:cit[ancestor::tei:note]" mode="endnotes">
+    <xsl:apply-templates select="tei:quote" mode="endnotes"/>
+    <xsl:element name="span">
+      <xsl:attribute name="class">bibl-string-in-note</xsl:attribute>
+      <xsl:apply-templates select="tei:bibl" mode="endnotes"/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:cit[ancestor::tei:note]" mode="sidenotes">
+    <xsl:element name="p">
+      <xsl:if test="position() = 1">
+	<xsl:element name="a">
+	  <xsl:attribute name="href">
+	    <xsl:value-of select="concat('#',ancestor::tei:note/@xml:id)"/>
+	  </xsl:attribute>
+	  <xsl:value-of select="../@n"/>
+	</xsl:element>
+      </xsl:if>
+      <xsl:apply-templates select="tei:quote" mode="sidenotes"/>
+      <xsl:apply-templates select="tei:bibl" mode="sidenotes"/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:citedRange">
@@ -353,11 +380,14 @@
       <xsl:attribute name="class">textandnotes</xsl:attribute>
       <xsl:element name="div">
 	<xsl:attribute name="class">figure-wrapper</xsl:attribute>
+	<xsl:attribute name="id">
+	  <xsl:value-of select="concat('fig',$figurenumber)"/>
+	</xsl:attribute>
 	<xsl:element name="figure">
 	  <xsl:if test="tei:graphic">
 	    <xsl:element name="img">
 	      <xsl:attribute name="src">
-		<xsl:value-of select="tei:graphic/@url"/>
+		<xsl:value-of select="concat($slug,'/',tei:graphic/@url)"/>
 	      </xsl:attribute>
 	      <xsl:if test="tei:figDesc">
 		<xsl:attribute name="alt">
@@ -507,6 +537,12 @@
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
+  <xsl:template match="tei:l" mode="sidenotes">
+    <xsl:element name="span">
+      <xsl:attribute name="class">l</xsl:attribute>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
   <xsl:template match="tei:label">
     <xsl:element name="span">
       <xsl:if test="@type">
@@ -535,6 +571,12 @@
       <xsl:if test="@met">
 	<xsl:attribute name="data-nesar-meter"><xsl:value-of select="@met"/></xsl:attribute>
       </xsl:if>
+      <xsl:apply-templates/>
+    </xsl:element>
+  </xsl:template>
+  <xsl:template match="tei:lg" mode="sidenotes">
+    <xsl:element name="span">
+      <xsl:attribute name="class">lg</xsl:attribute>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -650,6 +692,51 @@
   <xsl:template match="tei:listPrefixDef" />
   <xsl:template match="tei:listWit" />
   <xsl:template match="tei:locus" />
+  <xsl:template match="tei:media">
+    <!-- Two kinds: locally-hosted media, and externally-hosted media !-->
+    <xsl:choose>
+      <xsl:when test="contains(@url,'youtube')">
+	<xsl:element name="iframe">
+	  <xsl:attribute name="width">560</xsl:attribute>
+	  <xsl:attribute name="height">315</xsl:attribute>
+	  <xsl:attribute name="title">YouTube video player</xsl:attribute>
+	  <xsl:attribute name="frameborder">0</xsl:attribute>
+	  <xsl:attribute name="allow">accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share</xsl:attribute>
+	  <xsl:attribute name="referrerpolicy">strict-origin-when-cross-origin</xsl:attribute>
+	  <xsl:attribute name="allowfullscreen">true</xsl:attribute>
+	  <xsl:attribute name="src">
+	    <xsl:text>https://www.youtube.com/embed/</xsl:text>
+	    <xsl:value-of select="substring-before(concat(substring-after(@url, '?v='), '&amp;'), '&amp;')"/>
+	  </xsl:attribute>
+	</xsl:element>
+	<xsl:element name="figcaption">
+	  <xsl:apply-templates select="tei:desc"/>
+	  <xsl:text> [view on </xsl:text>
+	  <xsl:element name="a">
+	    <xsl:attribute name="href">
+	      <xsl:value-of select="@url"/>
+	    </xsl:attribute>
+	    <xsl:attribute name="target">_</xsl:attribute>
+	    <xsl:text>YouTube</xsl:text>
+	  </xsl:element>
+	  <xsl:text>]</xsl:text>
+	</xsl:element>
+      </xsl:when>
+      <xsl:otherwise>
+	<xsl:element name="figure">
+	  <xsl:element name="audio">
+	    <xsl:attribute name="controls"/>
+	    <xsl:attribute name="src">
+	      <xsl:value-of select="concat($slug,'/',@url)"/>
+	    </xsl:attribute>
+	  </xsl:element>
+	  <xsl:element name="figcaption">
+	    <xsl:apply-templates select="tei:desc"/>
+	  </xsl:element>
+	</xsl:element>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:template>
   <xsl:template match="tei:measure" />
   <xsl:template match="tei:msContents" />
   <xsl:template match="tei:msDesc" />
@@ -734,12 +821,16 @@
   </xsl:template>
   <xsl:template match="tei:p" mode="sidenotes">
     <xsl:element name="p">
-      <xsl:element name="a">
-	<xsl:attribute name="href">
-	  <xsl:value-of select="concat('#',ancestor::tei:note/@xml:id)"/>
-	</xsl:attribute>
-	<xsl:value-of select="../@n"/>
-      </xsl:element>
+      <!-- If the P element is the first in the note.
+	   Other options are CIT and QUOTE. !-->
+      <xsl:if test="position() = 1">
+	<xsl:element name="a">
+	  <xsl:attribute name="href">
+	    <xsl:value-of select="concat('#',ancestor::tei:note/@xml:id)"/>
+	  </xsl:attribute>
+	  <xsl:value-of select="../@n"/>
+	</xsl:element>
+      </xsl:if>
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
@@ -793,22 +884,22 @@
   <xsl:template match="tei:quote[ancestor::tei:note[@place='foot']]" mode="endnotes">
     <xsl:element name="div">
       <xsl:attribute name="class">quote-in-note</xsl:attribute>
-      <xsl:if test="not(preceding-sibling::tei:*)">
-	<xsl:element name="a">
-	  <xsl:attribute name="href">
-	    <xsl:value-of select="concat(concat('#','ret-'),ancestor::tei:note/@xml:id)"/>
-	  </xsl:attribute>
-	  <xsl:attribute name="class">jump-up</xsl:attribute>
-	  <xsl:text>↑</xsl:text>
-	</xsl:element>
-      </xsl:if>
+      <!-- <xsl:if test="not(preceding-sibling::tei:*)"> -->
+      <!-- 	<xsl:element name="a"> -->
+      <!-- 	  <xsl:attribute name="href"> -->
+      <!-- 	    <xsl:value-of select="concat(concat('#','ret-'),ancestor::tei:note/@xml:id)"/> -->
+      <!-- 	  </xsl:attribute> -->
+      <!-- 	  <xsl:attribute name="class">jump-up</xsl:attribute> -->
+      <!-- 	  <xsl:text>↑</xsl:text> -->
+      <!-- 	</xsl:element> -->
+      <!-- </xsl:if> -->
       <xsl:apply-templates/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:quote[ancestor::tei:note[@place='foot']]" mode="sidenotes">
-    <xsl:element name="div">
+    <xsl:element name="span">
       <xsl:attribute name="class">quote-in-note</xsl:attribute>
-      <xsl:apply-templates/>
+      <xsl:apply-templates mode="sidenotes"/>
     </xsl:element>
   </xsl:template>
   <xsl:template match="tei:quote[not(ancestor::tei:cit)][not(ancestor::tei:note[@place='foot'])]">
@@ -962,7 +1053,7 @@
   </xsl:template>
   <xsl:template match="tei:textClass" />
   <xsl:template match="tei:textLang" />
-  <xsl:template match="tei:title[not(ancestor-or-self::tei:titleStmt)][not(ancestor-or-self::tei:biblStruct)]">
+  <xsl:template match="tei:title[not(ancestor-or-self::tei:titleStmt)][not(ancestor-or-self::tei:biblStruct)]" mode="#all">
     <xsl:element name="i">
       <xsl:apply-templates/>
     </xsl:element>

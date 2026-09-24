@@ -120,7 +120,7 @@ def generate_metadata():
                     # and finally the last names only of the authors (+ et al. if more than three)
                     # to be printed in the running header (metadata-author-short.tex)
                     authors = []
-                    with open("../../nesar/public/authors.yml","r") as authority:
+                    with open("../nesar/public/authors.yml","r") as authority:
                         authorList = yaml.safe_load(authority)
                         for y in metadata["authors"]:
                             if y in authorList:
