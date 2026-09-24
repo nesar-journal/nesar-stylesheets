@@ -1,105 +1,132 @@
 # NESAR Stylesheets
 
-Required Python libraries: `lxml`, `re`, `os`, `string`, `sys`, `pathlib`, `subprocess`, `time`, `yaml`, `chain`, `shutil`, `glob`, `PIL`
+This repository converts DOCX submissions into the formats published by NESAR — HTML and PDF — through the intermediary of a TEI XML file. There are three pipelines:
 
-This a repository that makes it easier to converting a DOCX file (hopefully formatting according to the [guidelines](https://nesarjournal.org/submit) on the NESAR website) into the formats published by NESAR, namely HTML and PDF, through the intermediary of a TEI file. There are three pipelines:
 - [DOCX to TEI](#going-from-docx-to-tei)
 - [TEI to HTML](#going-from-tei-to-html)
 - [TEI to PDF](#going-from-tei-to-pdf)
 
-## Going from DOCX to TEI
+## Setup
 
-We do not use DOCX to produce the production files (HTML and PDF). We convert the text data from the DOCX into a TEI file, and we store the metadata for the file in a YAML file. These two files will then be used for all downstream conversions (see below).
+### Dependencies
+
+Install Python dependencies with:
+
+```
+pip install -r requirements.txt
+```
+
+The required packages are `lxml`, `Pillow`, `PyYAML`, and `saxonche`. The `saxonche` package provides Python bindings for the Saxon XSLT processor and replaces any need for a local Java or Saxon installation.
+
+The TEI Stylesheets (used for the initial DOCX-to-TEI conversion) are included as a git submodule. After cloning this repository, run:
+
+```
+git submodule update --init
+```
+
+### Working directory
+
+Each article is processed in its own subdirectory of `work/`. Our convention for naming these directories is `lastname-title-of-article`. Place the source files for an article in `work/lastname-title-of-article/` before running any scripts. The `work/` directory is not committed to the repository.
+
+## Going from DOCX to TEI
 
 ### Step 1: Automatic conversion
 
 ```
-python3 docx_to_tei/docx_to_tei.py FILENAME.docx
+python3 docx-to-tei/docx_to_tei.py work/lastname-title-of-article/lastname-title-of-article.docx
 ```
 
-1. Note that this shell script requires the [TEI stylesheets](https://github.com/TEIC/Stylesheets), and you should change `docx_to_tei.py` to point to the relevant transformation (`docxtotei`) on your own computer. Please edit the variable `bin_path` in `docx_to_tei.py` with the correct path on your machine.
+This converts the DOCX file to TEI XML using the bundled TEI Stylesheets, then applies a postprocessing stylesheet and attempts to detect bibliography references. It produces two files in the same directory:
 
-2. Also note that this will create a directory in `/output` based on the filename, and our convention is `lastname-title-of-article`, so the original DOCX file should have this format.
+- `lastname-title-of-article-postprocessed.xml` — the TEI file, ready for manual editing
+- `lastname-title-of-article.yaml` — a stub YAML metadata file to be filled in
 
-The resulting files will live in `/output/lastname-title-of-article`, and will be:
-- `lastname-title-of-article-postprocessed.xml`
-- `metadata.yml`
-
-The first is a lightly postprocessed version of the automatically-created TEI file. Both files will need to be edited manually (see immediately below).
-
-### Step 2: Manually editing and checking the TEI
+### Step 2: Manually edit the TEI
 
 - [ ] Add **author** (`fileDesc/titleStmt/author`).
 - [ ] Add **abstract** (`profileDesc/abstract`).
 - [ ] Add **language usage** (`profileDesc/langUsage`) and check all foreign-language text and titles.
 - [ ] Check all **bibliography** elements in the text and in the bibliography, and make sure they have operational cross-references.
-- [ ] Check the **quotations** to ensure they are in a `<quote>` element with the proper language.
+- [ ] Check **quotations** to ensure they are in a `<quote>` element with the proper language.
 
 If there are text-critical notes:
 - [ ] Put apparatus entries in a `<listApp>` element.
 
-### Step 3: Add the YAML metadata
+When the TEI is ready, rename the file to `lastname-title-of-article.xml`.
 
-Edit the file `metadata.yml` to reflect the correct metadata. This will be used in the LaTeX conversion, but it's also a necessary component of the NESAR website.
+### Step 3: Add the metadata
+
+Edit `metadata.yml` to reflect the correct article metadata. This file is used by both the LaTeX pipeline and the NESAR website. The format mirrors the entries in the main NESAR repository.
 
 ## Going from TEI to HTML
 
+```
+python3 tei-to-html/tei_to_html.py work/lastname-title-of-article/lastname-title-of-article.xml
+```
+
+The script validates the TEI file against the schema in `schemas/` and will not proceed if the file is invalid. The output is written to:
 
 ```
-python3 tei-to-html/tei_to_html.py outputs/lastname-title-of-article/lastname-title-of-article.xml
+work/lastname-title-of-article/outputs/lastname-title-of-article.html
 ```
-
-will generate `lastname-title-of-article.html` that can then be used as the HTML galley.
-
-Notes:
-1. The script will first try to validate the TEI file against the schemas in `/schemas`. It will not proceed if the TEI is invalid.
 
 ## Going from TEI to PDF
 
-We use LaTeX to produce the PDF files. This means the TEI file and YAML metadata need to be converted into a LaTeX file, which is then edited manually for fine-tuning, and compiled into a PDF.
+We use XeLaTeX to produce the PDF files. The process is: convert TEI to LaTeX, optionally make manual edits, then compile to PDF.
 
 ### Step 1: Generate the LaTeX files
 
 ```
-python3 tei-to-pdf/tei_to_latex.py outputs/lastname-title-of-article/lastname-title-of-article.xml
+python3 tei-to-pdf/tei_to_latex.py work/lastname-title-of-article/lastname-title-of-article.xml
 ```
 
-Note that this script will ask you for some metadata, including the issue number, article number, year, and start page. (The latter is relevant because we paginate continuously throughout an issue, so the start page of an article should be one plus the last page of the previous article.)
+The script validates the TEI, then sets up a `latex/` subdirectory inside the article's working directory:
 
-This sets up a directory called `latex` in `lastname-title-of-article` that contains the following files and subdirectories:
 ```
-|   lastname-title-of-article.tex
-|
-|__ components
-|
-|__ images
-|
-|__ metadata
+work/lastname-title-of-article/
+├── lastname-title-of-article.xml
+├── metadata.yml
+├── pagination.yml
+└── latex/
+    ├── lastname-title-of-article.tex
+    ├── components/
+    ├── hyphenation/
+    ├── images/
+    └── metadata/
 ```
 
-The LaTeX file, `lastname-title-of-article.tex` is generated by the stylesheet `stylesheet-LaTeX.xsl` in `tei-to-pdf`. It includes templates that are kept in `components`, which is simply copied from the directory of the same name in `tei-to-pdf`. `images` also contains everything included in the directory of the same name in `tei-to-pdf`, but it *also* includes JPG versions of the WEBP images included with the article. (Those are converted by `tei-to-latex.py`.) The `metadata` directory contains files that are generated by the script, and not copied over from the templates; these files are specific to each article and mostly represent the article metadata.
+`components/`, `hyphenation/`, and `images/` are copied from `tei-to-pdf/`. The `images/` directory also includes JPG versions of any WEBP images found in the article directory. The `metadata/` directory contains article-specific files generated by the script.
 
-### Step 2: Manually edit the LaTeX files
+**Pagination metadata:** On the first run, the script will prompt for the issue number, article number, year, and first page number. (Articles are paginated continuously within an issue, so the first page of each article is one more than the last page of the previous one.) These values are saved to `pagination.yml` in the article directory. On subsequent runs the file is read automatically and no prompt appears. To change the values, edit `pagination.yml` directly.
 
-You should be able to compile the LaTeX file in the `latex` directory, which will give you an idea of how the PDF will look *if you don't do anything else to it*. But you will almost certainly have to make some changes, which might include:
+### Step 2: Optionally edit the LaTeX
 
-- Fixing 'runts'
-- Fixing hyphenation (and adding new hyphenation patterns to `tei-to-pdf/hyphenation/nesarhyphenation.sty`)
+You can compile the LaTeX file immediately to see a draft PDF. Manual edits may be needed for:
+
+- Fixing runts
+- Fixing hyphenation (add new patterns to `tei-to-pdf/hyphenation/nesarhyphenation.sty`)
 - Adjusting tables
 - Adjusting page breaks
 
-It is useful to keep track of the manual changes needed in a text file, since you may want to regenerate the LaTeX file automatically from the TEI source, which will destroy all of the manually-introduced changes.
+Keep a record of manual changes in a text file, since regenerating the LaTeX from TEI will overwrite them.
 
-### Step 3: Generate the final PDF of the article
+### Step 3: Compile to PDF
 
-Once the manual edits are complete, you can compile the LaTeX file again:
+If no manual edits are needed, you can generate the LaTeX and compile in one step:
+
+```
+python3 tei-to-pdf/tei_to_latex.py work/lastname-title-of-article/lastname-title-of-article.xml --pdf
+```
+
+If you have made manual edits to the LaTeX, compile it directly from the `latex/` directory:
 
 ```
 xelatex lastname-title-of-article.tex
+xelatex lastname-title-of-article.tex
 ```
 
-and this will generate `lastname-title-of-article.pdf`, the PDF galley of the article.
+(Two passes are needed to resolve cross-references.) Either way, the final PDF is written to:
 
-## To come
-
-BibTeX support?
+```
+work/lastname-title-of-article/outputs/lastname-title-of-article.pdf
+```
