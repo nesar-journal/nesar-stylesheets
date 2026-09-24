@@ -1,6 +1,7 @@
 import re, os, string, sys, pathlib, subprocess, time
 from lxml import etree
 from itertools import chain
+from saxonche import PySaxonProcessor
 
 namespaces = {'tei': 'http://www.tei-c.org/ns/1.0'}
 parser = etree.XMLParser(recover=True,encoding='utf-8')
@@ -15,17 +16,14 @@ def validate(f):
 def generate_html(tei,inputfile):
     outputfile = inputfile.with_suffix('.html')
     xsl = str(pathlib.Path(__file__).parent.absolute()) + "/stylesheet-HTML.xsl"
-    source = "-s:"+str(inputfile)
-    stylesheet = "-xsl:'"+xsl+"'"
-    output = "-o:'"+str(outputfile)+"'"
-    javacall = "java -cp /usr/share/java/*:/usr/share/java/ant-1.9.6.jar net.sf.saxon.Transform "+source+ " "+stylesheet+" "+output
-    try:
-        txt = subprocess.Popen(javacall,stdout=subprocess.PIPE,shell=True).wait()
-        print("HTML file produced.")
-    except Exception as ex:
-        template = "An exception of type {0} occurred B. Arguments:\n{1!r}"
-        message = template.format(type(ex).__name__, ex.args)
-        print(message)
+    with PySaxonProcessor(license=False) as proc:
+        xslt = proc.new_xslt30_processor()
+        xslt.transform_to_file(
+            source_file=str(inputfile),
+            stylesheet_file=xsl,
+            output_file=str(outputfile),
+        )
+    print("HTML file produced.")
 
 if __name__ == "__main__":
     inputfile = pathlib.Path(sys.argv[1]).absolute()

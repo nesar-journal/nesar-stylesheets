@@ -1,6 +1,7 @@
 import re, os, string, sys, pathlib, subprocess, time
 from lxml import etree
 from itertools import chain
+from saxonche import PySaxonProcessor
 
 namespaces = {'tei': 'http://www.tei-c.org/ns/1.0'}
 parser = etree.XMLParser(recover=True,encoding='utf-8')
@@ -21,23 +22,20 @@ def docx_to_tei(f):
 def xsl_postprocess(tei,inputfile):
     outputfile = os.path.splitext(inputfile)[0] + "-postprocessed.xml"
     x = etree.fromstring(tei.encode('utf-8'),parser=parser)
-    string = etree.tostring(x, pretty_print=True, encoding='unicode')
-    with open('intermed.xml','w') as o:
-        o.write(string)
+    intermed = str(pathlib.Path(inputfile).parent / 'intermed.xml')
+    xml_str = etree.tostring(x, pretty_print=True, encoding='unicode')
+    with open(intermed,'w') as o:
+        o.write(xml_str)
     xsl = str(pathlib.Path(__file__).parent.absolute()) + "/postprocess_tei.xsl"
-    source = "-s:intermed.xml"
-    stylesheet = "-xsl:'"+xsl+"'"
-    output = "-o:'"+outputfile+"'"
-    javacall = "java -cp /usr/share/java/*:/usr/share/java/antlrall.jar net.sf.saxon.Transform "+source+ " "+stylesheet+" "+output
-#    javacall = "java -cp /usr/share/java/*:/usr/share/java/ant-1.9.6.jar net.sf.saxon.Transform "+source+ " "+stylesheet+" "+output
-    try:
-        txt = subprocess.Popen(javacall,stdout=subprocess.PIPE,shell=True).wait()
-        with open(outputfile,"r") as i:
-            return i.read().encode('utf-8')
-    except Exception as ex:
-        template = "An exception of type {0} occurred B. Arguments:\n{1!r}"
-        message = template.format(type(ex).__name__, ex.args)
-        print(message)
+    with PySaxonProcessor(license=False) as proc:
+        xslt = proc.new_xslt30_processor()
+        xslt.transform_to_file(
+            source_file=intermed,
+            stylesheet_file=xsl,
+            output_file=outputfile,
+        )
+    with open(outputfile,"r") as i:
+        return i.read().encode('utf-8')
 
 def detect_bibliography(tei):
     tei = tei.decode('utf-8')

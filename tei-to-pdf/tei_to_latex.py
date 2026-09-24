@@ -1,8 +1,8 @@
 import re, os, string, sys, pathlib, subprocess, time, yaml, shutil, glob
 from lxml import etree
 from PIL import Image
-
 from itertools import chain
+from saxonche import PySaxonProcessor
 
 current_dir = pathlib.Path(__file__).resolve().parent.absolute()
 parent_dir = pathlib.Path(__file__).resolve().parents[1].absolute()
@@ -28,17 +28,14 @@ def validate(f):
     return relaxng.assertValid(f)
 
 def generate_latex(tei):
-    source = "-s:"+str(preprocessed_file)
-    stylesheet = "-xsl:'"+str(stylesheet_file)+"'"
-    output = "-o:'"+str(latex_file)+"'"
-    javacall = "java -cp /usr/share/java/*:/usr/share/java/ant-1.9.6.jar net.sf.saxon.Transform "+source+ " "+stylesheet+" "+output
-    try:
-        txt = subprocess.Popen(javacall,stdout=subprocess.PIPE,shell=True).wait()
-        print("LaTeX file produced.")
-    except Exception as ex:
-        template = "An exception of type {0} occurred B. Arguments:\n{1!r}"
-        message = template.format(type(ex).__name__, ex.args)
-        print(message)
+    with PySaxonProcessor(license=False) as proc:
+        xslt = proc.new_xslt30_processor()
+        xslt.transform_to_file(
+            source_file=str(preprocessed_file),
+            stylesheet_file=str(stylesheet_file),
+            output_file=str(latex_file),
+        )
+    print("LaTeX file produced.")
     with open(latex_file,"r") as original:
         latex = original.read()
     with open(latex_file,"w") as new:
