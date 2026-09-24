@@ -30,16 +30,12 @@ __pycache__/
 
 # Intermediate files produced by scripts
 intermed.xml
-tei-to-pdf/latex/
 
 # Test files
 test-doi-image.*
 
-# Generated outputs in article directories
-# (components/, images/, hyphenation/ are copied there by tei_to_latex.py)
-outputs/*/latex/
-outputs/*/*.pdf
-outputs/*/*.html
+# Working directory for article processing
+work/
 
 # Large binary inputs that don't belong in version control
 inputs/*/*.docx

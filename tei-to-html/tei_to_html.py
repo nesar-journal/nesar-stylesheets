@@ -14,7 +14,9 @@ def validate(f):
     return relaxng.assertValid(f)
 
 def generate_html(tei,inputfile):
-    outputfile = inputfile.with_suffix('.html')
+    outputs_dir = inputfile.parent / 'outputs'
+    outputs_dir.mkdir(exist_ok=True)
+    outputfile = outputs_dir / (inputfile.stem + '.html')
     xsl = str(pathlib.Path(__file__).parent.absolute()) + "/stylesheet-HTML.xsl"
     with PySaxonProcessor(license=False) as proc:
         xslt = proc.new_xslt30_processor()

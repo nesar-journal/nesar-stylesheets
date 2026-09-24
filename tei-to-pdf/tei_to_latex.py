@@ -11,15 +11,15 @@ namespaces = {'tei': 'http://www.tei-c.org/ns/1.0'}
 parser = etree.XMLParser(recover=True,encoding='utf-8')
 input_file = pathlib.Path(sys.argv[1]).absolute()
 first_page = 1
-schema_file = pathlib.Path(str(parent_dir) + "/schemas/tei_all.rng")
-stylesheet_file = pathlib.Path(str(current_dir) + "/stylesheet-LaTeX.xsl")
-components_directory = pathlib.Path(str(current_dir) + "/components/").absolute()
-hyphenation_directory = pathlib.Path(str(current_dir) + "/hyphenation/").absolute()
-images_directory = pathlib.Path(str(current_dir) + "/images/").absolute()
-latex_directory = pathlib.Path(str(current_dir) + "/latex").absolute()
-metadata_directory = pathlib.Path(str(latex_directory) + "/metadata")
-preprocessed_file = pathlib.Path(str(latex_directory) + "/" + str(input_file.stem) + ".xml")
-latex_file = pathlib.Path(str(latex_directory) + "/" + str(input_file.stem) + ".tex")
+schema_file = parent_dir / 'schemas' / 'tei_all.rng'
+stylesheet_file = current_dir / 'stylesheet-LaTeX.xsl'
+components_directory = current_dir / 'components'
+hyphenation_directory = current_dir / 'hyphenation'
+images_directory = current_dir / 'images'
+latex_directory = input_file.parent / 'latex'
+metadata_directory = latex_directory / 'metadata'
+preprocessed_file = latex_directory / (input_file.stem + '.xml')
+latex_file = latex_directory / (input_file.stem + '.tex')
 
 def validate(f):
     relaxng_doc = etree.parse(str(schema_file))
@@ -56,7 +56,7 @@ def comma_join(lst):
 def convert_webp_to_jpg():
     for file in glob.glob(str(pathlib.Path(sys.argv[1]).parents[0].absolute())+"/*.webp"):
         base_name = pathlib.Path(file).stem
-        out = str(pathlib.Path(str(current_dir) + "/latex")) + "/images/" + base_name + ".jpg"
+        out = str(latex_directory / 'images' / (base_name + '.jpg'))
         print(out)
         img = Image.open(file)
         try:
@@ -202,42 +202,28 @@ def postprocess_latex():
     with open(str(latex_file),"w") as modified:
         modified.write(data)
 
-def generate_pdf(inputfile):
+def generate_pdf():
+    outputs_dir = input_file.parent / 'outputs'
+    outputs_dir.mkdir(exist_ok=True)
+    pdf_output = outputs_dir / (input_file.stem + '.pdf')
     try:
-        os.chdir('latex')
-        txt = subprocess.Popen("xelatex latex.tex", shell=True)
-        txt.communicate()
-        txt = subprocess.Popen("xelatex latex.tex", shell=True)
-        txt.communicate()
-        txt = subprocess.Popen("bibtex latex", shell=True)
-        txt.communicate()
-        txt = subprocess.Popen("xelatex latex.tex", shell=True)
-        txt.communicate()
-        os.replace("latex.pdf","../"+inputfile.stem+".pdf")
-        print("PDF file produced.")
-    except Exception as ex:
-        template = "An exception of type {0} occurred B. Arguments:\n{1!r}"
-        message = template.format(type(ex).__name__, ex.args)
-        print(message)
+        for _ in range(2):
+            subprocess.run(['xelatex', latex_file.name], cwd=latex_directory, check=True)
+        shutil.copy(latex_directory / (input_file.stem + '.pdf'), pdf_output)
+        print(f"PDF produced: {pdf_output}")
+    except subprocess.CalledProcessError as ex:
+        print(f"PDF generation failed: {ex}")
 
 if __name__ == "__main__":
     tei = etree.parse(input_file,parser=parser)
     valid = validate(tei)
     if valid == None:
         print(sys.argv[1] + " is valid TEI.")
-        # 1. copy materials from /tei-to-pdf into /outputs/lastname-title-of-article/latex
         create_latex_directory()
-        # 2. convert the webp source images into jpgs
         convert_webp_to_jpg()
-        # 3. preprocess the XML so that it can be LaTeX-ified
         preprocess_xml()
-        # 4. generate the metadata
         generate_metadata()
-        # 5. generate the latex from the stylesheet and the XML file
         generate_latex(tei)
-        # 6. postprocess the latex file
         postprocess_latex()
-        # 7. run latex
-        # generate_pdf(inputfile)
-        # if os.path.isfile(inputfile.stem + '.tex'):
-        #     generate_pdf(inputfile.stem + '.tex')
+        if '--pdf' in sys.argv:
+            generate_pdf()
