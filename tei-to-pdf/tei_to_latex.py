@@ -66,16 +66,28 @@ def convert_webp_to_jpg():
         except Exception as e:
             print("An error occurred: {e}")
 
+def load_or_create_pagination():
+    pagination_file = input_file.parent / 'pagination.yml'
+    if pagination_file.exists():
+        with open(pagination_file, 'r') as f:
+            return yaml.safe_load(f)
+    pagination = {
+        'issue': input("Issue number (default: 1): ") or "1",
+        'article': input("Article number (default: 1): ") or "1",
+        'year': input("Year (default: 2024): ") or "2024",
+        'first_page': input("First page (default: 1): ") or "1",
+    }
+    with open(pagination_file, 'w') as f:
+        yaml.dump(pagination, f)
+    return pagination
+
 def generate_metadata():
-    default_issue = "1"
-    default_article = "1"
-    default_year = "2024"
-    default_first_page = "1"
-    issue = input(f"Issue number (default: {default_issue}): ") or default_issue
-    article = input(f"Article number (default: {default_article}): ") or default_article
-    year = input(f"Year (default: {default_year}): ") or default_year
     global first_page
-    first_page = input(f"First page (default: {default_first_page}): ") or default_first_page
+    pagination = load_or_create_pagination()
+    issue = str(pagination['issue'])
+    article = str(pagination['article'])
+    year = str(pagination['year'])
+    first_page = str(pagination['first_page'])
     with open(str(metadata_directory) + "/metadata-first-page.tex","w") as firstpage:
         firstpage.write("\\setcounter{page}{"+first_page+"}")
     iy = issue + " (" + year + "): " + first_page + "–\\thelastpage."
