@@ -1,19 +1,35 @@
-import re, os, string, sys, pathlib, subprocess, time
+import re, os, string, sys, pathlib, time, zipfile, tempfile, shutil
 from lxml import etree
 from itertools import chain
 from saxonche import PySaxonProcessor
 
 namespaces = {'tei': 'http://www.tei-c.org/ns/1.0'}
 parser = etree.XMLParser(recover=True,encoding='utf-8')
-bin_path = "bash ~/Applications/Stylesheets/bin/docxtotei"
+submodule_dir = pathlib.Path(__file__).parent.parent / 'tei-stylesheets'
+docx_stylesheet = submodule_dir / 'profiles' / 'default' / 'docx' / 'from.xsl'
 
 def docx_to_tei(f):
-    docxtotei = bin_path + " " + str(f)
+    inputfile = pathlib.Path(f)
+    outputfile = inputfile.with_suffix('.xml')
     try:
-        proc = subprocess.Popen(docxtotei,shell=True).wait()
-        with open(os.path.splitext(f)[0]+'.xml',"r") as o:            
-            text = o.read()
-            return text
+        with tempfile.TemporaryDirectory() as tmpdir:
+            with zipfile.ZipFile(f, 'r') as z:
+                z.extractall(tmpdir)
+            with PySaxonProcessor(license=False) as proc:
+                xslt = proc.new_xslt30_processor()
+                xslt.set_parameter('word-directory', proc.make_string_value('file:///' + tmpdir))
+                xslt.set_parameter('inputDir', proc.make_string_value(str(inputfile.parent)))
+                xslt.set_parameter('mediaDir', proc.make_string_value('word/media'))
+                xslt.transform_to_file(
+                    source_file=str(pathlib.Path(tmpdir) / 'word' / 'document.xml'),
+                    stylesheet_file=str(docx_stylesheet),
+                    output_file=str(outputfile),
+                )
+            media_src = pathlib.Path(tmpdir) / 'word' / 'media'
+            if media_src.exists():
+                shutil.copytree(str(media_src), str(inputfile.parent / 'media'), dirs_exist_ok=True)
+        with open(outputfile, 'r') as o:
+            return o.read()
     except Exception as ex:
         template = "The DOCX to TEI conversion failed (type {0}). Arguments:\n{1!r}"
         message = template.format(type(ex).__name__, ex.args)
