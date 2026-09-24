@@ -308,6 +308,10 @@
     <xsl:template match="tei:change" />
     <xsl:template match="tei:choice" />
     <xsl:template match="tei:cit[not(ancestor::tei:note)]">
+      <xsl:if test="preceding-sibling::*[1][self::tei:cit or self::tei:quote]">
+        <xsl:text>\vspace{-8pt}
+</xsl:text>
+      </xsl:if>
       <xsl:text>
 \begin{pullquote}
 </xsl:text>
@@ -813,6 +817,10 @@
 </xsl:text>
     </xsl:template>
     <xsl:template match="tei:quote[not(ancestor::tei:note[@place='foot'])]">
+      <xsl:if test="preceding-sibling::*[1][self::tei:cit or self::tei:quote]">
+        <xsl:text>\vspace{-8pt}
+</xsl:text>
+      </xsl:if>
       <xsl:text>\begin{pullquote}
 </xsl:text>
       <xsl:if test="@xml:lang[. != 'eng'] or ancestor::*[@xml:lang[. != 'eng']]">
@@ -847,9 +855,9 @@
 	  <xsl:value-of select="@target"/>
 	  <xsl:text>}{\raisebox{-1pt}{\includegraphics[height=11pt]{images/DOI_logo.png}}}\,\href{</xsl:text>
 	  <xsl:value-of select="@target"/>
-	  <xsl:text>}{</xsl:text>
+	  <xsl:text>}{\nolinkurl{</xsl:text>
 	  <xsl:apply-templates/>
-	  <xsl:text>}</xsl:text>
+	  <xsl:text>}}</xsl:text>
 	</xsl:when>
 	<xsl:otherwise>
 	  <xsl:text>\href{</xsl:text>
